@@ -295,9 +295,6 @@ Rory Chen
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ellmer"</span>, <span class="st">"shinychat"</span>, <span class="st">"shiny"</span>, <span class="st">"bslib"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="theory-and-basics" class="title-slide slide level1 smaller center">
@@ -947,9 +944,6 @@ Rory Chen
 <li>Updates the reactive expression (<code>ad_filtered</code>)</li>
 </ul>
 </div></div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section id="real-life-shiny-apps" class="title-slide slide level1 smaller center">
 <h1>3. Real Life Shiny Apps</h1>
@@ -1255,9 +1249,6 @@ Rory Chen
 <h2>4.6 Deploy to shinyapps.io</h2>
 <p><strong>Optional</strong></p>
 <p><a href="https://shiny.posit.co/r/articles/share/shinyapps/" class="uri">https://shiny.posit.co/r/articles/share/shinyapps/</a></p>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="advanced-shiny" class="title-slide slide level1 smaller center">
@@ -1407,8 +1398,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-7096fe968a4c5dd1f045" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-7096fe968a4c5dd1f045">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-825b0b9bda2d2f5b804f" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-825b0b9bda2d2f5b804f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -1508,12 +1499,11 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output">5.4.4 Building the map output</h3>
 <p>Step 1: create the leaflet map object</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co">#</span></span>
-<span id="cb28-2"><a href=""></a>  output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb28-3"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb28-4"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) </span>
-<span id="cb28-6"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb28-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb28-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) </span>
+<span id="cb28-5"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="12-gbdmap-step1.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Basemap</code></p></section>
@@ -1600,10 +1590,7 @@ Rory Chen
 <p>Step 6: <code>leaflet</code> also supports other types of features, and different layers</p>
 <p>You can refer to the documentation for more options: <a href="https://rstudio.github.io/leaflet/articles/shiny.html" class="uri">https://rstudio.github.io/leaflet/articles/shiny.html</a></p>
 
-<img data-src="12-gbdmap-step6.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Other</code></p></section>
-<section class="slide level2">
-
-</section></section>
+<img data-src="12-gbdmap-step6.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Other</code></p></section></section>
 <section>
 <section id="shiny-app-with-ai" class="title-slide slide level1 center">
 <h1>6. Shiny App with AI</h1>
@@ -1615,28 +1602,158 @@ Rory Chen
 <p>“Create an application that uses”ad_data” from library(modeldata).”</p>
 
 <img data-src="shiny-assistant.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Shiny Assistant</code></p></section>
-<section id="shiny-app-with-ai---basics" class="slide level2">
-<h2>6.2 Shiny App with AI - Basics</h2>
-<p>Scope today</p>
+<section id="where-ai-fits-in-a-shiny-app" class="slide level2">
+<h2>6.2 Where AI fits in a Shiny app</h2>
 <ul>
-<li>Focus: practical and actionanle</li>
-<li>Not focus:</li>
+<li>Shiny already helps users explore data interactively</li>
+<li>AI can add a conversational layer</li>
+<li>Useful when users do not know which filter, plot, or table they need</li>
+<li>Especially useful for:
+<ul>
+<li>explaining dashboard outputs</li>
+<li>guiding exploration</li>
+<li>translating plain-English questions into data queries</li>
+<li>supporting non-technical research users</li>
+</ul></li>
 </ul>
-<h3 id="basics--">6.2.1 Basics -</h3>
-</section></section>
-<section>
-<section id="introducing-ellmer" class="title-slide slide level1 center">
-<h1>6.3 Introducing Ellmer</h1>
+</section>
+<section id="todays-ai-pathway" class="slide level2">
+<h2>6.3 Today’s AI pathway</h2>
+<p><strong>Note: This is just one of many possible pathways to add AI to your Shiny app.</strong></p>
+<ol type="1">
+<li>Build a basic chat assistant with <code>{ellmer}</code></li>
+<li>Place the assistant inside a Shiny app</li>
+<li>Move from “chat about the app” to “query the data”</li>
+<li>Use <code>{querychat}</code> to translate questions into data filters and summaries</li>
+</ol>
+</section>
+<section id="introducing-ellmer" class="slide level2">
+<h2>6.4 Introducing {ellmer}</h2>
 <p><a href="https://ellmer.tidyverse.org">https://ellmer.tidyverse.org</a></p>
 <ul>
-<li>Ridiculously easy to use</li>
-<li>Very powerful</li>
+<li>The R package for working with LLM</li>
+<li>Provides a consistent interface to different model providers</li>
 <li>Supports many LLMs: OpenAI, Anthropic, Google, Meta, Ollama, AWS, Azure, Databricks, Snowflake, and more</li>
 <li>Get help from <a href="https://jcheng.shinyapps.io/ellmer-assistant/">Ellmer Assistant</a></li>
 </ul>
 </section>
+<section class="slide level2">
+
+<h3 id="set-up-your-environment-variable">6.4.1 Set up your environment variable</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Copy your token in the .Renviron file, and save it. Then restart your R session.</p>
+<div style="font-size: 25px;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Provider</th>
+<th>Environment variable name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OpenAI</td>
+<td><code>OPENAI_API_KEY</code></td>
+</tr>
+<tr class="even">
+<td>Anthropic (Claude)</td>
+<td><code>ANTHROPIC_API_KEY</code></td>
+</tr>
+<tr class="odd">
+<td>Google Gemini</td>
+<td><code>GOOGLE_API_KEY</code></td>
+</tr>
+<tr class="even">
+<td>Azure OpenAI</td>
+<td><code>AZURE_OPENAI_KEY</code><br><code>AZURE_OPENAI_ENDPOINT</code></td>
+</tr>
+<tr class="odd">
+<td>Databricks</td>
+<td><code>DATABRICKS_TOKEN</code></td>
+</tr>
+<tr class="even">
+<td>Perplexity</td>
+<td><code>PERPLEXITY_API_KEY</code></td>
+</tr>
+<tr class="odd">
+<td>Ollama</td>
+<td>Usually not required</td>
+</tr>
+<tr class="even">
+<td>OpenRouter</td>
+<td><code>OPENROUTER_API_KEY</code></td>
+</tr>
+<tr class="odd">
+<td>DeepSeek</td>
+<td><code>DEEPSEEK_API_KEY</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="minimal-ellmer-chat">6.4.2 Minimal <code>{ellmer}</code> chat</h3>
+<p>Open <code>14-minichat.R</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(</span>
+<span id="cb34-4"><a href=""></a>  <span class="at">system_prompt =</span> <span class="st">"</span></span>
+<span id="cb34-5"><a href=""></a><span class="st">  You are an epidemiologist specialising in dementia research.</span></span>
+<span id="cb34-6"><a href=""></a></span>
+<span id="cb34-7"><a href=""></a><span class="st">  Explain concepts in plain English for researchers and clinicians.</span></span>
+<span id="cb34-8"><a href=""></a><span class="st">  Use dementia-related examples where helpful.</span></span>
+<span id="cb34-9"><a href=""></a></span>
+<span id="cb34-10"><a href=""></a><span class="st">  Do not invent findings, numbers, references, or study results.</span></span>
+<span id="cb34-11"><a href=""></a><span class="st">  Do not provide medical advice.</span></span>
+<span id="cb34-12"><a href=""></a><span class="st">  If unsure, say what information is missing. "</span></span>
+<span id="cb34-13"><a href=""></a>)</span>
+<span id="cb34-14"><a href=""></a></span>
+<span id="cb34-15"><a href=""></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Explain the difference between incidence rate and prevalence in dementia epidemiology"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="minimal-ellmer-chat-1">6.4.2 Minimal <code>{ellmer}</code> chat</h3>
+<p>Open <code>15-shinychat.R</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb35-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb35-3"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb35-4"><a href=""></a><span class="fu">library</span>(shinychat)</span>
+<span id="cb35-5"><a href=""></a></span>
+<span id="cb35-6"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
+<span id="cb35-7"><a href=""></a>  <span class="fu">chat_ui</span>(</span>
+<span id="cb35-8"><a href=""></a>    <span class="at">id =</span> <span class="st">"chat"</span>,</span>
+<span id="cb35-9"><a href=""></a>    <span class="at">messages =</span> <span class="st">"**Hello!** How can I help you today?"</span></span>
+<span id="cb35-10"><a href=""></a>  ),</span>
+<span id="cb35-11"><a href=""></a>  <span class="at">fillable_mobile =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-12"><a href=""></a>)</span>
+<span id="cb35-13"><a href=""></a></span>
+<span id="cb35-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb35-15"><a href=""></a>  chat <span class="ot">&lt;-</span></span>
+<span id="cb35-16"><a href=""></a>    ellmer<span class="sc">::</span><span class="fu">chat_anthropic</span>(</span>
+<span id="cb35-17"><a href=""></a>      <span class="at">system_prompt =</span> <span class="st">"....."</span></span>
+<span id="cb35-18"><a href=""></a>    )</span>
+<span id="cb35-19"><a href=""></a>  </span>
+<span id="cb35-20"><a href=""></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>chat_user_input, {</span>
+<span id="cb35-21"><a href=""></a>    stream <span class="ot">&lt;-</span> chat<span class="sc">$</span><span class="fu">stream_async</span>(input<span class="sc">$</span>chat_user_input)</span>
+<span id="cb35-22"><a href=""></a>    <span class="fu">chat_append</span>(<span class="st">"chat"</span>, stream)</span>
+<span id="cb35-23"><a href=""></a>  })</span>
+<span id="cb35-24"><a href=""></a>}</span>
+<span id="cb35-25"><a href=""></a></span>
+<span id="cb35-26"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 <section id="designed-for-both-programmatic-and-interactive-use" class="slide level2 smaller">
-<h2>6.4 Designed for both programmatic and interactive use</h2>
+<h2>6.5 Designed for both programmatic and interactive use</h2>
 <ul>
 <li><strong>Interactive — for exploration and debugging</strong>
 <ul>
@@ -1650,79 +1767,44 @@ Rory Chen
 <li>Supports asynchronous programming with <code>client$chat_async(prompt)</code> and <code>client$stream_async(prompt)</code></li>
 </ul></li>
 </ul>
-</section>
-<section id="independent-hands-on-exercise" class="slide level2">
-<h2>7. Independent Hands-On Exercise</h2>
-</section>
-<section class="slide level2">
+</section></section>
+<section>
+<section id="independent-hands-on-exercise" class="title-slide slide level1 center">
+<h1>7. Independent Hands-On Exercise</h1>
 
-<h3 id="section">7.1</h3>
-<p>Use the GBD Data provided or your own data Combine what we learned today Build your own R Shiny app!</p>
+</section>
+<section id="build-your-own-shiny-app" class="slide level2 smaller">
+<h2>7.1 Build Your Own Shiny App</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
-<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=yellow&amp;hrs=1&amp;min=0&amp;sec=0" frameborder="0">
+<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=1&amp;min=45&amp;sec=0" frameborder="0">
 </iframe>
 </div><div class="column" style="width:70%;">
-<p>Build a Shiny app to explore the <strong><code>mtcars</code></strong> dataset (or your own research data).</p>
-<p><strong>Your app must include:</strong></p>
 <ul>
-<li>✅ At least <strong>2 different input controls</strong> (e.g.&nbsp;a slider, a select box, checkboxes)</li>
-<li>✅ At least <strong>1 reactive plot</strong> that updates when inputs change</li>
-<li>✅ At least <strong>1 summary or data table</strong></li>
-<li>✅ A <strong>meaningful title</strong> and labeled axes</li>
+<li>Use the GBD Data provided or your own data</li>
+<li>Combine what we learned today</li>
+<li>Build your own R Shiny app!</li>
 </ul>
-<p><strong>Stretch goals:</strong></p>
-<ul>
-<li>🌟 Add a <code>downloadButton</code> so users can save the filtered data as a CSV</li>
-<li>🌟 Use <code>bslib</code> or <code>shinydashboard</code> for a polished layout</li>
-<li>🌟 Display a reactive <strong>summary statistics</strong> panel (mean, SD, n)</li>
-<li>🌟 Add a second tab using <code>tabsetPanel</code></li>
-</ul>
-<p><strong>Hint:</strong> Run <code>?mtcars</code> to view the variable descriptions.</p>
 </div></div>
-</section>
-<section id="section-1" class="slide level2">
-<h2>————————————————————————</h2>
-</section>
-<section id="group-sharing-and-wrap-up" class="slide level2">
-<h2>8. Group Sharing and Wrap-Up</h2>
-</section>
-<section class="slide level2">
+</section></section>
+<section>
+<section id="group-sharing-and-wrap-up" class="title-slide slide level1 center">
+<h1>8. Group Sharing and Wrap-Up</h1>
 
-<h3 class="smaller" id="share-your-app">8.1 Share Your App</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+</section>
+<section id="share-your-app" class="slide level2 smaller">
+<h2>8.1 Share Your App</h2>
 <p><strong>You’re invited to share with the group:</strong></p>
 <ul>
 <li>📌 What dataset did you use?</li>
-<li>🎛️ What input controls did you add?</li>
+<li>🎛️ What inputs did you add?</li>
 <li>📊 What does your visualization show?</li>
 <li>🌟 Any stretch goals you tackled?</li>
 <li>❓ Any challenges or questions?</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Volunteer to demo!</strong></p>
-<ul>
-<li>Run your app locally and share your screen.</li>
-<li>We’ll have <strong>2–3 volunteers</strong> demo their app.</li>
-<li>No pressure — partial apps welcome!</li>
-</ul>
-</div></div>
 </section>
-<section class="slide level2">
-
-<h3 class="smaller" id="key-takeaways">8.2 Key Takeaways</h3>
-<ul>
-<li><p><strong>Shiny = UI + Server + Reactivity</strong> — three concepts, one framework.</p></li>
-<li><p><code>reactive({})</code> is the engine — it re-runs automatically when inputs change.</p></li>
-<li><p>Use <code>bindEvent()</code> to control <em>when</em> a reactive re-runs (e.g.&nbsp;on button click).</p></li>
-<li><p>Built-in datasets (<code>iris</code>, <code>mtcars</code>, <code>airquality</code>) are great for prototyping.</p></li>
-<li><p>Once the pattern clicks, you can apply it to <strong>your own research data</strong>.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 class="smaller" id="next-steps">8.3 Next Steps</h3>
+<section id="next-steps" class="slide level2 smaller">
+<h2>8.2 Next Steps</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1758,19 +1840,8 @@ Rory Chen
 </tbody>
 </table>
 </section>
-<section class="slide level2">
-
-<h3 id="new-uses-for-shiny">New uses for Shiny</h3>
-<p>Your turn!</p>
-<ul>
-<li class="fragment">Could your next <strong>presentation</strong> be more compelling with some interactivity?</li>
-<li class="fragment">Could your <strong>lecture notes</strong> lead to deeper understanding if they had interactive examples?</li>
-<li class="fragment">Would your <strong>blog posts</strong> be more powerful if they featured interactive apps?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 class="smaller" id="thank-you">8.4 Thank You!</h3>
+<section id="thank-you" class="slide level2 smaller">
+<h2>8.3 Thank You!</h2>
 <ul>
 <li><strong>Rory Chen, MSc</strong></li>
 <li><strong>Ana W. Capuano, PhD</strong></li>

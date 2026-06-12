@@ -15,3 +15,5 @@ pkglist <- c( "shiny",
 
 new.packages <- pkglist[!(pkglist %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
+
+usethis::edit_r_environ()

@@ -90,7 +90,7 @@ By the end of this workshop, you will be able to:
 install.packages(c("ellmer", "shinychat", "shiny", "bslib"))
 ```
 
-------------------------------------------------------------
+
 
 # 2. Theory and Basics {.smaller}
 
@@ -807,7 +807,7 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 
 ::::: 
 
------------------------------------------------------------------
+
 
 # 3. Real Life Shiny Apps {.smaller}
 
@@ -1086,7 +1086,7 @@ output$datadt <- renderDT({
 <https://shiny.posit.co/r/articles/share/shinyapps/>
 
 
-------------------------------------------------------------------------
+
 
 # 5. Advanced Shiny  {.smaller}
 
@@ -1484,7 +1484,7 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 
 ![`Other`](12-gbdmap-step6.png)
 
----------------------------------------------------------------
+
 
 # 6. Shiny App with AI
 
@@ -1501,28 +1501,146 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 
 
 
-## 6.2 Shiny App with AI - Basics
+## 6.2 Where AI fits in a Shiny app
 
-Scope today
+- Shiny already helps users explore data interactively
+- AI can add a conversational layer
+- Useful when users do not know which filter, plot, or table they need
+- Especially useful for:
+  - explaining dashboard outputs
+  - guiding exploration
+  - translating plain-English questions into data queries
+  - supporting non-technical research users
 
--   Focus: practical and actionanle
--   Not focus:
+---------------------------------------------------------------
 
+## 6.3  Today’s AI pathway
 
-### 6.2.1 Basics - 
+**Note: This is just one of many possible pathways to add AI to your Shiny app.**
 
+1. Build a basic chat assistant with `{ellmer}`
+2. Place the assistant inside a Shiny app
+3. Move from “chat about the app” to “query the data”
+4. Use `{querychat}` to translate questions into data filters and summaries
 
-# 6.3 Introducing Ellmer
+---------------------------------------------------------------
+
+## 6.4 Introducing {ellmer}
 
 [https://ellmer.tidyverse.org](https://ellmer.tidyverse.org)
 
-- Ridiculously easy to use
-- Very powerful
+- The R package for working with LLM
+- Provides a consistent interface to different model providers
 - Supports many LLMs: OpenAI, Anthropic, Google, Meta, Ollama, AWS, Azure, Databricks, Snowflake, and more
 - Get help from [Ellmer Assistant](https://jcheng.shinyapps.io/ellmer-assistant/)
 
+---------------------------------------------------------------
 
-## 6.4  Designed for both programmatic and interactive use {.smaller}
+### 6.4.1 Set up your environment variable
+
+```{r}
+#| echo: true
+#| eval: false
+
+usethis::edit_r_environ()
+
+```
+
+Copy your token in the .Renviron file, and save it. Then restart your R session.
+
+<div style="font-size: 25px;">   
+| Provider | Environment variable name |
+|----------|---------------------------|
+| OpenAI | `OPENAI_API_KEY` |
+| Anthropic (Claude) | `ANTHROPIC_API_KEY` |
+| Google Gemini | `GOOGLE_API_KEY` |
+| Azure OpenAI | `AZURE_OPENAI_KEY`<br>`AZURE_OPENAI_ENDPOINT` |
+| Databricks | `DATABRICKS_TOKEN` |
+| Perplexity | `PERPLEXITY_API_KEY` |
+| Ollama | Usually not required |
+| OpenRouter | `OPENROUTER_API_KEY` |
+| DeepSeek | `DEEPSEEK_API_KEY` |
+
+: {tbl-colwidths="[30, 70]"}
+
+</div>
+
+
+---------------------------------------------------------------
+
+### 6.4.2 Minimal `{ellmer}` chat
+
+Open `14-minichat.R`
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(ellmer)
+
+chat <- chat_anthropic(
+  system_prompt = "
+  You are an epidemiologist specialising in dementia research.
+
+  Explain concepts in plain English for researchers and clinicians.
+  Use dementia-related examples where helpful.
+
+  Do not invent findings, numbers, references, or study results.
+  Do not provide medical advice.
+  If unsure, say what information is missing. "
+)
+
+chat$chat("Explain the difference between incidence rate and prevalence in dementia epidemiology")
+
+```
+
+
+---------------------------------------------------------------
+
+### 6.4.3 The chat inside a shiny app
+
+Open `15-shinychat.R`
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(shiny)
+library(bslib)
+library(ellmer)
+library(shinychat)
+
+ui <- bslib::page_fillable(
+  chat_ui(
+    id = "chat",
+    messages = "**Hello!** How can I help you today?"
+  ),
+  fillable_mobile = TRUE
+)
+
+server <- function(input, output, session) {
+  chat <-
+    ellmer::chat_anthropic(
+      system_prompt = "....."
+    )
+  
+  observeEvent(input$chat_user_input, {
+    stream <- chat$stream_async(input$chat_user_input)
+    chat_append("chat", stream)
+  })
+}
+
+shinyApp(ui, server)
+
+```
+
+
+
+
+---------------------------------------------------------------
+
+
+## 6.5  Designed for both programmatic and interactive use {.smaller}
 
 - **Interactive — for exploration and debugging**
   - `ellmer::chat()` automatically streams output to the console by default
@@ -1534,7 +1652,6 @@ Scope today
 
 
 
-------------------------------------------------------------------------
 
 # 7. Independent Hands-On Exercise
 
@@ -1562,7 +1679,7 @@ Scope today
 :::
 :::::
 
-------------------------------------------------------------------------
+
 
 
 # 8. Group Sharing and Wrap-Up
