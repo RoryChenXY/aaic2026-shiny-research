@@ -1,0 +1,12 @@
+pkglist <- c( "shiny",
+              "bslib",
+              "ggplot2",
+              "plotly",
+              "leaflet",
+              "dplyr",
+              "DT",
+              "gt",
+              "gtsummary",
+              "modeldata", 
+              "ellmer",
+              "querychat")

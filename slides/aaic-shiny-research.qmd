@@ -1360,8 +1360,7 @@ Step 1: create the leaflet map object
 ```{r}
 #| echo: true
 #| eval: false
-#
-  output$choropleth_map <- renderLeaflet({
+output$choropleth_map <- renderLeaflet({
     map_data <- filtered_data()
     leaflet(map_data) |>
       addProviderTiles(providers$CartoDB.Positron) 
@@ -1537,91 +1536,54 @@ Scope today
 
 ------------------------------------------------------------------------
 
-## 7. Independent Hands-On Exercise
+# 7. Independent Hands-On Exercise
 
 ------------------------------------------------------------------------
 
-### 7.1 
+## 7.1 Build Your Own Shiny App {.smaller}
 
-Use the GBD Data provided or your own data
-Combine what we learned today
-Build your own R Shiny app!
+
 
 ::::: columns
 ::: {.column width="30%"}
-<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=yellow&amp;hrs=1&amp;min=0&amp;sec=0" frameborder="0">
+
+<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=1&amp;min=45&amp;sec=0" frameborder="0">
 
 </iframe>
+
 :::
 
 ::: {.column width="70%"}
-Build a Shiny app to explore the **`mtcars`** dataset (or your own research data).
 
-**Your app must include:**
+-   Use the GBD Data provided or your own data
+-   Combine what we learned today
+-   Build your own R Shiny app!
 
--   ✅ At least **2 different input controls** (e.g. a slider, a select box, checkboxes)
--   ✅ At least **1 reactive plot** that updates when inputs change
--   ✅ At least **1 summary or data table**
--   ✅ A **meaningful title** and labeled axes
-
-**Stretch goals:**
-
--   🌟 Add a `downloadButton` so users can save the filtered data as a CSV
--   🌟 Use `bslib` or `shinydashboard` for a polished layout
--   🌟 Display a reactive **summary statistics** panel (mean, SD, n)
--   🌟 Add a second tab using `tabsetPanel`
-
-**Hint:** Run `?mtcars` to view the variable descriptions.
 :::
 :::::
 
 ------------------------------------------------------------------------
+
+
+# 8. Group Sharing and Wrap-Up
+
 ------------------------------------------------------------------------
 
-## 8. Group Sharing and Wrap-Up
+## 8.1 Share Your App {.smaller}
 
-------------------------------------------------------------------------
-
-### 8.1 Share Your App {.smaller}
-
-::::: columns
-::: {.column width="50%"}
 
 **You're invited to share with the group:**
 
 -   📌 What dataset did you use?
--   🎛️ What input controls did you add?
+-   🎛️ What inputs did you add?
 -   📊 What does your visualization show?
 -   🌟 Any stretch goals you tackled?
 -   ❓ Any challenges or questions?
-:::
 
-::: {.column width="50%"}
-**Volunteer to demo!**
-
--   Run your app locally and share your screen.
--   We'll have **2–3 volunteers** demo their app.
--   No pressure — partial apps welcome!
-:::
-:::::
 
 ------------------------------------------------------------------------
 
-### 8.2 Key Takeaways {.smaller}
-
--   **Shiny = UI + Server + Reactivity** — three concepts, one framework.
-
--   `reactive({})` is the engine — it re-runs automatically when inputs change.
-
--   Use `bindEvent()` to control *when* a reactive re-runs (e.g. on button click).
-
--   Built-in datasets (`iris`, `mtcars`, `airquality`) are great for prototyping.
-
--   Once the pattern clicks, you can apply it to **your own research data**.
-
-------------------------------------------------------------------------
-
-### 8.3 Next Steps {.smaller}
+## 8.2 Next Steps {.smaller}
 
 | Topic | Resource |
 |------------------------------------|------------------------------------|
@@ -1634,20 +1596,8 @@ Build a Shiny app to explore the **`mtcars`** dataset (or your own research data
 
 ------------------------------------------------------------------------
 
-### New uses for Shiny
 
-Your turn!
-
-::: incremental
-- Could your next **presentation** be more compelling with some interactivity?
-- Could your **lecture notes** lead to deeper understanding if they had interactive examples?
-- Would your **blog posts** be more powerful if they featured interactive apps?
-:::
-
-------------------------------------------------------------------------
-
-
-### 8.4 Thank You! {.smaller}
+## 8.3 Thank You! {.smaller}
 
 -   **Rory Chen, MSc**
 -   **Ana W. Capuano, PhD**
