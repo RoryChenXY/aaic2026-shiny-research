@@ -1,0 +1,147 @@
+/*-- scss:defaults --*/
+
+$presentation-h2-font-size: 1.5em;
+$presentation-h3-font-size: 1em;
+
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  color: lighten($link-color, 20%);
+  border-left: 5px solid $link-color;
+  padding-left: 1.5em;
+}
+
+.reveal h2 {
+    margin-bottom: 1em; 
+}
+
+.reveal .slides section p {
+    font-size: 20pt; /* Paragraph font size */
+}
+
+.reveal .slides section ul li {
+    font-size: 20pt; /* Paragraph font size */
+}
+
+.reveal .slides section ol li {
+    font-size: 20pt; /* Paragraph font size */
+}
+
+.white-slide {
+  background-color: "aquamarine";
+  color: red;
+}
+
+.figLab {
+  font-size: 0.5em;
+  color: grey !important;
+}
+
+.figLabBR {
+  font-size: 0.5em;
+  color: grey !important;
+  position: absolute;
+  bottom: 0;  /* Align to the bottom */
+  right: 0; 
+}
+
+
+.clock {
+  font-size: 0.7em;
+  color: #ca8a04 !important;
+  margin-top: -50px;
+  margin-bottom: 1.2em;
+}
+
+.clock-cr {
+  font-size: 0.7em;
+  color: #ca8a04 !important;
+  margin-bottom: 1.2em;
+}
+
+.smaller {
+  font-size: 0.7em;
+}
+
+.list-container {
+  display: flex;
+  align-items: center; /* Vertically center the list items */
+  width: 100%;
+}
+
+.clickable-list {
+  list-style-type: none; /* Remove bullet points */
+}
+
+.clickable-list li a {
+  display: block;
+  width: 80%;
+  min-height: 100px;
+  padding-top: 15px;
+  background-color: #F5F5F5;
+  text-decoration: none; /* Remove underline */
+  border-radius: 15px;
+}
+
+.clickable-list li a:hover {
+  background-color: #E7E7E7; /* Color change on hover */
+}
+
+.center-xy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-image {
+  display: block;
+  max-width: 50%;
+  margin: 0 auto;
+  text-align: center;  /* Optional for centering any text below the image */
+  font-size: 0.7em;
+}
+
+
+.code-font {
+  font-size: 0.875em;
+  color: var(--bs-code-color);
+  background-color: #f8f9fa;
+    border-radius: .25rem;
+  padding: .125rem .25rem;
+  word-wrap: break-word;
+}
+
+.fa-lightbulb {
+  color: #FFAE42;
+}
+
+.center-slide {
+  text-align: center;  
+}
+
+.title-slide {
+  text-align: center;  
+}
+
+.title-slide img {
+  opacity: 60%;
+}
+
+.section-header {
+  display: inline-block;
+  background: rgba(0,0,0, 0.2);
+  font-size: 1.5em;
+  color: whitesmoke;
+  text-align: center;
+  margin: 50px auto;
+}
+
+  input[type="checkbox"] {
+    accent-color: #05b875; /* Changes the checkbox and tick color */
+  }
+  
+.small-video {
+  max-width: 50%;    /* Set the max-width of the video */
+  height: auto;      /* Maintain aspect ratio */
+}  
