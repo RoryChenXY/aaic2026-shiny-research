@@ -501,7 +501,7 @@ Layout controls where things appear in your app
 
 -  A most common layout is `sidebar`
 
-![`04_helloaaic.R`](04-helloaaic.png)
+![`04_helloaaic.R`](./img/04-helloaaic.png)
 
 ------------------------------------------------------------------------
 
@@ -534,7 +534,7 @@ ui <- bslib::page_fillable(
 -   You can use `card()` from `{bslib}` to group multiple elements into a single element that has its own properties. 
 -   You can then use the card to place the group of elements within the layout using `layout_columns()`.
 
-![`05-uiinput.R`](05-uiinput.png)
+![`05-uiinput.R`](./img/05-uiinput.png)
 
 -----------------------------------------------------------------
 
@@ -559,7 +559,7 @@ ui <- bslib::page_fillable(
 -   We used `navset_card_underline` in `06-uitables.R` example.
 
 
-![`06-uitables.R`](06-uitables.png)
+![`06-uitables.R`](./img/06-uitables.png)
 
 -----------------------------------------------------------------
 
@@ -616,7 +616,7 @@ ui <- bslib::page_fillable(
 -   When we change the number of bins, the histogram changes
 -   When we change the number of rows, the table changes
 
-![`Reactive`](reactive-simple.png)
+![`Reactive`](./img/reactive-simple.png)
 
 
 -----------------------------------------------------------------
@@ -627,7 +627,7 @@ ui <- bslib::page_fillable(
 -   A reactive output is something that appears in the user’s browser window, such as a plot or a table of values.
 -   A reactive expressions is component between an input and an output. It stores a reusable calculation.
 
-![`Reactive`](reactive-expression.png)
+![`Reactive`](./img/reactive-expression.png)
 
 -----------------------------------------------------------------
 
@@ -639,7 +639,7 @@ ui <- bslib::page_fillable(
     -  Improve organization and readability
     -  Facilitate testing and maintenance
 
-![`Reactive`](reactive-expression.png)
+![`Reactive`](./img/reactive-expression.png)
 
 -----------------------------------------------------------------
 
@@ -1158,7 +1158,7 @@ output$datadt <- renderDT({
 
 -  Open and run `10-nomodules.R`
 
- ![`Modules`](10-nomodules.png)
+ ![`Modules`](./img/10-nomodules.png)
 
 ------------------------------------------------------------------------
 
@@ -1293,7 +1293,7 @@ m
 
 ::: {.column width="30%"}
 
-![`GBD Data Search`](gbd60plus.png)
+![`GBD Data Search`](./img/gbd60plus.png)
 
 :::
 
@@ -1367,7 +1367,7 @@ output$choropleth_map <- renderLeaflet({
   })
 ```
 
-![`Basemap`](12-gbdmap-step1.png)
+![`Basemap`](./img/12-gbdmap-step1.png)
 
 ---------------------------------------------------------------
 
@@ -1392,7 +1392,7 @@ Step 2: Add the choropleth layer using `addPolygons()`
   })
 ```
 
-![`addPolygons`](12-gbdmap-step2.png)
+![`addPolygons`](./img/12-gbdmap-step2.png)
 
 ---------------------------------------------------------------
 
@@ -1426,7 +1426,7 @@ output$choropleth_map <- renderLeaflet({
 ```
 
 
-![`Color Palette`](12-gbdmap-step3.png)
+![`Color Palette`](./img/12-gbdmap-step3.png)
 
 
 ---------------------------------------------------------------
@@ -1450,7 +1450,7 @@ Step 4: Add Legends.
 ```
 
 
-![`Legend`](12-gbdmap-step4.png)
+![`Legend`](./img/12-gbdmap-step4.png)
 
 ---------------------------------------------------------------
 
@@ -1471,7 +1471,7 @@ popup = ~paste0(
 ```
 
 
-![`Popup`](12-gbdmap-step5.png)
+![`Popup`](./img/12-gbdmap-step5.png)
 
 
 ---------------------------------------------------------------
@@ -1482,7 +1482,7 @@ Step 6: `leaflet` also supports other types of features, and different layers
 
 You can refer to the documentation for more options: <https://rstudio.github.io/leaflet/articles/shiny.html>
 
-![`Other`](12-gbdmap-step6.png)
+![`Other`](./img/12-gbdmap-step6.png)
 
 
 
@@ -1494,7 +1494,7 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 
 "Create an application that uses "ad_data" from library(modeldata)."
  
-![`Shiny Assistant`](shiny-assistant.png)
+![`Shiny Assistant`](./img/shiny-assistant.png)
 
 
 ---------------------------------------------------------------
@@ -1519,13 +1519,13 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 **Note: This is just one of many possible pathways to add AI to your Shiny app.**
 
 1. Build a basic chat assistant with `{ellmer}`
-2. Place the assistant inside a Shiny app
+2. Place the assistant inside a Shiny app with `{shinychat}`
 3. Move from “chat about the app” to “query the data”
 4. Use `{querychat}` to translate questions into data filters and summaries
 
 ---------------------------------------------------------------
 
-## 6.4 Introducing {ellmer}
+## 6.4 Introducing `{ellmer}`
 
 [https://ellmer.tidyverse.org](https://ellmer.tidyverse.org)
 
@@ -1536,7 +1536,7 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 
 ---------------------------------------------------------------
 
-### 6.4.1 Set up your environment variable
+### 6.4.1 !Set up your environment variable!
 
 ```{r}
 #| echo: true
@@ -1640,15 +1640,9 @@ shinyApp(ui, server)
 ---------------------------------------------------------------
 
 
-## 6.5  Designed for both programmatic and interactive use {.smaller}
+## 6.5 From Chat to Data Querying using`{querychat}` {.smaller}
 
-- **Interactive — for exploration and debugging**
-  - `ellmer::chat()` automatically streams output to the console by default
-  - Enter a chat client using `live_console(chat)` or `live_browser(chat)`
-- **Programmatic — for building on top of**
-  - `client$chat(prompt)` returns a string
-  - `client$stream(prompt)` returns a streaming output object
-  - Supports asynchronous programming with `client$chat_async(prompt)` and `client$stream_async(prompt)`
+
 
 
 

@@ -9,6 +9,7 @@ pkglist <- c( "shiny",
               "gtsummary",
               "modeldata", 
               "ellmer",
+              "shinychat",
               "querychat")
 
 # install packages if not already installed
