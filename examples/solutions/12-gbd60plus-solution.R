@@ -3,18 +3,19 @@ library(shiny)
 library(bslib)
 library(leaflet)
 library(dplyr)
+library(here)
 library(DT)
 
 # Load data
-gbd_60plus <- readRDS("../data/alz_gbd_60plus_sf.rds")
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
+
 
 # Define UI
 ui <- page_sidebar(
   # App title ----
   title = "GBD Data Explorer",
   sidebar = sidebar(
-    ## [EXERCISE] Add three `selectInput()` for users to select sex, measure and metric.
-    
+   
     ## Filter for sex
     selectInput(
       inputId  = "selected_sex",

@@ -1,12 +1,14 @@
 # Load packages
 library(shiny)
 library(bslib)
+library(sf)
 library(leaflet)
+library(here)
 library(dplyr)
 library(DT)
 
 # Load data
-gbd_60plus <- readRDS("../data/alz_gbd_60plus_sf.rds")
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
 
 # Define UI
 ui <- page_sidebar(
@@ -39,7 +41,14 @@ ui <- page_sidebar(
     card_header("Interactive Map and Data Table"),
     navset_tab(
       nav_panel("Choropleth Map", leafletOutput(outputId = "choropleth_map")),
-      nav_panel("Data", dataTableOutput(outputId = "datadt"))
+      nav_panel("Data", dataTableOutput(outputId = "datadt")),
+      nav_panel("Map Filter", 
+                actionButton("resetmap", "Reset Map"),
+                br(),
+                leafletOutput(outputId = "mapfilter"),
+                verbatimTextOutput(outputId = "filtered_country"),
+                dataTableOutput(outputId = "mapfiltered_dt"))
+      
     ))
   
 )
@@ -52,9 +61,9 @@ server <- function(input, output, session) {
     req(input$selected_sex,
         input$selected_measure, 
         input$selected_metric
-        )
+    )
     
-    gbd_60plus %>%
+    gbd_60plus |>
       filter(
         sex == input$selected_sex,
         measure == input$selected_measure,
@@ -76,9 +85,10 @@ server <- function(input, output, session) {
           scrollX = TRUE # Enable horizontal scrolling for wide data frames
         )
       )
-
+    
   })
   
+  ## Choropleth_map
   output$choropleth_map <- renderLeaflet({
     
     map_data <- filtered_data()
@@ -120,6 +130,68 @@ server <- function(input, output, session) {
       )
   })
   
+  ## MAP FILTER -----------------------
+  
+  # Define reactive values
+  rv <- shiny::reactiveValues(selected_countries = NULL, # Initialize reactive value for selected counties
+                              last_click_id = NULL,
+                              map_filtered_data = filtered_data())
+  
+  # Define the map filter object
+  output$mapfilter <- leaflet::renderLeaflet({ # rendering the filter map
+    
+    leaflet::leaflet() |> 
+      leaflet::addTiles() |> # The is the base map
+      leaflet::addPolygons(data = filtered_data(), 
+                           color = '#316879', 
+                           weight = 1,
+                           layerId = ~country,
+                           label = ~country,
+                           fillColor = "#7fe7dc",
+                           fillOpacity = .5,
+                           highlightOptions = highlightOptions(
+                             fillOpacity = 1,
+                             bringToFront = TRUE
+                           )) |>
+      leaflet::setView(zoom = 1, lng = 0, lat = 50)
+    
+  })
+  
+  shiny::observeEvent(input$mapfilter_shape_click, { 
+    click <- input$mapfilter_shape_click
+    req(click$id) # Ensures click$id exists before running code
+    
+    rv$last_click_id <- click$id 
+    
+    ########## map behavior ################
+    
+    # Toggle country selection using the true country ID
+    if (click$id %in% rv$selected_countries) {
+      # If already selected, remove it
+      rv$selected_countries <- rv$selected_countries[rv$selected_countries != click$id]
+    } else {
+      # If not selected, add it
+      rv$selected_countries <- c(rv$selected_countries, click$id)
+    }
+    
+
+    # Now update the leaflet map smoothly
+    leaflet::leafletProxy("mapfilter", session) |>
+      leaflet::addPolygons(
+        data = map_filtered_data,
+        layerId = ~country,  # ALWAYS keep the original country ID here
+        label = ~country,
+        fillColor = ifelse(map_data$country %in% rv$selected_countries, "#F47A60", "#7fe7dc"), 
+        color = "#316879",
+        weight = 2,
+        fillOpacity = ifelse(map_data$country %in% rv$selected_countries, 1, 0.5),
+        highlightOptions = leaflet::highlightOptions(
+          fillOpacity = 1,
+          bringToFront = TRUE
+        )
+      )
+  })
+
   
   
 }

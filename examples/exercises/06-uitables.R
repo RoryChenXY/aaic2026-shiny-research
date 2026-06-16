@@ -31,33 +31,29 @@ ui <- page_sidebar(
   navset_card_underline(
     
     ## [EXERCISE] set tableOutput's ouputID
-    nav_panel("Table", tableOutput(outputId = ___________)),
+    nav_panel("Table", tableOutput(outputId = NULL)),
     
-    ## [EXERCISE] add DT::dataTableOutput()
-    nav_panel("DataTable", _____________________________),
+    ## [EXERCISE] add DT::dataTableOutput(outputId = NULL)
+    nav_panel("DataTable")
     
   )
-  
-  
-  ,
   
 )
 
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
-  
-  
+
   output$greeting <- renderText({
     paste("Welcome to AAIC, ", input$name, "!", sep = "")
   }) 
   
-  ## [EXERCISE] Define tableOutput
-  output$____________________ <- renderTable({
+  ## [EXERCISE] Define tableOutput use your output ID
+  output$ID1 <- renderTable({
     head(ad_data, input$rows)
   })
   
-  ## [EXERCISE] Define dataTableOutput
-  output$____________________ <- renderDataTable({
+  ## [EXERCISE] Define dataTableOutput use your output ID
+  output$ID2 <- renderDataTable({
     
     DT::datatable(
       ad_data,

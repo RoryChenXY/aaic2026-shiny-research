@@ -24,20 +24,12 @@ ui <- page_sidebar(
     textInput(inputId = "name",
               label = "Your Name:")
   ),
-  
   # Output: Tables ----
   textOutput("greeting"),
-  
   navset_card_underline(
-    
     nav_panel("Table", tableOutput(outputId = "adTable")),
-    nav_panel("DataTable", DT::dataTableOutput(outputId = "adDataTable")),
-    
+    nav_panel("DataTable", DT::dataTableOutput(outputId = "adDataTable"))
   )
-  
-  
-  ,
-  
 )
 
 # Define server logic required to draw a histogram ----

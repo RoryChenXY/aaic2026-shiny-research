@@ -1,13 +1,16 @@
 # Load packages
 library(shiny)
 library(bslib)
+library(here)
+library(dplyr)
+library(gt)
 library(gtsummary)
 library(DT)
 library(ggplot2)
 library(plotly)
 
 # Load data
-oasis_df <- readRDS("../data/oasis_df.rds")
+oasis_df <- readRDS(here("data", "oasis_df.rds"))
 
 # Define UI
 ui <- page_sidebar(
@@ -95,6 +98,17 @@ server <- function(input, output, session) {
       tbl_summary(
         by = group,
         include = -c(subject_id, mri_id, visit, mr_delay, hand),
+        label = list(
+          age ~ "Age (Years)",
+          mf ~ "Sex", 
+          educ ~ "Education (Years)",
+          ses ~ "Socioeconomic Status",
+          mmse ~ "Mini-Mental State Exam",
+          cdr ~ "Clinical Dementia Rating",
+          etiv ~ "Estimated Total Intracranial Volume",
+          nwbv ~ "Normalized Whole Brain Volume",
+          asf ~ "Atlas Scaling Factor"
+        ),
         type = list(
           everything() ~ "continuous",
           c(mf, ses, cdr) ~ "categorical"
@@ -131,7 +145,7 @@ server <- function(input, output, session) {
     p <- ggplot(
       oasis_filtered(),
       aes(
-        x = .data[[input$xvar]],,
+        x = .data[[input$xvar]],
         y = .data[[input$yvar]],
         colour = .data[[input$gvar]],
         text = paste(
@@ -142,7 +156,7 @@ server <- function(input, output, session) {
         ))) +
       geom_point(size = 2, alpha = 0.8) +
       labs(
-        title = paste("input$xvar and", input$yvar),
+        title = paste(input$xvar, "and", input$yvar),
         x = input$xvar,
         y = input$yvar,
         colour = input$gvar
