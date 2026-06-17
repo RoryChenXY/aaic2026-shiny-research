@@ -535,17 +535,17 @@ Rory Chen
 
 <h3 class="small-contd" id="hello-aaic---solution">2.1.4 Hello, AAIC! - Solution</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="3|7-9|11-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
 <span id="cb8-2"><a href=""></a>  <span class="co"># App title ----</span></span>
 <span id="cb8-3"><a href=""></a>  <span class="at">title =</span> <span class="st">"Hello AAIC!"</span>,</span>
 <span id="cb8-4"><a href=""></a>  <span class="co"># Sidebar panel for inputs ----</span></span>
 <span id="cb8-5"><a href=""></a>  <span class="at">sidebar =</span> <span class="fu">sidebar</span>(</span>
-<span id="cb8-6"><a href=""></a>    <span class="co"># Input: Slider for the number of bins ----</span></span>
-<span id="cb8-7"><a href=""></a>    <span class="fu">sliderInput</span>(),</span>
-<span id="cb8-8"><a href=""></a>    <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name"</span>,</span>
+<span id="cb8-6"><a href=""></a>    <span class="fu">sliderInput</span>(),</span>
+<span id="cb8-7"><a href=""></a>    <span class="co"># Input: add textInput to ask for the user’s name ----</span></span>
+<span id="cb8-8"><a href=""></a>    <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name"</span>, </span>
 <span id="cb8-9"><a href=""></a>              <span class="at">label =</span> <span class="st">"Your Name:"</span>)</span>
 <span id="cb8-10"><a href=""></a>  ),</span>
-<span id="cb8-11"><a href=""></a>  <span class="co"># Output: Histogram ----</span></span>
+<span id="cb8-11"><a href=""></a>  <span class="co"># Output: add textOutput to greet the user ----</span></span>
 <span id="cb8-12"><a href=""></a>  <span class="fu">textOutput</span>(<span class="st">"greeting"</span>),</span>
 <span id="cb8-13"><a href=""></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"distPlot"</span>)</span>
 <span id="cb8-14"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -555,24 +555,22 @@ Rory Chen
 
 <h3 class="small-contd" id="hello-aaic---solution-1">2.1.4 Hello, AAIC! - Solution</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb9-2"><a href=""></a>  </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2-5|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb9-2"><a href=""></a>  <span class="co"># Define the greeting output</span></span>
 <span id="cb9-3"><a href=""></a>  output<span class="sc">$</span>greeting <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
 <span id="cb9-4"><a href=""></a>    <span class="fu">paste</span>(<span class="st">"Welcome to AAIC, "</span>, input<span class="sc">$</span>name, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
 <span id="cb9-5"><a href=""></a>  }) </span>
-<span id="cb9-6"><a href=""></a>  </span>
-<span id="cb9-7"><a href=""></a>  output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb9-8"><a href=""></a>    </span>
-<span id="cb9-9"><a href=""></a>    x    <span class="ot">&lt;-</span> faithful<span class="sc">$</span>waiting</span>
-<span id="cb9-10"><a href=""></a>    bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb9-11"><a href=""></a>    </span>
-<span id="cb9-12"><a href=""></a>    <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">"#4a0d66"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
-<span id="cb9-13"><a href=""></a>         <span class="at">xlab =</span> <span class="st">"Waiting time to next eruption (in mins)"</span>,</span>
-<span id="cb9-14"><a href=""></a>         <span class="at">main =</span> <span class="st">"Histogram of waiting times"</span>)</span>
-<span id="cb9-15"><a href=""></a>    </span>
-<span id="cb9-16"><a href=""></a>  })</span>
-<span id="cb9-17"><a href=""></a>  </span>
-<span id="cb9-18"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-6"><a href=""></a>  output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb9-7"><a href=""></a>    x    <span class="ot">&lt;-</span> faithful<span class="sc">$</span>waiting</span>
+<span id="cb9-8"><a href=""></a>    bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-9"><a href=""></a>    <span class="co">#Change the histogram color to #4a0d66 - AAIC purple</span></span>
+<span id="cb9-10"><a href=""></a>    <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">"#4a0d66"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb9-11"><a href=""></a>         <span class="at">xlab =</span> <span class="st">"Waiting time to next eruption (in mins)"</span>,</span>
+<span id="cb9-12"><a href=""></a>         <span class="at">main =</span> <span class="st">"Histogram of waiting times"</span>)</span>
+<span id="cb9-13"><a href=""></a>    </span>
+<span id="cb9-14"><a href=""></a>  })</span>
+<span id="cb9-15"><a href=""></a>  </span>
+<span id="cb9-16"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -654,9 +652,8 @@ Rory Chen
 <ul>
 <li>A web element that your users can interact with.</li>
 <li>Widgets provide a way for your users to send messages to the Shiny app.</li>
-<li>Open and run <code>05-uiinput.R</code></li>
-<li>It listed some commonly used input widgets</li>
 <li>The Shiny Widgets Gallery <a href="https://shiny.posit.co/r/gallery/widgets/widget-gallery/" class="uri">https://shiny.posit.co/r/gallery/widgets/widget-gallery/</a> provides templates that you can use to quickly add widgets to your Shiny apps.</li>
+<li>Open and run <code>05-uiinput.R</code>. It listed some commonly used input widgets <img data-src="./img/05-uiinput.png" alt="UI Inputs"></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -758,6 +755,27 @@ Rory Chen
 <section class="slide level2">
 
 <h3 class="smaller" id="shiny-ui-exercises-1---your-turn">2.2.4 Shiny UI Exercises 1 - Your turn!</h3>
+<ul>
+<li><p>For this exercise, we will use the <code>ad_data</code> from package <code>modeldata</code>.</p></li>
+<li><p>Description: Alzheimer’s disease data</p></li>
+<li><p>Details: Craig-Schapiro et al.&nbsp;(2011) describe a clinical study of <code>333</code> patients. Data collected on each subject included:</p>
+<ul>
+<li><p>Demographic characteristics such as <code>age</code> and <code>gender</code></p></li>
+<li><p>Apolipoprotein E genotype</p></li>
+<li><p>Protein measurements of Abeta, <code>Tau</code>, and a phosphorylated version of Tau (called <code>pTau</code>)</p></li>
+<li><p>Protein measurements of 124 exploratory biomarkers, and</p></li>
+<li><p>Clinical dementia scores</p></li>
+</ul></li>
+<li><p>You can explore the data with:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">library</span>(modeldata)</span>
+<span id="cb11-2"><a href=""></a><span class="fu">data</span>(ad_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="smaller" id="shiny-ui-exercises-1---your-turn-1">2.2.4 Shiny UI Exercises 1 - Your turn!</h3>
 <div class="columns">
 <div class="column" style="width:30%;">
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=5&amp;sec=0" frameborder="0">
@@ -766,8 +784,7 @@ Rory Chen
 <p>We have used <code>plotOutput</code> and <code>textOutput</code> in previous examples. Now let’s try some other output types.</p>
 <ul>
 <li>Open <code>06-uitables.R</code></li>
-<li>For this exercise, we will use the <code>ad_data</code> from package <code>modeldata</code>.</li>
-<li>a <code>sliderInput()</code> to control how many rows are displayed</li>
+<li>a <code>sliderInput()</code> to control how many rows are displayed in <code>tableOutput</code></li>
 <li><code>tableOutput()</code> with <code>renderTable()</code></li>
 <li><code>dataTableOutput()</code> with <code>renderDataTable()</code></li>
 <li><code>DT</code> is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <a href="https://rstudio.github.io/DT/shiny.html" class="uri">https://rstudio.github.io/DT/shiny.html</a></li>
@@ -777,77 +794,122 @@ Rory Chen
 <section class="slide level2">
 
 <h3 class="small-contd" id="shiny-ui-exercises-1---solution">2.2.4 Shiny UI Exercises 1 - Solution</h3>
-</section>
-<section class="slide level2">
-
-<h3 id="shiny-ui---layout-sidebar">2.2.5 Shiny UI - Layout sidebar</h3>
-<p>Layout controls where things appear in your app</p>
-<ul>
-<li>A most common layout is <code>sidebar</code></li>
-</ul>
+<p>UI</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_sidebar</span>(</span>
-<span id="cb11-2"><a href=""></a>  <span class="co"># App title ----</span></span>
-<span id="cb11-3"><a href=""></a>  <span class="at">title =</span> <span class="st">"Hello Shiny!"</span>,</span>
-<span id="cb11-4"><a href=""></a>  <span class="co"># Sidebar panel for inputs ----</span></span>
-<span id="cb11-5"><a href=""></a>  <span class="at">sidebar =</span> bslib<span class="sc">::</span><span class="fu">sidebar</span>(</span>
-<span id="cb11-6"><a href=""></a>    <span class="co"># Input: Slider for the number of bins ----</span></span>
-<span id="cb11-7"><a href=""></a>    <span class="fu">sliderInput</span>(</span>
-<span id="cb11-8"><a href=""></a>      <span class="at">inputId =</span> <span class="st">"bins"</span>,</span>
-<span id="cb11-9"><a href=""></a>      <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
-<span id="cb11-10"><a href=""></a>      <span class="at">min =</span> <span class="dv">1</span>,</span>
-<span id="cb11-11"><a href=""></a>      <span class="at">max =</span> <span class="dv">50</span>,</span>
-<span id="cb11-12"><a href=""></a>      <span class="at">value =</span> <span class="dv">30</span></span>
-<span id="cb11-13"><a href=""></a>    )</span>
-<span id="cb11-14"><a href=""></a>  ),</span>
-<span id="cb11-15"><a href=""></a>  <span class="co"># Output: Histogram ----</span></span>
-<span id="cb11-16"><a href=""></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"distPlot"</span>)</span>
-<span id="cb11-17"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># a sliderInput() to control how many rows are displayed in tableOutput</span></span>
+<span id="cb12-2"><a href=""></a><span class="fu">sliderInput</span>(</span>
+<span id="cb12-3"><a href=""></a>      <span class="at">inputId =</span> <span class="st">"rows"</span>,</span>
+<span id="cb12-4"><a href=""></a>      <span class="at">label =</span> <span class="st">"Number of rows:"</span>,</span>
+<span id="cb12-5"><a href=""></a>      <span class="at">min =</span> <span class="dv">10</span>,</span>
+<span id="cb12-6"><a href=""></a>      <span class="at">max =</span> <span class="dv">30</span>,</span>
+<span id="cb12-7"><a href=""></a>      <span class="at">value =</span> <span class="dv">10</span></span>
+<span id="cb12-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># tableOutput() with renderTable()</span></span>
+<span id="cb13-2"><a href=""></a><span class="co"># dataTableOutput() with renderDataTable()</span></span>
+<span id="cb13-3"><a href=""></a>  <span class="fu">navset_card_underline</span>(</span>
+<span id="cb13-4"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"Table"</span>, <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">"adTable"</span>)),</span>
+<span id="cb13-5"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"DataTable"</span>, DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"adDataTable"</span>))</span>
+<span id="cb13-6"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="shiny-ui---layout-sidebar-1">2.2.5 Shiny UI - Layout sidebar</h3>
-<p>Layout controls where things appear in your app</p>
+<h3 class="small-contd" id="shiny-ui-exercises-1---solution-1">2.2.4 Shiny UI Exercises 1 - Solution</h3>
+<p>Server</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># tableOutput() with renderTable()</span></span>
+<span id="cb14-2"><a href=""></a>output<span class="sc">$</span>adTable <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb14-3"><a href=""></a>    <span class="fu">head</span>(ad_data, input<span class="sc">$</span>rows)</span>
+<span id="cb14-4"><a href=""></a>  })</span>
+<span id="cb14-5"><a href=""></a><span class="co"># dataTableOutput() with renderDataTable()  </span></span>
+<span id="cb14-6"><a href=""></a>output<span class="sc">$</span>adDataTable <span class="ot">&lt;-</span> <span class="fu">renderDataTable</span>({</span>
+<span id="cb14-7"><a href=""></a>    DT<span class="sc">::</span><span class="fu">datatable</span>(</span>
+<span id="cb14-8"><a href=""></a>      ad_data,</span>
+<span id="cb14-9"><a href=""></a>      <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb14-10"><a href=""></a>        <span class="at">pageLength =</span> <span class="dv">10</span>,</span>
+<span id="cb14-11"><a href=""></a>        <span class="at">searchHighlight =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-12"><a href=""></a>        <span class="at">scrollX =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-13"><a href=""></a>      ),</span>
+<span id="cb14-14"><a href=""></a>      <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
+<span id="cb14-15"><a href=""></a>    )</span>
+<span id="cb14-16"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="shiny-ui-exercises-1---app">2.2.4 Shiny UI Exercises 1 - App</h3>
+
+<img data-src="./img/06-uitables.png" class="r-stretch quarto-figure-center"><p class="caption"><code>06-uitables.R</code></p></section>
+<section class="slide level2">
+
+<h3 id="shiny-ui---layout-sidebar">2.2.5 Shiny UI - Layout sidebar</h3>
 <ul>
-<li>A most common layout is <code>sidebar</code></li>
+<li>Layout controls where things appear in your app</li>
+<li>A most common layout is <code>sidebar</code> (<code>04_helloaaic.R</code>)</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
+<span id="cb15-2"><a href=""></a>  <span class="co"># App title ----</span></span>
+<span id="cb15-3"><a href=""></a>  <span class="at">title =</span> <span class="st">"Hello AAIC!"</span>,</span>
+<span id="cb15-4"><a href=""></a>  <span class="co"># Sidebar panel for inputs ----</span></span>
+<span id="cb15-5"><a href=""></a>  <span class="at">sidebar =</span> <span class="fu">sidebar</span>(</span>
+<span id="cb15-6"><a href=""></a>    <span class="co"># Input: Slider for the number of bins ----</span></span>
+<span id="cb15-7"><a href=""></a>    <span class="fu">sliderInput</span>(</span>
+<span id="cb15-8"><a href=""></a>      <span class="at">inputId =</span> <span class="st">"bins"</span>,</span>
+<span id="cb15-9"><a href=""></a>      <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
+<span id="cb15-10"><a href=""></a>      <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">50</span>,<span class="at">value =</span> <span class="dv">30</span></span>
+<span id="cb15-11"><a href=""></a>    ),</span>
+<span id="cb15-12"><a href=""></a>    <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name"</span>,</span>
+<span id="cb15-13"><a href=""></a>              <span class="at">label =</span> <span class="st">"Your Name:"</span>)</span>
+<span id="cb15-14"><a href=""></a>  ),</span>
+<span id="cb15-15"><a href=""></a>  <span class="co"># Output: Histogram ----</span></span>
+<span id="cb15-16"><a href=""></a>  <span class="fu">textOutput</span>(<span class="st">"greeting"</span>),</span>
+<span id="cb15-17"><a href=""></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"distPlot"</span>)</span>
+<span id="cb15-18"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="shiny-ui---layout-sidebar-1">2.2.5 Shiny UI - Layout sidebar</h3>
+<ul>
+<li><p>Layout controls where things appear in your app</p></li>
+<li><p>A most common layout is <code>sidebar</code> (<code>04_helloaaic.R</code>)</p></li>
 </ul>
 
 <img data-src="./img/04-helloaaic.png" class="r-stretch quarto-figure-center"><p class="caption"><code>04_helloaaic.R</code></p></section>
 <section class="slide level2">
 
-<h3 id="shiny-ui---layout-cards">2.2.5 Shiny UI - Layout Cards</h3>
+<h3 id="shiny-ui---layout-cards">2.2.6 Shiny UI - Layout Cards</h3>
 <ul>
 <li>You can use <code>card()</code> from <code>{bslib}</code> to group multiple elements into a single element that has its own properties.</li>
-<li>You can then use the card to place the group of elements within the layout using <code>layout_columns()</code>.</li>
+<li>You can then use the card to place the group of elements within the layout using <code>layout_columns()</code>, see <code>05-uiinput.R</code>.</li>
 </ul>
+<div class="columns">
+<div class="column" style="width:40%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
-<span id="cb12-2"><a href=""></a>  <span class="fu">layout_columns</span>(</span>
-<span id="cb12-3"><a href=""></a>    <span class="fu">card</span>(...),</span>
-<span id="cb12-4"><a href=""></a>    <span class="fu">card</span>(...),</span>
-<span id="cb12-5"><a href=""></a>    <span class="fu">card</span>(...),</span>
-<span id="cb12-6"><a href=""></a>    ...,</span>
-<span id="cb12-7"><a href=""></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>, </span>
-<span id="cb12-8"><a href=""></a>                   <span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>,</span>
-<span id="cb12-9"><a href=""></a>                   <span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
-<span id="cb12-10"><a href=""></a>    <span class="at">row_heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
-<span id="cb12-11"><a href=""></a>  )</span>
-<span id="cb12-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
+<span id="cb16-2"><a href=""></a>  <span class="fu">layout_columns</span>(</span>
+<span id="cb16-3"><a href=""></a>    <span class="fu">card</span>(...),</span>
+<span id="cb16-4"><a href=""></a>    <span class="fu">card</span>(...),</span>
+<span id="cb16-5"><a href=""></a>    <span class="fu">card</span>(...),</span>
+<span id="cb16-6"><a href=""></a>    ...,</span>
+<span id="cb16-7"><a href=""></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>, </span>
+<span id="cb16-8"><a href=""></a>                   <span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>,</span>
+<span id="cb16-9"><a href=""></a>                   <span class="sc">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
+<span id="cb16-10"><a href=""></a>    <span class="at">row_heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">3</span>)</span>
+<span id="cb16-11"><a href=""></a>  )</span>
+<span id="cb16-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div><div class="column" style="width:60%;">
+<p><img data-src="./img/05-uiinput.png"></p>
+</div></div>
 </section>
 <section class="slide level2">
 
-<h3 id="shiny-ui---layout-cards-1">2.2.5 Shiny UI - Layout Cards</h3>
-<ul>
-<li>You can use <code>card()</code> from <code>{bslib}</code> to group multiple elements into a single element that has its own properties.</li>
-<li>You can then use the card to place the group of elements within the layout using <code>layout_columns()</code>.</li>
-</ul>
-
-<img data-src="./img/05-uiinput.png" class="r-stretch quarto-figure-center"><p class="caption"><code>05-uiinput.R</code></p></section>
-<section class="slide level2">
-
-<h3 id="shiny-ui---layout-tabs">2.2.5 Shiny UI - Layout Tabs</h3>
+<h3 id="shiny-ui---layout-tabs">2.2.7 Shiny UI - Layout Tabs</h3>
 <ul>
 <li>Tabs can distribute large amount of information to stackable tab panels.</li>
 <li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
@@ -864,7 +926,22 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 id="shiny-ui---layout-tabs-1">2.2.5 Shiny UI - Layout Tabs</h3>
+<h3 class="small-contd" id="shiny-ui---layout-tabs-1">2.2.7 Shiny UI - Layout Tabs</h3>
+<ul>
+<li>Tabs can distribute large amount of information to stackable tab panels.</li>
+<li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
+<li>We used <code>navset_card_underline</code> in <code>06-uitables.R</code> example.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">navset_card_underline</span>(</span>
+<span id="cb17-2"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"Table"</span>, <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">"adTable"</span>)),</span>
+<span id="cb17-3"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"DataTable"</span>, DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"adDataTable"</span>))</span>
+<span id="cb17-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="shiny-ui---layout-tabs-2">2.2.7 Shiny UI - Layout Tabs</h3>
 <ul>
 <li>Tabs can distribute large amount of information to stackable tab panels.</li>
 <li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
@@ -874,7 +951,7 @@ Rory Chen
 <img data-src="./img/06-uitables.png" class="r-stretch quarto-figure-center"><p class="caption"><code>06-uitables.R</code></p></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="your-turn---ui-exercises-2">2.2.6 Your turn - UI Exercises 2</h3>
+<h3 class="smaller" id="your-turn---ui-exercises-2">2.2.8 Your turn - UI Exercises 2</h3>
 <div class="columns">
 <div class="column" style="width:30%;">
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=10&amp;sec=0" frameborder="0">
@@ -887,12 +964,57 @@ Rory Chen
 <ul>
 <li>In <code>ui</code>, <code>sidebar()</code>, add a new sliderInput for number of bins.</li>
 <li>In <code>ui</code>, <code>navset_card_underline()</code>, add a new <code>nav_panel()</code> for the plot, and place a <code>plotOutput()</code> inside it.</li>
-<li>In <code>server</code>, add a new <code>renderPlot()</code> to generate the histogram of <code>age</code> in the <code>ad_data</code> dataset, using the number of bins specified by the new slider input.</li>
+<li>In <code>server</code>, add a new <code>renderPlot()</code> to generate the histogram of <code>p_tau</code> in the <code>ad_data</code> dataset, using the number of bins specified by the new slider input.</li>
 <li>Optional goal: Try other plots you want.</li>
 </ul></li>
 </ul>
 </div></div>
 </section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---ui-exercises-2-solution">2.2.8 Your turn - UI Exercises 2 Solution</h3>
+<p>UI</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>    <span class="co"># Input: Slider for the number of bins for Histogram ----</span></span>
+<span id="cb18-2"><a href=""></a>    <span class="fu">sliderInput</span>(</span>
+<span id="cb18-3"><a href=""></a>      <span class="at">inputId =</span> <span class="st">"bins"</span>,</span>
+<span id="cb18-4"><a href=""></a>      <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
+<span id="cb18-5"><a href=""></a>      <span class="at">min =</span> <span class="dv">10</span>,</span>
+<span id="cb18-6"><a href=""></a>      <span class="at">max =</span> <span class="dv">30</span>,</span>
+<span id="cb18-7"><a href=""></a>      <span class="at">value =</span> <span class="dv">10</span></span>
+<span id="cb18-8"><a href=""></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>  <span class="fu">navset_card_underline</span>(</span>
+<span id="cb19-2"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"Plot"</span>, <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"adPlot"</span>)),</span>
+<span id="cb19-3"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"Table"</span>, <span class="fu">tableOutput</span>(<span class="at">outputId =</span> <span class="st">"adTable"</span>)),</span>
+<span id="cb19-4"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"DataTable"</span>, DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"adDataTable"</span>))</span>
+<span id="cb19-5"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---ui-exercises-2-solution-1">2.2.8 Your turn - UI Exercises 2 Solution</h3>
+<p>Server</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co"># generate the histogram of p_tau in the ad_data dataset</span></span>
+<span id="cb20-2"><a href=""></a>  output<span class="sc">$</span>adPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb20-3"><a href=""></a>    </span>
+<span id="cb20-4"><a href=""></a>    x    <span class="ot">&lt;-</span> ad_data<span class="sc">$</span>p_tau</span>
+<span id="cb20-5"><a href=""></a>    bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb20-6"><a href=""></a>    </span>
+<span id="cb20-7"><a href=""></a>    <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">"#4a0d66"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb20-8"><a href=""></a>         <span class="at">xlab =</span> <span class="st">"p_tau"</span>,</span>
+<span id="cb20-9"><a href=""></a>         <span class="at">main =</span> <span class="st">"Histogram of p_tau"</span>)</span>
+<span id="cb20-10"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---ui-exercises-2-app">2.2.8 Your turn - UI Exercises 2 App</h3>
+
+<img data-src="./img/07-uitabs.png" class="r-stretch quarto-figure-center"><p class="caption"><code>07-uitabs.R</code></p></section>
 <section id="shiny-server" class="slide level2 smaller">
 <h2>2.3 Shiny Server</h2>
 <ul>
@@ -923,15 +1045,15 @@ Rory Chen
 
 <h3 class="smaller" id="reactive-expression">2.3.2 Reactive Expression</h3>
 <ul>
-<li>A reactive input is a user input that comes through a browser interface, typically.</li>
-<li>A reactive output is something that appears in the user’s browser window, such as a plot or a table of values.</li>
-<li>A reactive expressions is component between an input and an output. It stores a reusable calculation.</li>
+<li>A <code>reactive input</code> is a user input that comes through a browser interface, typically.</li>
+<li>A <code>reactive output</code> is something that appears in the user’s browser window, such as a plot or a table of values.</li>
+<li>A <code>reactive expressions</code> is component between an input and an output. It stores a reusable calculation.</li>
 </ul>
 
-<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive</code></p></section>
+<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="reactive-expression-1">2.3.2 Reactive Expression</h3>
+<h3 class="small-contd" id="reactive-expression-1">2.3.2 Reactive Expression</h3>
 <ul>
 <li>Why we need reactive expressions?
 <ul>
@@ -942,115 +1064,121 @@ Rory Chen
 </ul></li>
 </ul>
 
-<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive</code></p></section>
+<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
 <section class="slide level2">
 
 <h3 id="reactive-expression-demo">2.3.3 Reactive Expression Demo</h3>
-<p>To illustrate reactivity we’re going to use the <code>ad_data</code> once again.</p>
+<p>To illustrate <code>reactivity expression</code> we’re going to use the <code>ad_data</code> once again.</p>
 <p>Aiming to build an app that:</p>
 <ul>
-<li>Let user filter the data by APOE genotype</li>
-<li>Display text to show the number of observations in the filtered data</li>
-<li>Updates the summary statistics by filtered results</li>
-<li>Updates the plots by filtered results</li>
+<li><p>Let user <code>filter</code> the data by <code>APOE genotype</code></p></li>
+<li><p>Display text to show the <code>number of observations</code> in the filtered results</p></li>
+<li><p>Updates the <code>summary statistics</code> by filtered results</p></li>
+<li><p>Updates the <code>plots</code> by filtered results</p></li>
+<li><p>Open <code>./exercises/08-reactiveexp.R</code></p></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="reactive-expression-demo-1">2.3.3 Reactive Expression Demo</h3>
-<p>Step 1. Add a UI element for user to select APOE genotype</p>
+<h3 class="small-contd" id="reactive-expression-demo-1">2.3.3 Reactive Expression Demo</h3>
+<p>Step 1. Add a UI element <code>selectInput</code> for user to <code>select</code> APOE genotype</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># Select APOE Genotype</span></span>
-<span id="cb13-2"><a href=""></a><span class="fu">selectInput</span>(</span>
-<span id="cb13-3"><a href=""></a>  <span class="at">inputId  =</span> <span class="st">"selected_geno"</span>,</span>
-<span id="cb13-4"><a href=""></a>  <span class="at">label    =</span> <span class="st">"Select APOE Genotype:"</span>,</span>
-<span id="cb13-5"><a href=""></a>  <span class="at">choices  =</span> <span class="fu">levels</span>(ad_data<span class="sc">$</span>Genotype),</span>
-<span id="cb13-6"><a href=""></a>  <span class="at">selected =</span> <span class="fu">levels</span>(ad_data<span class="sc">$</span>Genotype),</span>
-<span id="cb13-7"><a href=""></a>  <span class="at">multiple =</span> <span class="cn">TRUE</span>)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Select APOE Genotype</span></span>
+<span id="cb21-2"><a href=""></a><span class="fu">selectInput</span>(</span>
+<span id="cb21-3"><a href=""></a>  <span class="at">inputId  =</span> <span class="st">"selected_geno"</span>,</span>
+<span id="cb21-4"><a href=""></a>  <span class="at">label    =</span> <span class="st">"Select APOE Genotype:"</span>,</span>
+<span id="cb21-5"><a href=""></a>  <span class="at">choices  =</span> <span class="fu">levels</span>(ad_data<span class="sc">$</span>Genotype),</span>
+<span id="cb21-6"><a href=""></a>  <span class="at">selected =</span> <span class="fu">levels</span>(ad_data<span class="sc">$</span>Genotype),</span>
+<span id="cb21-7"><a href=""></a>  <span class="at">multiple =</span> <span class="cn">TRUE</span>)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Step 2. server: Filter for chosen genotype and save the new data frame as a reactive expression.</p>
+<p>Step 2. server: Filter for chosen genotype and save the new data frame as a <code>reactive expression</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>ad_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb14-2"><a href=""></a>  <span class="fu">req</span>(input<span class="sc">$</span>selected_geno)</span>
-<span id="cb14-3"><a href=""></a>  <span class="fu">filter</span>(ad_data, Genotype <span class="sc">%in%</span> input<span class="sc">$</span>selected_geno)</span>
-<span id="cb14-4"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>ad_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb22-2"><a href=""></a>  <span class="fu">req</span>(input<span class="sc">$</span>selected_geno)</span>
+<span id="cb22-3"><a href=""></a>  <span class="fu">filter</span>(ad_data, Genotype <span class="sc">%in%</span> input<span class="sc">$</span>selected_geno)</span>
+<span id="cb22-4"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To use it later, call it like a function: <code>ad_filtered()</code> in any output that needs the filtered data.</p>
 </section>
 <section class="slide level2">
 
-<h3 id="reactive-expression-demo-2">2.3.3 Reactive Expression Demo</h3>
+<h3 class="small-contd" id="reactive-expression-demo-2">2.3.3 Reactive Expression Demo</h3>
 <p>Step 3. create the text stating the number of observations in the filtered dataset</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">card</span>( </span>
-<span id="cb15-2"><a href=""></a>  ...</span>
-<span id="cb15-3"><a href=""></a>  <span class="co"># Print number of obs plotted</span></span>
-<span id="cb15-4"><a href=""></a>  <span class="fu">uiOutput</span>(<span class="st">"filtered_n"</span>),</span>
-<span id="cb15-5"><a href=""></a>  ...</span>
-<span id="cb15-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">card</span>( </span>
+<span id="cb23-2"><a href=""></a>  ...</span>
+<span id="cb23-3"><a href=""></a>  <span class="co"># Print number of obs plotted</span></span>
+<span id="cb23-4"><a href=""></a>  <span class="fu">uiOutput</span>(<span class="st">"filtered_n"</span>),</span>
+<span id="cb23-5"><a href=""></a>  ...</span>
+<span id="cb23-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>  output<span class="sc">$</span>filtered_n <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
-<span id="cb16-2"><a href=""></a>    n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">ad_filtered</span>())</span>
-<span id="cb16-3"><a href=""></a>    <span class="fu">HTML</span>(<span class="fu">paste0</span>(<span class="st">"&lt;b&gt;Number of observations after filtering: "</span>, n, <span class="st">"&lt;/b&gt;"</span>))</span>
-<span id="cb16-4"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>  output<span class="sc">$</span>filtered_n <span class="ot">&lt;-</span> <span class="fu">renderUI</span>({</span>
+<span id="cb24-2"><a href=""></a>    n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">ad_filtered</span>())</span>
+<span id="cb24-3"><a href=""></a>    <span class="fu">HTML</span>(<span class="fu">paste0</span>(<span class="st">"&lt;b&gt;Number of observations after filtering: "</span>, n, <span class="st">"&lt;/b&gt;"</span>))</span>
+<span id="cb24-4"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="reactive-expression-demo-3">2.3.3 Reactive Expression Demo</h3>
-<p>Step 4. For example, we can create a summary table or plots using the filtered data.</p>
+<h3 class="small-contd" id="reactive-expression-demo-3">2.3.3 Reactive Expression Demo</h3>
+<p>Step 4. We can create a <code>summary table</code> using the filtered data.</p>
 <p><code>gtsummary</code> creates summary table easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">render_gt</span>({</span>
-<span id="cb17-2"><a href=""></a>    <span class="fu">ad_filtered</span>() <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href=""></a>      <span class="fu">tbl_summary</span>(</span>
-<span id="cb17-4"><a href=""></a>        <span class="at">by =</span> Class,</span>
-<span id="cb17-5"><a href=""></a>        <span class="at">type =</span> <span class="fu">list</span>(</span>
-<span id="cb17-6"><a href=""></a>          <span class="fu">everything</span>() <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
-<span id="cb17-7"><a href=""></a>          <span class="fu">c</span>(male, Genotype) <span class="sc">~</span> <span class="st">"categorical"</span></span>
-<span id="cb17-8"><a href=""></a>        ),</span>
-<span id="cb17-9"><a href=""></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
-<span id="cb17-10"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>,</span>
-<span id="cb17-11"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n} ({p}%)"</span></span>
-<span id="cb17-12"><a href=""></a>        ),</span>
-<span id="cb17-13"><a href=""></a>        <span class="at">digits =</span> <span class="fu">list</span>(</span>
-<span id="cb17-14"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="dv">2</span>, </span>
-<span id="cb17-15"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
-<span id="cb17-16"><a href=""></a>        <span class="at">missing =</span> <span class="st">"no"</span></span>
-<span id="cb17-17"><a href=""></a>      ) <span class="sc">|&gt;</span></span>
-<span id="cb17-18"><a href=""></a>      <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
-<span id="cb17-19"><a href=""></a>      <span class="fu">as_gt</span>()</span>
-<span id="cb17-20"><a href=""></a>  })  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">render_gt</span>({</span>
+<span id="cb25-2"><a href=""></a>    <span class="fu">ad_filtered</span>() <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href=""></a>      <span class="fu">tbl_summary</span>(</span>
+<span id="cb25-4"><a href=""></a>        <span class="at">by =</span> Class,</span>
+<span id="cb25-5"><a href=""></a>        <span class="at">type =</span> <span class="fu">list</span>(</span>
+<span id="cb25-6"><a href=""></a>          <span class="fu">everything</span>() <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
+<span id="cb25-7"><a href=""></a>          <span class="fu">c</span>(male, Genotype) <span class="sc">~</span> <span class="st">"categorical"</span></span>
+<span id="cb25-8"><a href=""></a>        ),</span>
+<span id="cb25-9"><a href=""></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
+<span id="cb25-10"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>,</span>
+<span id="cb25-11"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n} ({p}%)"</span></span>
+<span id="cb25-12"><a href=""></a>        ),</span>
+<span id="cb25-13"><a href=""></a>        <span class="at">digits =</span> <span class="fu">list</span>(</span>
+<span id="cb25-14"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="dv">2</span>, </span>
+<span id="cb25-15"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
+<span id="cb25-16"><a href=""></a>        <span class="at">missing =</span> <span class="st">"no"</span></span>
+<span id="cb25-17"><a href=""></a>      ) <span class="sc">|&gt;</span></span>
+<span id="cb25-18"><a href=""></a>      <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
+<span id="cb25-19"><a href=""></a>      <span class="fu">as_gt</span>()</span>
+<span id="cb25-20"><a href=""></a>  })  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="reactive-expression-demo-4">2.3.3 Reactive Expression Demo</h3>
-<p>Step 4. We can create an interactive plots using the filtered data. Just wrapping your ggplot object with <code>ggplotly()</code> from the <code>plotly</code> package will make it interactive.</p>
+<h3 class="small-contd" id="reactive-expression-demo-4">2.3.3 Reactive Expression Demo</h3>
+<p>Step 5. We can create an <code>interactive plots</code> using the filtered data. Just wrapping your ggplot object with <code>ggplotly()</code> from the <code>plotly</code> package will make it interactive.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a> output<span class="sc">$</span>plot1 <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb18-2"><a href=""></a>    </span>
-<span id="cb18-3"><a href=""></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb18-4"><a href=""></a>      <span class="fu">ad_filtered</span>(),</span>
-<span id="cb18-5"><a href=""></a>      <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> p_tau, <span class="at">color =</span> Class)</span>
-<span id="cb18-6"><a href=""></a>    ) <span class="sc">+</span></span>
-<span id="cb18-7"><a href=""></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-8"><a href=""></a>      <span class="fu">labs</span>(</span>
-<span id="cb18-9"><a href=""></a>        <span class="at">x =</span> <span class="st">"age"</span>,</span>
-<span id="cb18-10"><a href=""></a>        <span class="at">y =</span> <span class="st">"p_tau"</span>,</span>
-<span id="cb18-11"><a href=""></a>        <span class="at">title =</span> <span class="st">"Scatter Plot of p_tau vs age"</span></span>
-<span id="cb18-12"><a href=""></a>      ) <span class="sc">+</span></span>
-<span id="cb18-13"><a href=""></a>      <span class="fu">theme_minimal</span>()</span>
-<span id="cb18-14"><a href=""></a>    </span>
-<span id="cb18-15"><a href=""></a>    <span class="fu">ggplotly</span>(p)</span>
-<span id="cb18-16"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a> output<span class="sc">$</span>plot1 <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb26-2"><a href=""></a>    </span>
+<span id="cb26-3"><a href=""></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb26-4"><a href=""></a>      <span class="fu">ad_filtered</span>(),</span>
+<span id="cb26-5"><a href=""></a>      <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> p_tau, <span class="at">color =</span> Class)</span>
+<span id="cb26-6"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb26-7"><a href=""></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb26-8"><a href=""></a>      <span class="fu">labs</span>(</span>
+<span id="cb26-9"><a href=""></a>        <span class="at">x =</span> <span class="st">"age"</span>,</span>
+<span id="cb26-10"><a href=""></a>        <span class="at">y =</span> <span class="st">"p_tau"</span>,</span>
+<span id="cb26-11"><a href=""></a>        <span class="at">title =</span> <span class="st">"Scatter Plot of p_tau vs age"</span></span>
+<span id="cb26-12"><a href=""></a>      ) <span class="sc">+</span></span>
+<span id="cb26-13"><a href=""></a>      <span class="fu">theme_minimal</span>()</span>
+<span id="cb26-14"><a href=""></a>    </span>
+<span id="cb26-15"><a href=""></a>    <span class="fu">ggplotly</span>(p)</span>
+<span id="cb26-16"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="your-turn---reactive-expression">2.3.4 Your turn - Reactive Expression</h3>
+<h3 class="small-contd" id="reactive-expression-demo-app">2.3.3 Reactive Expression Demo App</h3>
+
+<img data-src="./img/08-reactiveexp.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>08-reactiveexp.R</code></p></section>
+<section class="slide level2">
+
+<h3 class="smaller" id="your-turn---reactive-expression-exercise">2.3.4 Your turn - Reactive Expression Exercise</h3>
 <div class="columns">
 <div class="column" style="width:30%;">
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=5&amp;sec=0" frameborder="0">
@@ -1058,10 +1186,25 @@ Rory Chen
 </div><div class="column" style="width:70%;">
 <ul>
 <li>Open <code>08_reactiveexp.R</code></li>
-<li>Add an input to allow user to filter the data by gender and APOE genotype</li>
+<li>Add an input to allow user to filter the data by both <code>gender</code> and <code>APOE genotype</code></li>
 <li>Updates the reactive expression (<code>ad_filtered</code>)</li>
+<li>Add another <code>plot</code> with variable of your choices</li>
 </ul>
 </div></div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---reactive-expression-solution">2.3.4 Your turn - Reactive Expression Solution</h3>
+<ul>
+<li>Add an input to allow user to filter the data by both <code>gender</code> and <code>APOE genotype</code></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">checkboxGroupInput</span>(</span>
+<span id="cb27-2"><a href=""></a>   <span class="at">inputId  =</span> <span class="st">"selected_gender"</span>,</span>
+<span id="cb27-3"><a href=""></a>   <span class="at">label    =</span> <span class="st">"Select Gender:"</span>,</span>
+<span id="cb27-4"><a href=""></a>   <span class="at">choices  =</span> <span class="fu">list</span>(<span class="st">"Male"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Female"</span> <span class="ot">=</span> <span class="dv">0</span>),</span>
+<span id="cb27-5"><a href=""></a>   <span class="at">selected =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section></section>
 <section id="real-life-shiny-apps" class="title-slide slide level1 smaller center">
 <h1>3. Real Life Shiny Apps</h1>
@@ -1206,24 +1349,24 @@ Rory Chen
 <h2>4.3 Basic App Skeleton</h2>
 <p>Open <code>09-oasis.R</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># Load packages</span></span>
-<span id="cb19-2"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb19-3"><a href=""></a><span class="fu">library</span>(bslib)</span>
-<span id="cb19-4"><a href=""></a>...</span>
-<span id="cb19-5"><a href=""></a></span>
-<span id="cb19-6"><a href=""></a><span class="co"># Load data</span></span>
-<span id="cb19-7"><a href=""></a>oasis_df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../data/oasis_df.rds"</span>)</span>
-<span id="cb19-8"><a href=""></a></span>
-<span id="cb19-9"><a href=""></a><span class="co"># Define UI</span></span>
-<span id="cb19-10"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
-<span id="cb19-11"><a href=""></a>) </span>
-<span id="cb19-12"><a href=""></a></span>
-<span id="cb19-13"><a href=""></a><span class="co"># Define server</span></span>
-<span id="cb19-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb19-15"><a href=""></a>}</span>
-<span id="cb19-16"><a href=""></a></span>
-<span id="cb19-17"><a href=""></a><span class="co"># Create a Shiny app object</span></span>
-<span id="cb19-18"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co"># Load packages</span></span>
+<span id="cb28-2"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb28-3"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb28-4"><a href=""></a>...</span>
+<span id="cb28-5"><a href=""></a></span>
+<span id="cb28-6"><a href=""></a><span class="co"># Load data</span></span>
+<span id="cb28-7"><a href=""></a>oasis_df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../data/oasis_df.rds"</span>)</span>
+<span id="cb28-8"><a href=""></a></span>
+<span id="cb28-9"><a href=""></a><span class="co"># Define UI</span></span>
+<span id="cb28-10"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
+<span id="cb28-11"><a href=""></a>) </span>
+<span id="cb28-12"><a href=""></a></span>
+<span id="cb28-13"><a href=""></a><span class="co"># Define server</span></span>
+<span id="cb28-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb28-15"><a href=""></a>}</span>
+<span id="cb28-16"><a href=""></a></span>
+<span id="cb28-17"><a href=""></a><span class="co"># Create a Shiny app object</span></span>
+<span id="cb28-18"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="add-inputs-widgets-to-sidebar" class="slide level2 smaller">
@@ -1247,22 +1390,22 @@ Rory Chen
 <h2>4.4 Create the reactive expression</h2>
 <p>We use baseline data here (visit == 1)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>oasis_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb20-2"><a href=""></a>    <span class="fu">req</span>(</span>
-<span id="cb20-3"><a href=""></a>      input<span class="sc">$</span>selected_age,</span>
-<span id="cb20-4"><a href=""></a>      input<span class="sc">$</span>selected_gender,</span>
-<span id="cb20-5"><a href=""></a>      input<span class="sc">$</span>selected_ses</span>
-<span id="cb20-6"><a href=""></a>    )</span>
-<span id="cb20-7"><a href=""></a>    </span>
-<span id="cb20-8"><a href=""></a>    oasis_df <span class="sc">|&gt;</span></span>
-<span id="cb20-9"><a href=""></a>      <span class="fu">filter</span>(</span>
-<span id="cb20-10"><a href=""></a>        visit <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb20-11"><a href=""></a>        age <span class="sc">&gt;=</span> input<span class="sc">$</span>selected_age[<span class="dv">1</span>],</span>
-<span id="cb20-12"><a href=""></a>        age <span class="sc">&lt;=</span> input<span class="sc">$</span>selected_age[<span class="dv">2</span>],</span>
-<span id="cb20-13"><a href=""></a>        mf <span class="sc">%in%</span> input<span class="sc">$</span>selected_gender,</span>
-<span id="cb20-14"><a href=""></a>        ses <span class="sc">%in%</span> input<span class="sc">$</span>selected_ses</span>
-<span id="cb20-15"><a href=""></a>      )</span>
-<span id="cb20-16"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>oasis_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb29-2"><a href=""></a>    <span class="fu">req</span>(</span>
+<span id="cb29-3"><a href=""></a>      input<span class="sc">$</span>selected_age,</span>
+<span id="cb29-4"><a href=""></a>      input<span class="sc">$</span>selected_gender,</span>
+<span id="cb29-5"><a href=""></a>      input<span class="sc">$</span>selected_ses</span>
+<span id="cb29-6"><a href=""></a>    )</span>
+<span id="cb29-7"><a href=""></a>    </span>
+<span id="cb29-8"><a href=""></a>    oasis_df <span class="sc">|&gt;</span></span>
+<span id="cb29-9"><a href=""></a>      <span class="fu">filter</span>(</span>
+<span id="cb29-10"><a href=""></a>        visit <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb29-11"><a href=""></a>        age <span class="sc">&gt;=</span> input<span class="sc">$</span>selected_age[<span class="dv">1</span>],</span>
+<span id="cb29-12"><a href=""></a>        age <span class="sc">&lt;=</span> input<span class="sc">$</span>selected_age[<span class="dv">2</span>],</span>
+<span id="cb29-13"><a href=""></a>        mf <span class="sc">%in%</span> input<span class="sc">$</span>selected_gender,</span>
+<span id="cb29-14"><a href=""></a>        ses <span class="sc">%in%</span> input<span class="sc">$</span>selected_ses</span>
+<span id="cb29-15"><a href=""></a>      )</span>
+<span id="cb29-16"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="building-the-outputs" class="slide level2 smaller">
@@ -1286,27 +1429,27 @@ Rory Chen
 <li>gtsummary table</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">render_gt</span>({</span>
-<span id="cb21-2"><a href=""></a>    <span class="fu">oasis_filtered</span>() <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href=""></a>      <span class="fu">tbl_summary</span>(</span>
-<span id="cb21-4"><a href=""></a>        <span class="at">by =</span> group,</span>
-<span id="cb21-5"><a href=""></a>        <span class="at">include =</span> <span class="sc">-</span><span class="fu">c</span>(subject_id, mri_id, visit, mr_delay, hand),</span>
-<span id="cb21-6"><a href=""></a>        <span class="at">type =</span> <span class="fu">list</span>(</span>
-<span id="cb21-7"><a href=""></a>          <span class="fu">everything</span>() <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
-<span id="cb21-8"><a href=""></a>          <span class="fu">c</span>(mf, ses, cdr) <span class="sc">~</span> <span class="st">"categorical"</span></span>
-<span id="cb21-9"><a href=""></a>        ),</span>
-<span id="cb21-10"><a href=""></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
-<span id="cb21-11"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>,</span>
-<span id="cb21-12"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n} ({p}%)"</span></span>
-<span id="cb21-13"><a href=""></a>        ),</span>
-<span id="cb21-14"><a href=""></a>        <span class="at">digits =</span> <span class="fu">list</span>(</span>
-<span id="cb21-15"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="dv">2</span>, </span>
-<span id="cb21-16"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
-<span id="cb21-17"><a href=""></a>        <span class="at">missing =</span> <span class="st">"no"</span></span>
-<span id="cb21-18"><a href=""></a>      ) <span class="sc">|&gt;</span></span>
-<span id="cb21-19"><a href=""></a>      <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
-<span id="cb21-20"><a href=""></a>      <span class="fu">as_gt</span>()</span>
-<span id="cb21-21"><a href=""></a>})  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">render_gt</span>({</span>
+<span id="cb30-2"><a href=""></a>    <span class="fu">oasis_filtered</span>() <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a href=""></a>      <span class="fu">tbl_summary</span>(</span>
+<span id="cb30-4"><a href=""></a>        <span class="at">by =</span> group,</span>
+<span id="cb30-5"><a href=""></a>        <span class="at">include =</span> <span class="sc">-</span><span class="fu">c</span>(subject_id, mri_id, visit, mr_delay, hand),</span>
+<span id="cb30-6"><a href=""></a>        <span class="at">type =</span> <span class="fu">list</span>(</span>
+<span id="cb30-7"><a href=""></a>          <span class="fu">everything</span>() <span class="sc">~</span> <span class="st">"continuous"</span>,</span>
+<span id="cb30-8"><a href=""></a>          <span class="fu">c</span>(mf, ses, cdr) <span class="sc">~</span> <span class="st">"categorical"</span></span>
+<span id="cb30-9"><a href=""></a>        ),</span>
+<span id="cb30-10"><a href=""></a>        <span class="at">statistic =</span> <span class="fu">list</span>(</span>
+<span id="cb30-11"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>,</span>
+<span id="cb30-12"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="st">"{n} ({p}%)"</span></span>
+<span id="cb30-13"><a href=""></a>        ),</span>
+<span id="cb30-14"><a href=""></a>        <span class="at">digits =</span> <span class="fu">list</span>(</span>
+<span id="cb30-15"><a href=""></a>          <span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="dv">2</span>, </span>
+<span id="cb30-16"><a href=""></a>          <span class="fu">all_categorical</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
+<span id="cb30-17"><a href=""></a>        <span class="at">missing =</span> <span class="st">"no"</span></span>
+<span id="cb30-18"><a href=""></a>      ) <span class="sc">|&gt;</span></span>
+<span id="cb30-19"><a href=""></a>      <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
+<span id="cb30-20"><a href=""></a>      <span class="fu">as_gt</span>()</span>
+<span id="cb30-21"><a href=""></a>})  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="building-the-outputs-2" class="slide level2 smaller">
@@ -1316,18 +1459,18 @@ Rory Chen
 <li>Check <a href="https://rstudio.github.io/DT/" class="uri">https://rstudio.github.io/DT/</a> for more options</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>output<span class="sc">$</span>datadt <span class="ot">&lt;-</span> <span class="fu">renderDT</span>({</span>
-<span id="cb22-2"><a href=""></a>    <span class="fu">datatable</span>(</span>
-<span id="cb22-3"><a href=""></a>      <span class="fu">oasis_filtered</span>(),</span>
-<span id="cb22-4"><a href=""></a>      <span class="at">filter =</span> <span class="st">"top"</span>, <span class="co"># Enable built-in filters at the top of the columns</span></span>
-<span id="cb22-5"><a href=""></a>      <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb22-6"><a href=""></a>        <span class="at">pageLength =</span> <span class="dv">15</span>, <span class="co"># Control initial page size</span></span>
-<span id="cb22-7"><a href=""></a>        <span class="at">autoWidth =</span> <span class="cn">TRUE</span>, <span class="co"># Auto adjusting column width</span></span>
-<span id="cb22-8"><a href=""></a>        <span class="at">search =</span> <span class="fu">list</span>(<span class="at">smart =</span> <span class="cn">TRUE</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>), <span class="co"># Enable "smart" space-separated searching globally</span></span>
-<span id="cb22-9"><a href=""></a>        <span class="at">scrollX =</span> <span class="cn">TRUE</span> <span class="co"># Enable horizontal scrolling for wide data frames</span></span>
-<span id="cb22-10"><a href=""></a>      )</span>
-<span id="cb22-11"><a href=""></a>    )</span>
-<span id="cb22-12"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>output<span class="sc">$</span>datadt <span class="ot">&lt;-</span> <span class="fu">renderDT</span>({</span>
+<span id="cb31-2"><a href=""></a>    <span class="fu">datatable</span>(</span>
+<span id="cb31-3"><a href=""></a>      <span class="fu">oasis_filtered</span>(),</span>
+<span id="cb31-4"><a href=""></a>      <span class="at">filter =</span> <span class="st">"top"</span>, <span class="co"># Enable built-in filters at the top of the columns</span></span>
+<span id="cb31-5"><a href=""></a>      <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb31-6"><a href=""></a>        <span class="at">pageLength =</span> <span class="dv">15</span>, <span class="co"># Control initial page size</span></span>
+<span id="cb31-7"><a href=""></a>        <span class="at">autoWidth =</span> <span class="cn">TRUE</span>, <span class="co"># Auto adjusting column width</span></span>
+<span id="cb31-8"><a href=""></a>        <span class="at">search =</span> <span class="fu">list</span>(<span class="at">smart =</span> <span class="cn">TRUE</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>), <span class="co"># Enable "smart" space-separated searching globally</span></span>
+<span id="cb31-9"><a href=""></a>        <span class="at">scrollX =</span> <span class="cn">TRUE</span> <span class="co"># Enable horizontal scrolling for wide data frames</span></span>
+<span id="cb31-10"><a href=""></a>      )</span>
+<span id="cb31-11"><a href=""></a>    )</span>
+<span id="cb31-12"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="building-the-outputs-3" class="slide level2 smaller">
@@ -1336,31 +1479,31 @@ Rory Chen
 <li>Plotly scatter plot with selected variables</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>  output<span class="sc">$</span>scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb23-2"><a href=""></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb23-3"><a href=""></a>      <span class="fu">oasis_filtered</span>(),</span>
-<span id="cb23-4"><a href=""></a>      <span class="fu">aes</span>(</span>
-<span id="cb23-5"><a href=""></a>        <span class="at">x =</span> .data[[input<span class="sc">$</span>xvar]],,</span>
-<span id="cb23-6"><a href=""></a>        <span class="at">y =</span> .data[[input<span class="sc">$</span>yvar]],</span>
-<span id="cb23-7"><a href=""></a>        <span class="at">colour =</span> .data[[input<span class="sc">$</span>gvar]],</span>
-<span id="cb23-8"><a href=""></a>        <span class="at">text =</span> <span class="fu">paste</span>(</span>
-<span id="cb23-9"><a href=""></a>          <span class="st">"Subject:"</span>, subject_id,</span>
-<span id="cb23-10"><a href=""></a>          <span class="st">"&lt;br&gt;Age:"</span>, age,</span>
-<span id="cb23-11"><a href=""></a>          <span class="st">"&lt;br&gt;Sex:"</span>, mf,</span>
-<span id="cb23-12"><a href=""></a>          <span class="st">"&lt;br&gt;Group:"</span>, group</span>
-<span id="cb23-13"><a href=""></a>        ))) <span class="sc">+</span></span>
-<span id="cb23-14"><a href=""></a>      <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb23-15"><a href=""></a>      <span class="fu">labs</span>(</span>
-<span id="cb23-16"><a href=""></a>        <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"input$xvar and"</span>, input<span class="sc">$</span>yvar),</span>
-<span id="cb23-17"><a href=""></a>        <span class="at">x =</span> input<span class="sc">$</span>xvar,</span>
-<span id="cb23-18"><a href=""></a>        <span class="at">y =</span> input<span class="sc">$</span>yvar,</span>
-<span id="cb23-19"><a href=""></a>        <span class="at">colour =</span> input<span class="sc">$</span>gvar</span>
-<span id="cb23-20"><a href=""></a>      ) <span class="sc">+</span></span>
-<span id="cb23-21"><a href=""></a>      <span class="fu">theme_minimal</span>()</span>
-<span id="cb23-22"><a href=""></a>    </span>
-<span id="cb23-23"><a href=""></a>    <span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
-<span id="cb23-24"><a href=""></a>    </span>
-<span id="cb23-25"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>  output<span class="sc">$</span>scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb32-2"><a href=""></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb32-3"><a href=""></a>      <span class="fu">oasis_filtered</span>(),</span>
+<span id="cb32-4"><a href=""></a>      <span class="fu">aes</span>(</span>
+<span id="cb32-5"><a href=""></a>        <span class="at">x =</span> .data[[input<span class="sc">$</span>xvar]],,</span>
+<span id="cb32-6"><a href=""></a>        <span class="at">y =</span> .data[[input<span class="sc">$</span>yvar]],</span>
+<span id="cb32-7"><a href=""></a>        <span class="at">colour =</span> .data[[input<span class="sc">$</span>gvar]],</span>
+<span id="cb32-8"><a href=""></a>        <span class="at">text =</span> <span class="fu">paste</span>(</span>
+<span id="cb32-9"><a href=""></a>          <span class="st">"Subject:"</span>, subject_id,</span>
+<span id="cb32-10"><a href=""></a>          <span class="st">"&lt;br&gt;Age:"</span>, age,</span>
+<span id="cb32-11"><a href=""></a>          <span class="st">"&lt;br&gt;Sex:"</span>, mf,</span>
+<span id="cb32-12"><a href=""></a>          <span class="st">"&lt;br&gt;Group:"</span>, group</span>
+<span id="cb32-13"><a href=""></a>        ))) <span class="sc">+</span></span>
+<span id="cb32-14"><a href=""></a>      <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb32-15"><a href=""></a>      <span class="fu">labs</span>(</span>
+<span id="cb32-16"><a href=""></a>        <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"input$xvar and"</span>, input<span class="sc">$</span>yvar),</span>
+<span id="cb32-17"><a href=""></a>        <span class="at">x =</span> input<span class="sc">$</span>xvar,</span>
+<span id="cb32-18"><a href=""></a>        <span class="at">y =</span> input<span class="sc">$</span>yvar,</span>
+<span id="cb32-19"><a href=""></a>        <span class="at">colour =</span> input<span class="sc">$</span>gvar</span>
+<span id="cb32-20"><a href=""></a>      ) <span class="sc">+</span></span>
+<span id="cb32-21"><a href=""></a>      <span class="fu">theme_minimal</span>()</span>
+<span id="cb32-22"><a href=""></a>    </span>
+<span id="cb32-23"><a href=""></a>    <span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
+<span id="cb32-24"><a href=""></a>    </span>
+<span id="cb32-25"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="deploy-to-shinyapps.io" class="slide level2 smaller">
@@ -1378,28 +1521,28 @@ Rory Chen
 <div class="columns">
 <div class="column" style="width:30%;">
 <p><strong>Single-file</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href=""></a>~/appdir</span>
-<span id="cb24-2"><a href=""></a>|-- app.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb33-1"><a href=""></a>~/appdir</span>
+<span id="cb33-2"><a href=""></a>|-- app.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:30%;">
 <p><strong>Two-file</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href=""></a>~/appdir</span>
-<span id="cb25-2"><a href=""></a>|-- ui.R</span>
-<span id="cb25-3"><a href=""></a>|-- server.R</span>
-<span id="cb25-4"><a href=""></a>|-- *global.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href=""></a>~/appdir</span>
+<span id="cb34-2"><a href=""></a>|-- ui.R</span>
+<span id="cb34-3"><a href=""></a>|-- server.R</span>
+<span id="cb34-4"><a href=""></a>|-- *global.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:40%;">
 <p><strong>Modules/as a pkg</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a href=""></a>../app-pkg</span>
-<span id="cb26-2"><a href=""></a>|-- DESCRIPTION</span>
-<span id="cb26-3"><a href=""></a>|-- inst</span>
-<span id="cb26-4"><a href=""></a>|   `-- app</span>
-<span id="cb26-5"><a href=""></a>|       |-- server.R</span>
-<span id="cb26-6"><a href=""></a>|       `-- ui.R</span>
-<span id="cb26-7"><a href=""></a>|-- man</span>
-<span id="cb26-8"><a href=""></a>|   `-- startApplication.Rd</span>
-<span id="cb26-9"><a href=""></a>|-- NAMESPACE</span>
-<span id="cb26-10"><a href=""></a>`-- R</span>
-<span id="cb26-11"><a href=""></a>    |-- clusterPlot.R</span>
-<span id="cb26-12"><a href=""></a>    `-- startApplication.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource plaintext number-lines code-with-copy"><code class="sourceCode"><span id="cb35-1"><a href=""></a>../app-pkg</span>
+<span id="cb35-2"><a href=""></a>|-- DESCRIPTION</span>
+<span id="cb35-3"><a href=""></a>|-- inst</span>
+<span id="cb35-4"><a href=""></a>|   `-- app</span>
+<span id="cb35-5"><a href=""></a>|       |-- server.R</span>
+<span id="cb35-6"><a href=""></a>|       `-- ui.R</span>
+<span id="cb35-7"><a href=""></a>|-- man</span>
+<span id="cb35-8"><a href=""></a>|   `-- startApplication.Rd</span>
+<span id="cb35-9"><a href=""></a>|-- NAMESPACE</span>
+<span id="cb35-10"><a href=""></a>`-- R</span>
+<span id="cb35-11"><a href=""></a>    |-- clusterPlot.R</span>
+<span id="cb35-12"><a href=""></a>    `-- startApplication.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
 <section id="modules" class="slide level2 smaller">
@@ -1429,24 +1572,24 @@ Rory Chen
 <h3 class="smaller" id="defined-histogram-module">5.2.2 Defined Histogram Module</h3>
 <p>Open <code>11_modhistogram/histogram_module.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="do">## Module UI</span></span>
-<span id="cb27-2"><a href=""></a>histogramUI <span class="ot">&lt;-</span> <span class="cf">function</span>(id, title) {</span>
-<span id="cb27-3"><a href=""></a>  ns <span class="ot">&lt;-</span> <span class="fu">NS</span>(id)</span>
-<span id="cb27-4"><a href=""></a>  <span class="fu">card</span>(</span>
-<span id="cb27-5"><a href=""></a>    <span class="fu">card_header</span>(title),</span>
-<span id="cb27-6"><a href=""></a>    <span class="fu">plotlyOutput</span>(<span class="at">outputId =</span> <span class="fu">ns</span>(<span class="st">"plot"</span>))</span>
-<span id="cb27-7"><a href=""></a>  )</span>
-<span id="cb27-8"><a href=""></a>}</span>
-<span id="cb27-9"><a href=""></a></span>
-<span id="cb27-10"><a href=""></a><span class="do">## Module Server</span></span>
-<span id="cb27-11"><a href=""></a>histogramServer <span class="ot">&lt;-</span> <span class="cf">function</span>(id, data, variable, grouping_var) {</span>
-<span id="cb27-12"><a href=""></a>  <span class="fu">moduleServer</span>(id, <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb27-13"><a href=""></a>    </span>
-<span id="cb27-14"><a href=""></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb27-15"><a href=""></a>      ...    </span>
-<span id="cb27-16"><a href=""></a>      })</span>
-<span id="cb27-17"><a href=""></a>  }</span>
-<span id="cb27-18"><a href=""></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="do">## Module UI</span></span>
+<span id="cb36-2"><a href=""></a>histogramUI <span class="ot">&lt;-</span> <span class="cf">function</span>(id, title) {</span>
+<span id="cb36-3"><a href=""></a>  ns <span class="ot">&lt;-</span> <span class="fu">NS</span>(id)</span>
+<span id="cb36-4"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb36-5"><a href=""></a>    <span class="fu">card_header</span>(title),</span>
+<span id="cb36-6"><a href=""></a>    <span class="fu">plotlyOutput</span>(<span class="at">outputId =</span> <span class="fu">ns</span>(<span class="st">"plot"</span>))</span>
+<span id="cb36-7"><a href=""></a>  )</span>
+<span id="cb36-8"><a href=""></a>}</span>
+<span id="cb36-9"><a href=""></a></span>
+<span id="cb36-10"><a href=""></a><span class="do">## Module Server</span></span>
+<span id="cb36-11"><a href=""></a>histogramServer <span class="ot">&lt;-</span> <span class="cf">function</span>(id, data, variable, grouping_var) {</span>
+<span id="cb36-12"><a href=""></a>  <span class="fu">moduleServer</span>(id, <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb36-13"><a href=""></a>    </span>
+<span id="cb36-14"><a href=""></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb36-15"><a href=""></a>      ...    </span>
+<span id="cb36-16"><a href=""></a>      })</span>
+<span id="cb36-17"><a href=""></a>  }</span>
+<span id="cb36-18"><a href=""></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1454,20 +1597,20 @@ Rory Chen
 <h3 class="smaller" id="updated-app">5.2.3 Updated App</h3>
 <p>Open <code>11_modhistogram/app.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>  <span class="fu">layout_columns</span>(</span>
-<span id="cb28-2"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"mmse"</span>, <span class="st">"MMSE Histogram"</span>),</span>
-<span id="cb28-3"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"etiv"</span>, <span class="st">"eTIV Histogram"</span>),</span>
-<span id="cb28-4"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"nwbv"</span>, <span class="st">"nWBV Histogram"</span>),</span>
-<span id="cb28-5"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"asf"</span>, <span class="st">"ASF Histogram"</span>),</span>
-<span id="cb28-6"><a href=""></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
-<span id="cb28-7"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>  <span class="fu">layout_columns</span>(</span>
+<span id="cb37-2"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"mmse"</span>, <span class="st">"MMSE Histogram"</span>),</span>
+<span id="cb37-3"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"etiv"</span>, <span class="st">"eTIV Histogram"</span>),</span>
+<span id="cb37-4"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"nwbv"</span>, <span class="st">"nWBV Histogram"</span>),</span>
+<span id="cb37-5"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"asf"</span>, <span class="st">"ASF Histogram"</span>),</span>
+<span id="cb37-6"><a href=""></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb37-7"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"mmse"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"mmse"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb29-2"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"etiv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"etiv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb29-3"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"nwbv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"nwbv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb29-4"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"asf"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"asf"</span>, <span class="at">grouping_var =</span> grouping_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"mmse"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"mmse"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb38-2"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"etiv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"etiv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb38-3"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"nwbv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"nwbv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb38-4"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"asf"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"asf"</span>, <span class="at">grouping_var =</span> grouping_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1504,11 +1647,11 @@ Rory Chen
 <li>Print the map widget to display it.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb30-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href=""></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
-<span id="cb30-4"><a href=""></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="fl">0.0291</span>, <span class="at">lat=</span><span class="fl">51.5083</span>, <span class="at">popup =</span> <span class="st">"AAIC 2026"</span>)</span>
-<span id="cb30-5"><a href=""></a>m </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb39-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href=""></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb39-4"><a href=""></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="fl">0.0291</span>, <span class="at">lat=</span><span class="fl">51.5083</span>, <span class="at">popup =</span> <span class="st">"AAIC 2026"</span>)</span>
+<span id="cb39-5"><a href=""></a>m </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1516,8 +1659,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-ab516e09bd957b5e436f" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-ab516e09bd957b5e436f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-2a38216e5479e68113b3" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-2a38216e5479e68113b3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -1617,11 +1760,11 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output">5.4.4 Building the map output</h3>
 <p>Step 1: create the leaflet map object</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb31-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb31-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) </span>
-<span id="cb31-5"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb40-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb40-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb40-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) </span>
+<span id="cb40-5"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="./img/12-gbdmap-step1.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Basemap</code></p></section>
@@ -1630,17 +1773,17 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output-1">5.4.4 Building the map output</h3>
 <p>Step 2: Add the choropleth layer using <code>addPolygons()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" data-code-line-numbers="5-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>  output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb32-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb32-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb32-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb32-5"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
-<span id="cb32-6"><a href=""></a>        <span class="at">fillColor =</span> <span class="st">"#4a0d66"</span>,</span>
-<span id="cb32-7"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb32-8"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb32-9"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
-<span id="cb32-10"><a href=""></a>       )</span>
-<span id="cb32-11"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-code-line-numbers="5-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>  output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb41-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb41-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
+<span id="cb41-6"><a href=""></a>        <span class="at">fillColor =</span> <span class="st">"#4a0d66"</span>,</span>
+<span id="cb41-7"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb41-8"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb41-9"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
+<span id="cb41-10"><a href=""></a>       )</span>
+<span id="cb41-11"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="./img/12-gbdmap-step2.png" class="r-stretch quarto-figure-center"><p class="caption"><code>addPolygons</code></p></section>
@@ -1649,25 +1792,25 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output-2">5.4.4 Building the map output</h3>
 <p>Step 3: Add a color palette that reflects the value, and change the <code>fillColor</code> in <code>addPolygons()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-code-line-numbers="3-6, 12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb33-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb33-3"><a href=""></a>    pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(</span>
-<span id="cb33-4"><a href=""></a>      <span class="at">palette =</span> <span class="st">"Purples"</span>,</span>
-<span id="cb33-5"><a href=""></a>      <span class="at">domain =</span> map_data<span class="sc">$</span>val,</span>
-<span id="cb33-6"><a href=""></a>      <span class="at">na.color =</span> <span class="st">"#f0f0f0"</span></span>
-<span id="cb33-7"><a href=""></a>    )</span>
-<span id="cb33-8"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb33-9"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb33-10"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
-<span id="cb33-11"><a href=""></a>        <span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">pal</span>(val),</span>
-<span id="cb33-12"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb33-13"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb33-14"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
-<span id="cb33-15"><a href=""></a>       )</span>
-<span id="cb33-16"><a href=""></a>     </span>
-<span id="cb33-17"><a href=""></a>    </span>
-<span id="cb33-18"><a href=""></a>    </span>
-<span id="cb33-19"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-code-line-numbers="3-6, 12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb42-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb42-3"><a href=""></a>    pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(</span>
+<span id="cb42-4"><a href=""></a>      <span class="at">palette =</span> <span class="st">"Purples"</span>,</span>
+<span id="cb42-5"><a href=""></a>      <span class="at">domain =</span> map_data<span class="sc">$</span>val,</span>
+<span id="cb42-6"><a href=""></a>      <span class="at">na.color =</span> <span class="st">"#f0f0f0"</span></span>
+<span id="cb42-7"><a href=""></a>    )</span>
+<span id="cb42-8"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb42-9"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb42-10"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
+<span id="cb42-11"><a href=""></a>        <span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">pal</span>(val),</span>
+<span id="cb42-12"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb42-13"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb42-14"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
+<span id="cb42-15"><a href=""></a>       )</span>
+<span id="cb42-16"><a href=""></a>     </span>
+<span id="cb42-17"><a href=""></a>    </span>
+<span id="cb42-18"><a href=""></a>    </span>
+<span id="cb42-19"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="./img/12-gbdmap-step3.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Color Palette</code></p></section>
@@ -1676,14 +1819,14 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output-3">5.4.4 Building the map output</h3>
 <p>Step 4: Add Legends.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href=""></a>      <span class="fu">addLegend</span>(</span>
-<span id="cb34-3"><a href=""></a>        <span class="at">pal =</span> pal,</span>
-<span id="cb34-4"><a href=""></a>        <span class="at">values =</span> <span class="sc">~</span>val,</span>
-<span id="cb34-5"><a href=""></a>        <span class="at">title =</span> <span class="st">"Value"</span>,</span>
-<span id="cb34-6"><a href=""></a>        <span class="at">opacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb34-7"><a href=""></a>        <span class="at">position =</span> <span class="st">"bottomright"</span></span>
-<span id="cb34-8"><a href=""></a>      )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href=""></a>      <span class="fu">addLegend</span>(</span>
+<span id="cb43-3"><a href=""></a>        <span class="at">pal =</span> pal,</span>
+<span id="cb43-4"><a href=""></a>        <span class="at">values =</span> <span class="sc">~</span>val,</span>
+<span id="cb43-5"><a href=""></a>        <span class="at">title =</span> <span class="st">"Value"</span>,</span>
+<span id="cb43-6"><a href=""></a>        <span class="at">opacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb43-7"><a href=""></a>        <span class="at">position =</span> <span class="st">"bottomright"</span></span>
+<span id="cb43-8"><a href=""></a>      )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="./img/12-gbdmap-step4.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Legend</code></p></section>
@@ -1692,13 +1835,13 @@ Rory Chen
 <h3 class="smaller" id="building-the-map-output-4">5.4.4 Building the map output</h3>
 <p>Step 5: Add Pop-up info inside <code>addPolygons</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>popup <span class="ot">=</span> <span class="er">~</span><span class="fu">paste0</span>(</span>
-<span id="cb35-2"><a href=""></a>          <span class="st">"&lt;strong&gt;Country:&lt;/strong&gt; "</span>, country, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb35-3"><a href=""></a>          <span class="st">"&lt;strong&gt;Measure:&lt;/strong&gt; "</span>, measure, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb35-4"><a href=""></a>          <span class="st">"&lt;strong&gt;Sex:&lt;/strong&gt; "</span>, sex, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb35-5"><a href=""></a>          <span class="st">"&lt;strong&gt;Metric:&lt;/strong&gt; "</span>, metric, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb35-6"><a href=""></a>          <span class="st">"&lt;strong&gt;Value:&lt;/strong&gt; "</span>, <span class="fu">round</span>(val, <span class="dv">2</span>)</span>
-<span id="cb35-7"><a href=""></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>popup <span class="ot">=</span> <span class="er">~</span><span class="fu">paste0</span>(</span>
+<span id="cb44-2"><a href=""></a>          <span class="st">"&lt;strong&gt;Country:&lt;/strong&gt; "</span>, country, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb44-3"><a href=""></a>          <span class="st">"&lt;strong&gt;Measure:&lt;/strong&gt; "</span>, measure, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb44-4"><a href=""></a>          <span class="st">"&lt;strong&gt;Sex:&lt;/strong&gt; "</span>, sex, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb44-5"><a href=""></a>          <span class="st">"&lt;strong&gt;Metric:&lt;/strong&gt; "</span>, metric, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb44-6"><a href=""></a>          <span class="st">"&lt;strong&gt;Value:&lt;/strong&gt; "</span>, <span class="fu">round</span>(val, <span class="dv">2</span>)</span>
+<span id="cb44-7"><a href=""></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <img data-src="./img/12-gbdmap-step5.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Popup</code></p></section>
@@ -1759,7 +1902,7 @@ Rory Chen
 
 <h3 id="set-up-your-environment-variable">6.4.1 !Set up your environment variable!</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Copy your token in the .Renviron file, and save it. Then restart your R session.</p>
 <div style="font-size: 25px;">
@@ -1820,21 +1963,21 @@ Rory Chen
 <h3 id="minimal-ellmer-chat">6.4.2 Minimal <code>{ellmer}</code> chat</h3>
 <p>Open <code>14-minichat.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb37-2"><a href=""></a></span>
-<span id="cb37-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(</span>
-<span id="cb37-4"><a href=""></a>  <span class="at">system_prompt =</span> <span class="st">"</span></span>
-<span id="cb37-5"><a href=""></a><span class="st">  You are an epidemiologist specialising in dementia research.</span></span>
-<span id="cb37-6"><a href=""></a></span>
-<span id="cb37-7"><a href=""></a><span class="st">  Explain concepts in plain English for researchers and clinicians.</span></span>
-<span id="cb37-8"><a href=""></a><span class="st">  Use dementia-related examples where helpful.</span></span>
-<span id="cb37-9"><a href=""></a></span>
-<span id="cb37-10"><a href=""></a><span class="st">  Do not invent findings, numbers, references, or study results.</span></span>
-<span id="cb37-11"><a href=""></a><span class="st">  Do not provide medical advice.</span></span>
-<span id="cb37-12"><a href=""></a><span class="st">  If unsure, say what information is missing. "</span></span>
-<span id="cb37-13"><a href=""></a>)</span>
-<span id="cb37-14"><a href=""></a></span>
-<span id="cb37-15"><a href=""></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Explain the difference between incidence rate and prevalence in dementia epidemiology"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb46-2"><a href=""></a></span>
+<span id="cb46-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(</span>
+<span id="cb46-4"><a href=""></a>  <span class="at">system_prompt =</span> <span class="st">"</span></span>
+<span id="cb46-5"><a href=""></a><span class="st">  You are an epidemiologist specialising in dementia research.</span></span>
+<span id="cb46-6"><a href=""></a></span>
+<span id="cb46-7"><a href=""></a><span class="st">  Explain concepts in plain English for researchers and clinicians.</span></span>
+<span id="cb46-8"><a href=""></a><span class="st">  Use dementia-related examples where helpful.</span></span>
+<span id="cb46-9"><a href=""></a></span>
+<span id="cb46-10"><a href=""></a><span class="st">  Do not invent findings, numbers, references, or study results.</span></span>
+<span id="cb46-11"><a href=""></a><span class="st">  Do not provide medical advice.</span></span>
+<span id="cb46-12"><a href=""></a><span class="st">  If unsure, say what information is missing. "</span></span>
+<span id="cb46-13"><a href=""></a>)</span>
+<span id="cb46-14"><a href=""></a></span>
+<span id="cb46-15"><a href=""></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Explain the difference between incidence rate and prevalence in dementia epidemiology"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1842,32 +1985,32 @@ Rory Chen
 <h3 id="the-chat-inside-a-shiny-app">6.4.3 The chat inside a shiny app</h3>
 <p>Open <code>15-shinychat.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb38-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
-<span id="cb38-3"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb38-4"><a href=""></a><span class="fu">library</span>(shinychat)</span>
-<span id="cb38-5"><a href=""></a></span>
-<span id="cb38-6"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
-<span id="cb38-7"><a href=""></a>  <span class="fu">chat_ui</span>(</span>
-<span id="cb38-8"><a href=""></a>    <span class="at">id =</span> <span class="st">"chat"</span>,</span>
-<span id="cb38-9"><a href=""></a>    <span class="at">messages =</span> <span class="st">"**Hello!** How can I help you today?"</span></span>
-<span id="cb38-10"><a href=""></a>  ),</span>
-<span id="cb38-11"><a href=""></a>  <span class="at">fillable_mobile =</span> <span class="cn">TRUE</span></span>
-<span id="cb38-12"><a href=""></a>)</span>
-<span id="cb38-13"><a href=""></a></span>
-<span id="cb38-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb38-15"><a href=""></a>  chat <span class="ot">&lt;-</span></span>
-<span id="cb38-16"><a href=""></a>    ellmer<span class="sc">::</span><span class="fu">chat_anthropic</span>(</span>
-<span id="cb38-17"><a href=""></a>      <span class="at">system_prompt =</span> <span class="st">"....."</span></span>
-<span id="cb38-18"><a href=""></a>    )</span>
-<span id="cb38-19"><a href=""></a>  </span>
-<span id="cb38-20"><a href=""></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>chat_user_input, {</span>
-<span id="cb38-21"><a href=""></a>    stream <span class="ot">&lt;-</span> chat<span class="sc">$</span><span class="fu">stream_async</span>(input<span class="sc">$</span>chat_user_input)</span>
-<span id="cb38-22"><a href=""></a>    <span class="fu">chat_append</span>(<span class="st">"chat"</span>, stream)</span>
-<span id="cb38-23"><a href=""></a>  })</span>
-<span id="cb38-24"><a href=""></a>}</span>
-<span id="cb38-25"><a href=""></a></span>
-<span id="cb38-26"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb47-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb47-3"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb47-4"><a href=""></a><span class="fu">library</span>(shinychat)</span>
+<span id="cb47-5"><a href=""></a></span>
+<span id="cb47-6"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
+<span id="cb47-7"><a href=""></a>  <span class="fu">chat_ui</span>(</span>
+<span id="cb47-8"><a href=""></a>    <span class="at">id =</span> <span class="st">"chat"</span>,</span>
+<span id="cb47-9"><a href=""></a>    <span class="at">messages =</span> <span class="st">"**Hello!** How can I help you today?"</span></span>
+<span id="cb47-10"><a href=""></a>  ),</span>
+<span id="cb47-11"><a href=""></a>  <span class="at">fillable_mobile =</span> <span class="cn">TRUE</span></span>
+<span id="cb47-12"><a href=""></a>)</span>
+<span id="cb47-13"><a href=""></a></span>
+<span id="cb47-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb47-15"><a href=""></a>  chat <span class="ot">&lt;-</span></span>
+<span id="cb47-16"><a href=""></a>    ellmer<span class="sc">::</span><span class="fu">chat_anthropic</span>(</span>
+<span id="cb47-17"><a href=""></a>      <span class="at">system_prompt =</span> <span class="st">"....."</span></span>
+<span id="cb47-18"><a href=""></a>    )</span>
+<span id="cb47-19"><a href=""></a>  </span>
+<span id="cb47-20"><a href=""></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>chat_user_input, {</span>
+<span id="cb47-21"><a href=""></a>    stream <span class="ot">&lt;-</span> chat<span class="sc">$</span><span class="fu">stream_async</span>(input<span class="sc">$</span>chat_user_input)</span>
+<span id="cb47-22"><a href=""></a>    <span class="fu">chat_append</span>(<span class="st">"chat"</span>, stream)</span>
+<span id="cb47-23"><a href=""></a>  })</span>
+<span id="cb47-24"><a href=""></a>}</span>
+<span id="cb47-25"><a href=""></a></span>
+<span id="cb47-26"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="from-chat-to-data-querying-usingquerychat" class="slide level2 smaller">

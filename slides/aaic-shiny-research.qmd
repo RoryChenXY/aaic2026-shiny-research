@@ -359,18 +359,19 @@ If you have any troubles, please raise your hand, one of the facilitators will c
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "3|7-9|11-12"
 
 ui <- page_sidebar(
   # App title ----
   title = "Hello AAIC!",
   # Sidebar panel for inputs ----
   sidebar = sidebar(
-    # Input: Slider for the number of bins ----
     sliderInput(),
-    textInput(inputId = "name",
+    # Input: add textInput to ask for the user’s name ----
+    textInput(inputId = "name", 
               label = "Your Name:")
   ),
-  # Output: Histogram ----
+  # Output: add textOutput to greet the user ----
   textOutput("greeting"),
   plotOutput(outputId = "distPlot")
 )
@@ -385,17 +386,16 @@ ui <- page_sidebar(
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "2-5|9-10"
 server <- function(input, output) {
-  
+  # Define the greeting output
   output$greeting <- renderText({
     paste("Welcome to AAIC, ", input$name, "!", sep = "")
   }) 
-  
   output$distPlot <- renderPlot({
-    
     x    <- faithful$waiting
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
+    #Change the histogram color to #4a0d66 - AAIC purple
     hist(x, breaks = bins, col = "#4a0d66", border = "white",
          xlab = "Waiting time to next eruption (in mins)",
          main = "Histogram of waiting times")
@@ -495,12 +495,9 @@ UI Contains elements such as:
 
 -   A web element that your users can interact with. 
 -   Widgets provide a way for your users to send messages to the Shiny app.
--   Open and run `05-uiinput.R`
--   It listed some commonly used input widgets
 -   The Shiny Widgets Gallery <https://shiny.posit.co/r/gallery/widgets/widget-gallery/> provides templates that you can use to quickly add widgets to your Shiny apps.
-
-
-
+-   Open and run `05-uiinput.R`. It listed some commonly used input widgets
+![`UI Inputs`](./img/05-uiinput.png)
 
 ------------------------------------------------------------------------
 
@@ -531,7 +528,6 @@ radioButtons(
                        "Frontotemporal Dementia" = 3),
         selected = 1
       )      
-
 ```
 
 -  Change the number range of the slider input and re-run the app.
@@ -569,6 +565,36 @@ radioButtons(
 
 ### 2.2.4 Shiny UI Exercises 1 - Your turn! {.smaller}
 
+-   For this exercise, we will use the `ad_data` from package `modeldata`.
+
+-   Description: Alzheimer's disease data
+
+-   Details: Craig-Schapiro et al. (2011) describe a clinical study of `333` patients. Data collected on each subject included:
+
+    -  Demographic characteristics such as `age` and `gender`
+
+    -  Apolipoprotein E genotype
+
+    -  Protein measurements of Abeta, `Tau`, and a phosphorylated version of Tau (called `pTau`)
+
+    -  Protein measurements of 124 exploratory biomarkers, and
+
+    -  Clinical dementia scores
+
+-   You can explore the data with:
+```{r}
+#| echo: true
+#| eval: false
+
+library(modeldata)
+data(ad_data)
+
+```
+
+------------------------------------------------------------------------
+
+### 2.2.4 Shiny UI Exercises 1 - Your turn! {.smaller}
+
 ::::: columns
 ::: {.column width="30%"}
 
@@ -584,8 +610,7 @@ We have used `plotOutput` and `textOutput` in previous examples.
 Now let's try some other output types.
 
 -   Open `06-uitables.R`
--   For this exercise, we will use the `ad_data` from package `modeldata`.
--   a `sliderInput()` to control how many rows are displayed
+-   a `sliderInput()` to control how many rows are displayed in `tableOutput`
 -   `tableOutput()` with `renderTable()`
 -   `dataTableOutput()` with `renderDataTable()`
 -    `DT` is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <https://rstudio.github.io/DT/shiny.html>
@@ -600,36 +625,96 @@ Now let's try some other output types.
 
 ### 2.2.4 Shiny UI Exercises 1 - Solution {.small-contd}
 
+UI
+
+```{r}
+#| echo: true
+#| eval: false
+
+# a sliderInput() to control how many rows are displayed in tableOutput
+sliderInput(
+      inputId = "rows",
+      label = "Number of rows:",
+      min = 10,
+      max = 30,
+      value = 10
+)
+```
+
+</br>
+
+```{r}
+#| echo: true
+#| eval: false
+# tableOutput() with renderTable()
+# dataTableOutput() with renderDataTable()
+  navset_card_underline(
+    nav_panel("Table", tableOutput(outputId = "adTable")),
+    nav_panel("DataTable", DT::dataTableOutput(outputId = "adDataTable"))
+  )
+
+```
+
+------------------------------------------------------------------------
+
+### 2.2.4 Shiny UI Exercises 1 - Solution {.small-contd}
+Server
+
+```{r}
+#| echo: true
+#| eval: false
+# tableOutput() with renderTable()
+output$adTable <- renderTable({
+    head(ad_data, input$rows)
+  })
+# dataTableOutput() with renderDataTable()  
+output$adDataTable <- renderDataTable({
+    DT::datatable(
+      ad_data,
+      options = list(
+        pageLength = 10,
+        searchHighlight = TRUE,
+        scrollX = TRUE
+      ),
+      rownames = FALSE
+    )
+  })
+```
+
+------------------------------------------------------------------------
+
+### 2.2.4 Shiny UI Exercises 1 - App {.small-contd}
 
 
+![`06-uitables.R`](./img/06-uitables.png)
 
 ------------------------------------------------------------------------
 
 
 ### 2.2.5 Shiny UI - Layout sidebar
 
-Layout controls where things appear in your app
-
--  A most common layout is `sidebar`
+-  Layout controls where things appear in your app
+-  A most common layout is `sidebar` (`04_helloaaic.R`)
 
 ```{r}
 #| echo: true
 #| eval: false
-ui <- bslib::page_sidebar(
+ui <- page_sidebar(
   # App title ----
-  title = "Hello Shiny!",
+  title = "Hello AAIC!",
   # Sidebar panel for inputs ----
-  sidebar = bslib::sidebar(
+  sidebar = sidebar(
     # Input: Slider for the number of bins ----
     sliderInput(
       inputId = "bins",
       label = "Number of bins:",
-      min = 1,
-      max = 50,
-      value = 30
-    )
+      min = 1, max = 50,value = 30
+    ),
+    textInput(inputId = "name",
+              label = "Your Name:")
   ),
   # Output: Histogram ----
+  textOutput("greeting"),
   plotOutput(outputId = "distPlot")
 )
 ```
@@ -637,20 +722,25 @@ ui <- bslib::page_sidebar(
 
 -----------------------------------------------------------------
 
-### 2.2.5 Shiny UI - Layout sidebar
+### 2.2.5 Shiny UI - Layout sidebar {.small-contd}
 
-Layout controls where things appear in your app
+-  Layout controls where things appear in your app
 
--  A most common layout is `sidebar`
+-  A most common layout is `sidebar` (`04_helloaaic.R`)
 
 ![`04_helloaaic.R`](./img/04-helloaaic.png)
 
 ------------------------------------------------------------------------
 
-### 2.2.5 Shiny UI - Layout Cards
+### 2.2.6 Shiny UI - Layout Cards
 
 -   You can use `card()` from `{bslib}` to group multiple elements into a single element that has its own properties. 
--   You can then use the card to place the group of elements within the layout using `layout_columns()`.
+-   You can then use the card to place the group of elements within the layout using `layout_columns()`, see `05-uiinput.R`.
+
+
+::::: columns
+::: {.column width="40%"}
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -669,18 +759,22 @@ ui <- bslib::page_fillable(
 
 ```
 
+:::
+
+::: {.column width="60%"}
+
+
+![](./img/05-uiinput.png)
+
+:::
+
+
+::::: 
+
 -----------------------------------------------------------------
 
-### 2.2.5 Shiny UI - Layout Cards
 
--   You can use `card()` from `{bslib}` to group multiple elements into a single element that has its own properties. 
--   You can then use the card to place the group of elements within the layout using `layout_columns()`.
-
-![`05-uiinput.R`](./img/05-uiinput.png)
-
------------------------------------------------------------------
-
-### 2.2.5 Shiny UI - Layout Tabs
+### 2.2.7 Shiny UI - Layout Tabs
 
 -   Tabs can distribute large amount of information to stackable tab panels.
 -   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
@@ -694,11 +788,32 @@ ui <- bslib::page_fillable(
 
 -----------------------------------------------------------------
 
-### 2.2.5 Shiny UI - Layout Tabs
+### 2.2.7 Shiny UI - Layout Tabs {.small-contd}
 
 -   Tabs can distribute large amount of information to stackable tab panels.
 -   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
 -   We used `navset_card_underline` in `06-uitables.R` example.
+
+```{r}
+#| echo: true
+#| eval: false
+ 
+navset_card_underline(
+    nav_panel("Table", tableOutput(outputId = "adTable")),
+    nav_panel("DataTable", DT::dataTableOutput(outputId = "adDataTable"))
+)
+
+```
+
+
+-----------------------------------------------------------------
+
+### 2.2.7 Shiny UI - Layout Tabs {.small-contd}
+
+-   Tabs can distribute large amount of information to stackable tab panels.
+-   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
+-   We used `navset_card_underline` in `06-uitables.R` example.
+
 
 
 ![`06-uitables.R`](./img/06-uitables.png)
@@ -706,7 +821,7 @@ ui <- bslib::page_fillable(
 -----------------------------------------------------------------
 
 
-### 2.2.6 Your turn - UI Exercises 2 {.smaller}
+### 2.2.8 Your turn - UI Exercises 2 {.smaller}
 
 ::::: columns
 ::: {.column width="30%"}
@@ -724,7 +839,7 @@ ui <- bslib::page_fillable(
 -   You can also refer to `03-helloshiny.R` for how to create a histogram.
     -  In `ui`, `sidebar()`, add a new sliderInput for number of bins.
     -  In `ui`, `navset_card_underline()`, add a new `nav_panel()` for the plot, and place a `plotOutput()` inside it.
-    -  In `server`, add a new `renderPlot()` to generate the histogram of `age` in the `ad_data` dataset, 
+    -  In `server`, add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, 
        using the number of bins specified by the new slider input.
     -  Optional goal: Try other plots you want. 
 
@@ -734,9 +849,77 @@ ui <- bslib::page_fillable(
 
 ::::: 
 
+-----------------------------------------------------------------
+
+
+### 2.2.8 Your turn - UI Exercises 2 Solution {.small-contd}
+
+UI
+
+```{r}
+#| echo: true
+#| eval: false
+
+    # Input: Slider for the number of bins for Histogram ----
+    sliderInput(
+      inputId = "bins",
+      label = "Number of bins:",
+      min = 10,
+      max = 30,
+      value = 10
+    )
+```
+
+</br>
+
+```{r}
+#| echo: true
+#| eval: false
+
+  navset_card_underline(
+    nav_panel("Plot", plotOutput(outputId = "adPlot")),
+    nav_panel("Table", tableOutput(outputId = "adTable")),
+    nav_panel("DataTable", DT::dataTableOutput(outputId = "adDataTable"))
+  )
+```
 
 
 -----------------------------------------------------------------
+
+
+### 2.2.8 Your turn - UI Exercises 2 Solution {.small-contd}
+
+Server
+
+
+```{r}
+#| echo: true
+#| eval: false
+# generate the histogram of p_tau in the ad_data dataset
+  output$adPlot <- renderPlot({
+    
+    x    <- ad_data$p_tau
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    
+    hist(x, breaks = bins, col = "#4a0d66", border = "white",
+         xlab = "p_tau",
+         main = "Histogram of p_tau")
+  })
+
+```
+
+
+
+-----------------------------------------------------------------
+
+
+### 2.2.8 Your turn - UI Exercises 2 App {.small-contd}
+
+
+![`07-uitabs.R`](./img/07-uitabs.png)
+
+-----------------------------------------------------------------
+
 
 ## 2.3 Shiny Server {.smaller}
 
@@ -765,15 +948,15 @@ ui <- bslib::page_fillable(
 
 ### 2.3.2 Reactive Expression {.smaller}
 
--   A reactive input is a user input that comes through a browser interface, typically.
--   A reactive output is something that appears in the user’s browser window, such as a plot or a table of values.
--   A reactive expressions is component between an input and an output. It stores a reusable calculation.
+-   A `reactive input` is a user input that comes through a browser interface, typically.
+-   A `reactive output` is something that appears in the user’s browser window, such as a plot or a table of values.
+-   A `reactive expressions` is component between an input and an output. It stores a reusable calculation.
 
-![`Reactive`](./img/reactive-expression.png)
+![`Reactive Expression`](./img/reactive-expression.png)
 
 -----------------------------------------------------------------
 
-### 2.3.2 Reactive Expression {.smaller}
+### 2.3.2 Reactive Expression {.small-contd}
 
 -   Why we need reactive expressions?
     -  Sometimes the same processed data is needed in several places
@@ -781,28 +964,30 @@ ui <- bslib::page_fillable(
     -  Improve organization and readability
     -  Facilitate testing and maintenance
 
-![`Reactive`](./img/reactive-expression.png)
+![`Reactive Expression`](./img/reactive-expression.png)
 
 -----------------------------------------------------------------
 
 
 ### 2.3.3 Reactive Expression Demo
 
-To illustrate reactivity we’re going to use the `ad_data` once again.
+To illustrate `reactivity expression` we’re going to use the `ad_data` once again.
 
 Aiming to build an app that:
 
--    Let user filter the data by APOE genotype
--    Display text to show the number of observations in the filtered data
--    Updates the summary statistics by filtered results
--    Updates the plots by filtered results
+-    Let user `filter` the data by `APOE genotype`
+-    Display text to show the `number of observations` in the filtered results
+-    Updates the `summary statistics` by filtered results
+-    Updates the `plots` by filtered results
+
+-    Open `./exercises/08-reactiveexp.R`
 
 -----------------------------------------------------------------
 
 
-### 2.3.3 Reactive Expression Demo
+### 2.3.3 Reactive Expression Demo  {.small-contd}
 
-Step 1. Add a UI element for user to select APOE genotype
+Step 1. Add a UI element `selectInput` for user to `select` APOE genotype
 
 ```{r}
 #| echo: true
@@ -819,7 +1004,7 @@ selectInput(
 ```
 
 
-Step 2. server: Filter for chosen genotype and save the new data frame as a reactive expression.
+Step 2. server: Filter for chosen genotype and save the new data frame as a `reactive expression`.
 
 ```{r}
 #| echo: true
@@ -836,7 +1021,7 @@ To use it later, call it like a function: `ad_filtered()` in any output that nee
 
 -----------------------------------------------------------------
 
-### 2.3.3 Reactive Expression Demo
+### 2.3.3 Reactive Expression Demo  {.small-contd}
 
 Step 3. create the text stating the number of observations in the filtered dataset
 ```{r}
@@ -863,9 +1048,9 @@ card(
 
 -----------------------------------------------------------------
 
-### 2.3.3 Reactive Expression Demo {.smaller}
+### 2.3.3 Reactive Expression Demo  {.small-contd}
 
-Step 4. For example, we can create a summary table or plots using the filtered data.
+Step 4. We can create a `summary table` using the filtered data.
 
 `gtsummary` creates summary table easily.
 
@@ -897,9 +1082,9 @@ output$summary <- render_gt({
 
 -----------------------------------------------------------------
 
-### 2.3.3 Reactive Expression Demo
+### 2.3.3 Reactive Expression Demo  {.small-contd}
 
-Step 4. We can create an interactive plots using the filtered data.
+Step 5. We can create an `interactive plots` using the filtered data.
 Just wrapping your ggplot object with `ggplotly()` from the `plotly` package will make it interactive.
 
 ```{r}
@@ -927,7 +1112,13 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 
 -----------------------------------------------------------------
 
-### 2.3.4  Your turn - Reactive Expression {.smaller}
+### 2.3.3 Reactive Expression Demo App {.small-contd}
+
+![`08-reactiveexp.R`](./img/08-reactiveexp.gif)
+
+-----------------------------------------------------------------
+
+### 2.3.4  Your turn - Reactive Expression Exercise {.smaller}
 
 ::::: columns
 ::: {.column width="30%"}
@@ -941,13 +1132,80 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 ::: {.column width="70%"}
 
 -   Open `08_reactiveexp.R`
--   Add an input to allow user to filter the data by gender and APOE genotype
+-   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
 -   Updates the reactive expression (`ad_filtered`)
+-   Add  another `plot` with variable of your choices
 
 :::
 
 
 ::::: 
+
+
+-----------------------------------------------------------------
+
+### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
+
+-   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
+
+```{r}
+#| echo: true
+#| eval: false
+
+checkboxGroupInput(
+   inputId  = "selected_gender",
+   label    = "Select Gender:",
+   choices  = list("Male" = 1, "Female" = 0),
+   selected = c(0,1))
+
+```
+
+-   Updates the reactive expression (`ad_filtered`)
+
+```{r}
+#| echo: true
+#| eval: false
+
+ad_filtered <- reactive({
+  req(input$selected_geno, input$selected_gender)
+  filter(ad_data, 
+         Genotype %in% input$selected_geno,
+         male %in% input$selected_gender)
+}) 
+
+```
+
+-----------------------------------------------------------------
+
+### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
+
+-   Add  another `plot` with variable of your choices
+
+UI
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+navset_tab(
+  nav_panel("SummaryTable", gt_output(outputId = "summary")),
+  nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1")),
+  nav_panel("SAP plot", plotlyOutput(outputId = "plot2"))
+))
+
+```
+
+Server
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+navset_tab(
+  nav_panel("SummaryTable", gt_output(outputId = "summary")),
+  nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1")),
+  nav_panel("SAP plot", plotlyOutput(outputId = "plot2"))
+))
+
+```
 
 
 

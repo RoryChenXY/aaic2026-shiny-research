@@ -29,12 +29,12 @@ ui <- page_sidebar(
   
   card(
     card_header("Summary Table and Plots"),
-    "Use the tabs below to explore the summary table and plots of p_tau and Serum Amyloid P (SAP) against age.",
+    "Use the tabs below to explore the summary table and plots.",
     uiOutput("filtered_n"),
     navset_tab(
-    nav_panel("SummaryTable", gt_output(outputId = "summary")),
-    nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1")),
-    nav_panel("SAP plot", plotlyOutput(outputId = "plot2"))
+      nav_panel("SummaryTable", gt_output(outputId = "summary")),
+      nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1"))
+    ## [EXERCISE] Add another plot with variable of your choices
   ))
 )
 
@@ -90,24 +90,7 @@ server <- function(input, output, session) {
     ggplotly(p)
   })
   
-  output$plot2 <- renderPlotly({
-    
-    p <- ggplot(
-      ad_filtered(),
-      aes(x = age, y = Serum_Amyloid_P, color = Class)
-    ) +
-      geom_point() +
-      labs(
-        x = "age",
-        y = "SAP",
-        title = "Scatter Plot of Serum Amyloid P (SAP) vs age"
-      ) +
-      theme_minimal()
-    
-    ggplotly(p)
-    
-    
-  })
+  ## [EXERCISE] Add another plot with variable of your choices
   
 }
 
