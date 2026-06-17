@@ -79,15 +79,60 @@ By the end of this workshop, you will be able to:
 
 -   You are comfortable coding in R and R Studio
 -   No prior knowledge of Shiny apps required.
--   Access Github:
--   Access your Anthropic key and and save it to .Renviron
+-   Access Github: <https://github.com/RoryChenXY/aaic2026-shiny-research> 
 -   Install the required package if you haven't already
+-   Access your Anthropic key and and save it to .Renviron
 -   If you have any troubles, please raise your hand, one of the facilitators will come to assist you.
+
+------------------------------------------------------------------------
+
+###  1.5.1 Setup - Projects
+
+-   In R Studio, go to "File" -> "New Project" (left top corner)
+-   Choose "New Directory"  -> "New Project"
+-   Choose location and enter `Directory name` (e.g. "aaic2026-shiny-research")
+-   Put all the downloaded files in the new project directory
+
+![`New Project`](./img/1.5.1_newproject.png)
+
+------------------------------------------------------------------------
+
+###  1.5.2 Setup - Packages
+
+-    Open `setup.R` and run the code to install the required packages for the workshop.
 
 ```{r}
 #| echo: true
 #| eval: false
-install.packages(c("ellmer", "shinychat", "shiny", "bslib"))
+
+pkglist <- c( "shiny","bslib", # basic shiny pkgs
+              "ggplot2","plotly","sf","leaflet", # interactive plots
+              "here", "usethis","dplyr", # data manipulation and project management
+              "DT","gt","gtsummary", # interactive tables and summary tables
+              "modeldata", # sample data
+              "ellmer","shinychat","querychat") # LLM integration
+
+# install packages if not already installed
+new.packages <- pkglist[!(pkglist %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+```
+
+------------------------------------------------------------------------
+
+###  1.5.3 Setup - API keys
+
+-   Restart R Studio to make sure the API keys are loaded. 
+-   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 
+-   It should return your API key.
+
+```{r}
+#| echo: true
+#| eval: false
+# Use this to add your API keys to your .Renviron file at the workshop.
+# API key will be distributed at the workshop and disabled after. 
+# Do not share your API key with anyone else.
+usethis::edit_r_environ()
 ```
 
 
@@ -127,6 +172,13 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
+
+------------------------------------------------------------------------
+
+### 2.1.1 Hello, World! {.small-contd} 
+
+![`Hello World!`](./img/01-helloworld.png)
+
 ------------------------------------------------------------------------
 
 ### 2.1.2 Hello, Name! {.smaller}
@@ -141,7 +193,7 @@ shinyApp(ui = ui, server = server)
     
 ------------------------------------------------------------------------
            
-### 2.1.2 Hello, Name! {.smaller}
+### 2.1.2 Hello, Name! {.small-contd} 
 
 ```{r}
 #| echo: true
@@ -165,17 +217,25 @@ server <- function(input, output, session) {
 }  
 ```
 
+---------------------------------------------------------
+           
+### 2.1.2 Hello, Name! {.small-contd} 
+
+
+![`Hello Name`](./img/02-helloname.png)
+
 ------------------------------------------------------------------------
 
 
-### 2.1.3 - Hello, Shiny! {.smaller}
+### 2.1.3 Hello, Shiny! {.smaller}
 
 The Shiny package has `11` built-in examples.
 Each example is a self-contained Shiny app. 
 You can run these examples to see how different Shiny features work in practice.
-Also rstudio provides a collection of Shiny examples: https://github.com/rstudio/shiny-examples
+Also rstudio provides a collection of Shiny examples: <https://github.com/rstudio/shiny-examples>
 
-We will start with the Hello Shiny example.
+-   Open and run any example from `00-helloexamples.R`
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -195,12 +255,17 @@ runExample("11_timer")      # an automated timer
 
 ```
 
--   Open and run `03-helloshiny.R`
 
 ------------------------------------------------------------------------
 
 
-### 2.1.3 - Hello, Shiny! - UI {.smaller}
+### 2.1.3 Hello, Shiny! - UI {.small-contd} 
+
+-   We will start with the Hello Shiny example.
+-   Open and run `03-helloshiny.R`
+-   The UI provides two main components:
+    -   A `sidebar` with a `sliderInput` to control the number of bins in the histogram
+    -   A `plotOutput` to display the plot
 ```{r}
 #| echo: true
 #| eval: false
@@ -213,9 +278,7 @@ ui <- bslib::page_sidebar(
     sliderInput(
       inputId = "bins",
       label = "Number of bins:",
-      min = 1,
-      max = 50,
-      value = 30
+      min = 1, max = 50,value = 30
     )
   ),
   # Output: Histogram ----
@@ -226,7 +289,7 @@ ui <- bslib::page_sidebar(
 ------------------------------------------------------------------------
 
 
-### 2.1.3 - Hello, Shiny! - Server {.smaller}
+### 2.1.3 Hello, Shiny! - Server {.small-contd} 
 
 -   This expression generates a histogram of the Faithful Data with requested number of bins
 -   It is wrapped in a call to `renderPlot` to indicate that:
@@ -248,10 +311,17 @@ server <- function(input, output) {
 }
 ```
 
+------------------------------------------------------------------------
+
+### 2.1.3 Hello, Shiny! - App {.small-contd} 
+
+Drag the slider to see how the histogram changes with different number of bins.
+
+![`Hello Shiny!`](./img/03-helloshiny.png)
 
 ------------------------------------------------------------------------
 
-### 2.1.4 - Your turn - Hello, AAIC! {.smaller}
+### 2.1.4 Hello, AAIC! - Your turn {.smaller}
 
 ::::: columns
 ::: {.column width="30%"}
@@ -265,7 +335,7 @@ If you have any troubles, please raise your hand, one of the facilitators will c
 
 ::: {.column width="70%"}
 
--  Open `04-helloaaic.R`
+-  Open `./exercises/04-helloaaic.R`
 -  UI
    -  Change the title to "Hello AAIC!"
    -  In sidebar, add `textInput` to ask for the user's name
@@ -279,6 +349,68 @@ If you have any troubles, please raise your hand, one of the facilitators will c
 :::
 
 ::::: 
+
+
+
+------------------------------------------------------------------------
+
+### 2.1.4 Hello, AAIC! - Solution {.small-contd} 
+
+```{r}
+#| echo: true
+#| eval: false
+
+ui <- page_sidebar(
+  # App title ----
+  title = "Hello AAIC!",
+  # Sidebar panel for inputs ----
+  sidebar = sidebar(
+    # Input: Slider for the number of bins ----
+    sliderInput(),
+    textInput(inputId = "name",
+              label = "Your Name:")
+  ),
+  # Output: Histogram ----
+  textOutput("greeting"),
+  plotOutput(outputId = "distPlot")
+)
+
+```
+
+
+------------------------------------------------------------------------
+
+### 2.1.4 Hello, AAIC! - Solution {.small-contd} 
+
+```{r}
+#| echo: true
+#| eval: false
+server <- function(input, output) {
+  
+  output$greeting <- renderText({
+    paste("Welcome to AAIC, ", input$name, "!", sep = "")
+  }) 
+  
+  output$distPlot <- renderPlot({
+    
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    
+    hist(x, breaks = bins, col = "#4a0d66", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
+    
+  })
+  
+}
+
+```
+
+------------------------------------------------------------------------
+
+### 2.1.4 Hello, AAIC! - App {.small-contd} 
+
+![`Hello AAIC!`](./img/04-helloaaic.png)
 
 
 ------------------------------------------------------------------------
@@ -308,6 +440,7 @@ UI Contains elements such as:
 
 :::
 :::::
+
 
 ------------------------------------------------------------------------
 
@@ -383,6 +516,7 @@ UI Contains elements such as:
 
 ::: {.column width="70%"}
 
+-   Open and run `05-uiinput.R`
 -   Change the `choices` to options you like and re-run the app. 
 -   Example: 
 
@@ -410,6 +544,7 @@ radioButtons(
 ------------------------------------------------------------------------
 
 ### 2.2.3 Shiny UI - Output
+
 -  To display a reactive output, there are two steps:
    -  1. Add an R object to your user interface.
    -  2. Define the output in the server function, wrapped in a call to `render*()` to indicate that it is reactive and specify its output type. 
@@ -432,7 +567,7 @@ radioButtons(
 
 ------------------------------------------------------------------------
 
-### 2.2.4 Your turn - UI Exercises 1 {.smaller}
+### 2.2.4 Shiny UI Exercises 1 - Your turn! {.smaller}
 
 ::::: columns
 ::: {.column width="30%"}
@@ -460,6 +595,13 @@ Now let's try some other output types.
 
 
 ::::: 
+
+------------------------------------------------------------------------
+
+### 2.2.4 Shiny UI Exercises 1 - Solution {.small-contd}
+
+
+
 
 ------------------------------------------------------------------------
 
