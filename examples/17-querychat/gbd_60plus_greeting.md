@@ -5,6 +5,8 @@ You can ask me to filter the dashboard, compare groups, sort results, or summari
 
 I can help you explore questions such as which countries have the highest values, how estimates differ by sex, or how results vary across income groups and continents.
 
+Please note: this assistant can summarise and filter the data shown in the dashboard, but it should not be used to make clinical decisions or infer causality from descriptive estimates.
+
 ##### Explore the data
 
 <ul>
