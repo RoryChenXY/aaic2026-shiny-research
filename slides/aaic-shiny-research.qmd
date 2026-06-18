@@ -2374,9 +2374,11 @@ Open `17-querychat.R`
 ---------------------------------------------------------------
 
 
-#### 6.5.1.1 Step 1: Initialize `QueryChat` {.smaller}
+#### 6.5.2.1 Step 1: Initialize `QueryChat` {.smaller}
 
 Open `16-querychat-basic.R`
+-  Add `greeting` markdown files 
+-  Add `data_description` markdown files to provide context to the user and the LLM.
 
 ```{r}
 #| echo: true
@@ -2391,9 +2393,16 @@ qc <- QueryChat$new(
   data_description = 'gbd_60plus_description.md',
   client = "claude/claude-sonnet-4-5")
 
-
 ```
 
+You can use `generate_greeting()` to generate a greeting message once based on the data and description you provided, and save it as a markdown file.
+
+```{r}
+# Generate a greeting and save it
+greeting <- qc$generate_greeting()
+writeLines(greeting, 'gbd_60plus_greeting.md')
+
+```
 ---------------------------------------------------------------
 
 
