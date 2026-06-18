@@ -1,12 +1,13 @@
 library(shiny)
 library(bslib)
+library(here)
 library(dplyr)
 library(ggplot2)
 library(sf)
 library(leaflet)
 library(ellmer)
 library(querychat)
-library(reactable)
+library(DT)
 
 # Load data 
 gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
