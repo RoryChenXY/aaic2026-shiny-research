@@ -19,11 +19,8 @@ ui <- page_sidebar(
   sidebar = sidebar(
     ## Filter for age range (slider)
     sliderInput(
-      "selected_age",
-      "Set age range",
-      min = 60,
-      max = 100,
-      value = c(60, 100)), 
+      inputId = "selected_age", label = "Set age range",
+      min = 60, max = 100, value = c(60, 100)), 
     ## Filter for Gender
     checkboxGroupInput(
       inputId  = "selected_gender",

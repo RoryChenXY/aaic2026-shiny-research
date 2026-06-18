@@ -7,7 +7,7 @@ library(countrycode)
 # Get the SF data
 data(countries50) #rnaturalearthdata
 sf_ref <- countries50 |>
-  select(sovereignt, adm0_a3, geometry) |>
+  select(sovereignt, adm0_a3, continent, income_grp, geometry) |>
   filter(!st_is_empty(geometry))
 
 
@@ -26,24 +26,17 @@ gbd_country <- tibble(location = unique(alz_gbd_60plus$location)) |>
 
 
 alz_gbd_60plus_sf <- right_join(gbd_country, alz_gbd_60plus, by = join_by(location == location)) |>
-  select(c(iso3, country, geometry, measure, sex, metric, val)) |>
-  mutate(across(c(measure, sex, metric), as.factor)) |>
+  select(c(iso3, country, income_grp, continent, measure, sex, metric, val, geometry)) |>
+  mutate(across(c(income_grp, continent, measure, sex, metric), as.factor)) |>
   filter(!st_is_empty(geometry)) |>
-  st_as_sf()
+  st_as_sf() |>
+  arrange(iso3)
 
 saveRDS(alz_gbd_60plus_sf, "data/alz_gbd_60plus_sf.rds")
 
-names(alz_gbd_60plus_sf)
+names(gbd_60plus_nogeo)
 
 
 
 
-# Output
-
-
-
-
-alz_gbd_60 <- alz_gbd_sf |>
-  filter(age_id == 231) |>
-  select(-c(ends_with("id"), age_name, location_name, year, ) |>
   

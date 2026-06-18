@@ -1,5 +1,6 @@
 pkglist <- c( "shiny",
               "bslib",
+              "rsconnect",
               "ggplot2",
               "plotly",
               "sf",
@@ -25,3 +26,8 @@ if(length(new.packages)) install.packages(new.packages)
 # Do not share your API key with anyone else.
 
 usethis::edit_r_environ()
+
+# Refer to https://shiny.posit.co/r/articles/share/shinyapps/
+# for instructions on how to deploy your Shiny app to shinyapps.io. 
+# You will need to create an account and set up your account information in R 
+# using rsconnect::setAccountInfo() before you can deploy your app.

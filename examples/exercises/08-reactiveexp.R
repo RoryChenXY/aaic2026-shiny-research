@@ -33,7 +33,7 @@ ui <- page_sidebar(
     uiOutput("filtered_n"),
     navset_tab(
       nav_panel("SummaryTable", gt_output(outputId = "summary")),
-      nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1"))
+      nav_panel("Scatter Plot", plotlyOutput(outputId = "plot1"))
     ## [EXERCISE] Add another plot with variable of your choices
   ))
 )

@@ -34,11 +34,11 @@ ui <- page_sidebar(
   
   card(
     card_header("Summary Table and Plots"),
-    "Use the tabs below to explore the summary table and plots of p_tau and Serum Amyloid P (SAP) against age.",
+    "Use the tabs below to explore the ad_data.",
     uiOutput("filtered_n"),
     navset_tab(
       nav_panel("SummaryTable", gt_output(outputId = "summary")),
-      nav_panel("p_tau Plot", plotlyOutput(outputId = "plot1")),
+      nav_panel("Scatter Plot", plotlyOutput(outputId = "plot1")),
       nav_panel("Violin plot", plotlyOutput(outputId = "plot2"))
     ))
 )
@@ -98,7 +98,7 @@ server <- function(input, output, session) {
   
   output$plot2 <- renderPlotly({
     p <- ggplot(
-      ad_data,
+      ad_filtered(),
       aes(x = Class, y = p_tau, color = Genotype)) +
       geom_violin(alpha = 0.7, adjust = .5) +
       geom_jitter(alpha = 0.5) +

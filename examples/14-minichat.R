@@ -12,4 +12,5 @@ chat <- chat_anthropic(
   If unsure, say what information is missing. "
 )
 
-chat$chat("Explain the difference between incidence rate and prevalence in dementia epidemiology")
+chat$chat("Explain the difference 
+          between incidence rate and prevalence in dementia epidemiology")

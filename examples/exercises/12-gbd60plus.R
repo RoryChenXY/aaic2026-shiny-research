@@ -1,6 +1,7 @@
 # Load packages
 library(shiny)
 library(bslib)
+library(sf)
 library(leaflet)
 library(dplyr)
 library(here)
