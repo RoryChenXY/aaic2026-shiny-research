@@ -93,7 +93,7 @@ By the end of this workshop, you will be able to:
 -   Choose location and enter `Directory name` (e.g. "aaic2026-shiny-research")
 -   Put all the downloaded files in the new project directory
 
-![`New Project`](./img/1.5.1_newproject.png)
+![`New Project`](./img/s1.5.1-newproject.png)
 
 ------------------------------------------------------------------------
 
@@ -941,7 +941,7 @@ Server
 -   When we change the number of bins, the histogram changes
 -   When we change the number of rows, the table changes
 
-![`Reactive`](./img/reactive-simple.png)
+![`Reactive`](./img/s2.3.1-reactive-simple.png)
 
 
 -----------------------------------------------------------------
@@ -952,7 +952,7 @@ Server
 -   A `reactive output` is something that appears in the user’s browser window, such as a plot or a table of values.
 -   A `reactive expressions` is component between an input and an output. It stores a reusable calculation.
 
-![`Reactive Expression`](./img/reactive-expression.png)
+![`Reactive Expression`](./img/s2.3.2-reactive-expression.png)
 
 -----------------------------------------------------------------
 
@@ -964,7 +964,7 @@ Server
     -  Improve organization and readability
     -  Facilitate testing and maintenance
 
-![`Reactive Expression`](./img/reactive-expression.png)
+![`Reactive Expression`](./img/s2.3.2-reactive-expression.png)
 
 -----------------------------------------------------------------
 
@@ -1839,12 +1839,13 @@ m
 | ------------- | --------------------------------- | -----------------------------| ----------- |
 | `iso3`        | Three-letter country code         | `AUS`, `CHN`, `USA`          | Character   |
 | `country`     | Country name                      | `Australia`                  | Character   |
-| `geometry`    | Spatial boundary data for mapping | `multipolygon`               | Geometry    |
+| `income_grp`  | Country Income Group              | `4. Lower middle income`     | Categorical |
+| `continent`   | Continent                         | `Asia`, `Africa`             | Categorical |
 | `measure`     | Type of measure reported          | `Prevalence` or `Incidence`  | Categorical |
 | `sex`         | Sex                               | `Male`, `Female`, `Both`     | Categorical |
 | `metric`      | Unit or scale of the value        | `Number` or `Percent`        | Categorical |
 | `val`         | Reported numeric value            |                              | Numeric     |
-                                              
+| `geometry`    | Spatial boundary data for mapping | `multipolygon`               | Geometry    |                                              
 
 : {tbl-colwidths="[20, 30, 30,20]"}
 
@@ -2255,6 +2256,147 @@ allowing users to interact with their data using plain English.
 allowing users to interact with their data using plain English.
 
 ![`querychat Parts`](./img/s6.5-querychat-parts.png)
+
+---------------------------------------------------------------
+
+
+### 6.5.1 Basic querychat app {.smaller}
+
+Open `16-querychat-basic.R`
+
+![`16-querychat-basic.R`](./img/16-querychat-basic.gif)
+
+
+
+---------------------------------------------------------------
+
+
+#### 6.5.1.1 Step 1: Initialize `QueryChat` {.smaller}
+
+Open `16-querychat-basic.R`
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(shiny)
+library(bslib)
+library(dplyr)
+library(ggplot2)
+library(sf)
+library(ellmer)
+library(querychat)
+
+# Load data 
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
+gbd_60plus_nogeo <- gbd_60plus |>
+  sf::st_drop_geometry() # Do not need geometry data here
+
+# Step 1: Initialize QueryChat
+qc <- QueryChat$new(
+  gbd_60plus_nogeo, 
+  'gbd_60plus_nogeo', 
+  greeting = 'Hello!',
+  client = "claude/claude-sonnet-4-5")
+```
+
+---------------------------------------------------------------
+
+#### 6.5.1.2 Step 2: Add UI component {.smaller}
+
+Open `16-querychat-basic.R`
+
+```{r}
+#| echo: true
+#| eval: false
+# Step 2: Add UI component
+ui <- page_sidebar(
+  # App title ----
+  title = "GBD ADOD Data Explorer",
+  sidebar = qc$sidebar(),
+  card(
+    fill = FALSE,
+    card_header("SQL Query"),
+    verbatimTextOutput("sql")
+  ),
+  card(
+    card_header("Interactive Data Table"),
+    dataTableOutput(outputId = "datadt")
+    )
+)
+```
+
+
+---------------------------------------------------------------
+
+#### 6.5.1.3 Step 3: Use reactive values in server {.smaller}
+
+Open `16-querychat-basic.R`
+
+```{r}
+#| echo: true
+#| eval: false
+# Step 3: Use reactive values in server
+server <- function(input, output, session) {
+  qc_vals <- qc$server()
+  
+  output$sql <- renderText({
+    qc_vals$sql() %||% "SELECT * FROM gbd_60plus"
+  })
+  
+  ## DT
+  output$datadt <- renderDataTable({
+    qc_vals$df() |>
+      datatable(
+        filter = "top", # Enable built-in filters at the top of the columns
+        options = list(
+          pageLength = 25, # Control initial page size
+          autoWidth = TRUE, # Auto adjusting column width
+          search = list(smart = TRUE, regex = TRUE), # Enable "smart" space-separated searching globally
+          scrollX = TRUE # Enable horizontal scrolling for wide data frames
+        )
+      )
+  })
+}
+
+```
+
+---------------------------------------------------------------
+
+### 6.5.2 Next steps with `querychat` {.smaller}
+
+Open `17-querychat.R`
+
+![`17-querychat.R`](./img/17-querychat.gif)
+
+
+
+---------------------------------------------------------------
+
+
+#### 6.5.1.1 Step 1: Initialize `QueryChat` {.smaller}
+
+Open `16-querychat-basic.R`
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "5-6"
+
+# Step 1: Initialize QueryChat
+qc <- QueryChat$new(
+  gbd_60plus_nogeo, 
+  'gbd_60plus_nogeo', 
+  greeting = 'gbd_60plus_greeting.md',
+  data_description = 'gbd_60plus_description.md',
+  client = "claude/claude-sonnet-4-5")
+
+
+```
+
+---------------------------------------------------------------
+
+
 
 
 # 7. Independent Hands-On Exercise

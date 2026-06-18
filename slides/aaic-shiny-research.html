@@ -303,7 +303,7 @@ Rory Chen
 <li>Put all the downloaded files in the new project directory</li>
 </ul>
 
-<img data-src="./img/1.5.1_newproject.png" class="r-stretch quarto-figure-center"><p class="caption"><code>New Project</code></p></section>
+<img data-src="./img/s1.5.1-newproject.png" class="r-stretch quarto-figure-center"><p class="caption"><code>New Project</code></p></section>
 <section class="slide level2">
 
 <h3 id="setup---packages">1.5.2 Setup - Packages</h3>
@@ -1040,7 +1040,7 @@ Rory Chen
 <li>When we change the number of rows, the table changes</li>
 </ul>
 
-<img data-src="./img/reactive-simple.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive</code></p></section>
+<img data-src="./img/s2.3.1-reactive-simple.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive</code></p></section>
 <section class="slide level2">
 
 <h3 class="smaller" id="reactive-expression">2.3.2 Reactive Expression</h3>
@@ -1050,7 +1050,7 @@ Rory Chen
 <li>A <code>reactive expressions</code> is component between an input and an output. It stores a reusable calculation.</li>
 </ul>
 
-<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
+<img data-src="./img/s2.3.2-reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
 <section class="slide level2">
 
 <h3 class="small-contd" id="reactive-expression-1">2.3.2 Reactive Expression</h3>
@@ -1064,7 +1064,7 @@ Rory Chen
 </ul></li>
 </ul>
 
-<img data-src="./img/reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
+<img data-src="./img/s2.3.2-reactive-expression.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Reactive Expression</code></p></section>
 <section class="slide level2">
 
 <h3 id="reactive-expression-demo">2.3.3 Reactive Expression Demo</h3>
@@ -1805,8 +1805,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-e69a539d8ec0c95b7aab" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-e69a539d8ec0c95b7aab">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-3e7207279ce2f4ddb2b6" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-3e7207279ce2f4ddb2b6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -1853,34 +1853,46 @@ Rory Chen
 <td>Character</td>
 </tr>
 <tr class="odd">
-<td><code>geometry</code></td>
-<td>Spatial boundary data for mapping</td>
-<td><code>multipolygon</code></td>
-<td>Geometry</td>
+<td><code>income_grp</code></td>
+<td>Country Income Group</td>
+<td><code>4. Lower middle income</code></td>
+<td>Categorical</td>
 </tr>
 <tr class="even">
+<td><code>continent</code></td>
+<td>Continent</td>
+<td><code>Asia</code>, <code>Africa</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
 <td><code>measure</code></td>
 <td>Type of measure reported</td>
 <td><code>Prevalence</code> or <code>Incidence</code></td>
 <td>Categorical</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>sex</code></td>
 <td>Sex</td>
 <td><code>Male</code>, <code>Female</code>, <code>Both</code></td>
 <td>Categorical</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>metric</code></td>
 <td>Unit or scale of the value</td>
 <td><code>Number</code> or <code>Percent</code></td>
 <td>Categorical</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>val</code></td>
 <td>Reported numeric value</td>
 <td></td>
 <td>Numeric</td>
+</tr>
+<tr class="odd">
+<td><code>geometry</code></td>
+<td>Spatial boundary data for mapping</td>
+<td><code>multipolygon</code></td>
+<td>Geometry</td>
 </tr>
 </tbody>
 </table>
@@ -2062,7 +2074,7 @@ Rory Chen
 <p><a href="https://gallery.shinyapps.io/assistant/" class="uri">https://gallery.shinyapps.io/assistant/</a></p>
 <p>“Create an application that uses”ad_data” from library(modeldata).”</p>
 
-<img data-src="./img/6-1-shiny-assistant.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>Shiny Assistant</code></p></section>
+<img data-src="./img/s6.1-shiny-assistant.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>Shiny Assistant</code></p></section>
 <section id="where-ai-fits-in-a-shiny-app" class="slide level2">
 <h2>6.2 Where AI fits in a Shiny app</h2>
 <ul>
@@ -2221,17 +2233,93 @@ Rory Chen
 <section class="slide level2">
 
 <h3 class="small-contd" id="the-chat-inside-a-shiny-app-1">6.4.3 The chat inside a shiny app</h3>
-<p><a href="./img/15-shinychat.gif"><code>15-shinychat.R</code></a></p>
-</section>
+
+<img data-src="./img/15-shinychat.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>15-shinychat.R</code></p></section>
 <section id="from-chat-to-data-querying-using-querychat" class="slide level2 smaller">
 <h2>6.5 From Chat to Data Querying using <code>{querychat}</code></h2>
 <p><code>{querychat}</code> is a package that translates natural language questions into data queries, allowing users to interact with their data using plain English.</p>
-<p>A quick start with:</p>
+
+<img data-src="./img/s6.5-shiny-parts.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Shiny Parts</code></p></section>
+<section id="from-chat-to-data-querying-using-querychat-1" class="slide level2 small-contd">
+<h2>6.5 From Chat to Data Querying using <code>{querychat}</code></h2>
+<p><code>{querychat}</code> is a package that translates natural language questions into data queries, allowing users to interact with their data using plain English.</p>
+
+<img data-src="./img/s6.5-querychat-parts.png" class="r-stretch quarto-figure-center"><p class="caption"><code>querychat Parts</code></p></section>
+<section class="slide level2">
+
+<h3 class="smaller" id="basic-querychat-app">6.5.1 Basic <code>{querychat}</code> app</h3>
+<p>Open <code>16-querychat-basic.R</code></p>
+
+<img data-src="./img/16-querychat-basic.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>16-querychat-basic.R</code></p></section>
+<section class="slide level2">
+
+<h4 class="smaller" id="step-1-initialize-querychat">6.5.1.1 Step 1: Initialize <code>QueryChat</code></h4>
+<p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">library</span>(querychat)</span>
-<span id="cb55-2"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb55-3"><a href=""></a></span>
-<span id="cb55-4"><a href=""></a><span class="fu">querychat_app</span>(penguins, <span class="at">client =</span> <span class="st">"openai/gpt-4.1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb55-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb55-3"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb55-4"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb55-5"><a href=""></a><span class="fu">library</span>(sf)</span>
+<span id="cb55-6"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb55-7"><a href=""></a><span class="fu">library</span>(querychat)</span>
+<span id="cb55-8"><a href=""></a></span>
+<span id="cb55-9"><a href=""></a><span class="co"># Load data </span></span>
+<span id="cb55-10"><a href=""></a>gbd_60plus <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"alz_gbd_60plus_sf.rds"</span>))</span>
+<span id="cb55-11"><a href=""></a>gbd_60plus_nogeo <span class="ot">&lt;-</span> gbd_60plus <span class="sc">|&gt;</span></span>
+<span id="cb55-12"><a href=""></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="co"># Do not need geometry data here</span></span>
+<span id="cb55-13"><a href=""></a></span>
+<span id="cb55-14"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
+<span id="cb55-15"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb55-16"><a href=""></a>  gbd_60plus_nogeo, </span>
+<span id="cb55-17"><a href=""></a>  <span class="st">'gbd_60plus_nogeo'</span>, </span>
+<span id="cb55-18"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'Hello!'</span>,</span>
+<span id="cb55-19"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<h4 class="smaller" id="step-2-add-ui-component">6.5.1.2 Step 2: Add UI component</h4>
+<p>Open <code>16-querychat-basic.R</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="co"># Step 2: Add UI component</span></span>
+<span id="cb56-2"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
+<span id="cb56-3"><a href=""></a>  <span class="co"># App title ----</span></span>
+<span id="cb56-4"><a href=""></a>  <span class="at">title =</span> <span class="st">"GBD ADOD Data Explorer"</span>,</span>
+<span id="cb56-5"><a href=""></a>  <span class="at">sidebar =</span> qc<span class="sc">$</span><span class="fu">sidebar</span>(),</span>
+<span id="cb56-6"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb56-7"><a href=""></a>    <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb56-8"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"SQL Query"</span>),</span>
+<span id="cb56-9"><a href=""></a>    <span class="fu">verbatimTextOutput</span>(<span class="st">"sql"</span>)</span>
+<span id="cb56-10"><a href=""></a>  ),</span>
+<span id="cb56-11"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb56-12"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"Interactive Data Table"</span>),</span>
+<span id="cb56-13"><a href=""></a>    <span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"datadt"</span>)</span>
+<span id="cb56-14"><a href=""></a>    )</span>
+<span id="cb56-15"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<h4 class="smaller" id="step-3-use-reactive-values-in-server">6.5.1.3 Step 3: Use reactive values in server</h4>
+<p>Open <code>16-querychat-basic.R</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="co"># Step 3: Use reactive values in server</span></span>
+<span id="cb57-2"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb57-3"><a href=""></a>  qc_vals <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">server</span>()</span>
+<span id="cb57-4"><a href=""></a>  </span>
+<span id="cb57-5"><a href=""></a>  output<span class="sc">$</span>sql <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb57-6"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">sql</span>() <span class="sc">%||%</span> <span class="st">"SELECT * FROM gbd_60plus"</span></span>
+<span id="cb57-7"><a href=""></a>  })</span>
+<span id="cb57-8"><a href=""></a>  </span>
+<span id="cb57-9"><a href=""></a>  <span class="do">## DT</span></span>
+<span id="cb57-10"><a href=""></a>  output<span class="sc">$</span>datadt <span class="ot">&lt;-</span> <span class="fu">renderDataTable</span>({</span>
+<span id="cb57-11"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">df</span>() <span class="sc">|&gt;</span></span>
+<span id="cb57-12"><a href=""></a>      <span class="fu">datatable</span>(</span>
+<span id="cb57-13"><a href=""></a>        <span class="at">filter =</span> <span class="st">"top"</span>, <span class="co"># Enable built-in filters at the top of the columns</span></span>
+<span id="cb57-14"><a href=""></a>        <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb57-15"><a href=""></a>          <span class="at">pageLength =</span> <span class="dv">25</span>, <span class="co"># Control initial page size</span></span>
+<span id="cb57-16"><a href=""></a>          <span class="at">autoWidth =</span> <span class="cn">TRUE</span>, <span class="co"># Auto adjusting column width</span></span>
+<span id="cb57-17"><a href=""></a>          <span class="at">search =</span> <span class="fu">list</span>(<span class="at">smart =</span> <span class="cn">TRUE</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>), <span class="co"># Enable "smart" space-separated searching globally</span></span>
+<span id="cb57-18"><a href=""></a>          <span class="at">scrollX =</span> <span class="cn">TRUE</span> <span class="co"># Enable horizontal scrolling for wide data frames</span></span>
+<span id="cb57-19"><a href=""></a>        )</span>
+<span id="cb57-20"><a href=""></a>      )</span>
+<span id="cb57-21"><a href=""></a>  })</span>
+<span id="cb57-22"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
