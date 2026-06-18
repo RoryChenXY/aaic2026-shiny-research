@@ -1,4 +1,4 @@
-Hello! 👋 I'm here to help you explore the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer's Disease and other dementias (ADOD) among people aged 60 years and older worldwide.
+Hello! 👋 I'm here to help you explore the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer's Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023.
 
 This dashboard uses data with country, income group, continent, measure, sex, metric, and estimate values. 
 You can ask me to filter the dashboard, compare groups, sort results, or summarise patterns across countries and regions.
