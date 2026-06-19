@@ -247,6 +247,13 @@ Rory Chen
 <li><strong>Ashleigh Vella, PhD</strong></li>
 <li><strong>James Lian, PhD</strong></li>
 </ul>
+<p><br>
+</p>
+<blockquote>
+<p><em>Attendance at this conference was supported by an AAIC 2026 Conference Fellowship.</em></p>
+</blockquote>
+<p><br>
+</p>
 </section>
 <section id="todays-agenda" class="slide level2 smaller">
 <h2>1.2 Today’s agenda</h2>
@@ -1805,8 +1812,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-0f749e3755b971f75ee1" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-0f749e3755b971f75ee1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-9c5b576c0debc638f9ab" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-9c5b576c0debc638f9ab">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -2334,7 +2341,12 @@ Rory Chen
 <section class="slide level2">
 
 <h4 class="smaller" id="step-1-initialize-querychat-1">6.5.2.1 Step 1: Initialize <code>QueryChat</code></h4>
-<p>In addition to <code>16-querychat-basic.R</code>, to provide context to the user and the LLM: - Add <code>data_description</code> markdown files - Add <code>greeting</code> markdown files</p>
+<p>In addition to <code>16-querychat-basic.R</code>, to provide context to the user and the LLM:</p>
+<ul>
+<li><p>Add <code>data_description</code> markdown files</p></li>
+<li><p>Add <code>greeting</code> markdown files</p></li>
+<li><p>You can also add a <code>extra_instructions = "instructions.md"</code>. It is optional but can be helpful for more complex datasets or specific use cases.</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58" data-code-line-numbers="5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="co"># Step 1: Initialize QueryChat</span></span>
 <span id="cb58-2"><a></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
@@ -2432,7 +2444,13 @@ Rory Chen
 <span id="cb59-3"><a></a></span>
 <span id="cb59-4"><a></a><span class="fu">writeLines</span>(greeting, <span class="st">'./examples/17-querychat/gbd_60plus_greeting.md'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Modify the .md file where you see fit. It usually starts with greeting the user, providing a brief overview of the dataset, and offering some example questions to get started.</p>
+<p>Modify the .md file where you see fit.</p>
+<p>It usually includes:</p>
+<ul>
+<li>greeting the user</li>
+<li>providing a brief overview of the dataset</li>
+<li>offering some example questions to get started.</li>
+</ul>
 </section></section>
 <section>
 <section id="independent-hands-on-exercise" class="title-slide slide level1 center">
@@ -2443,13 +2461,18 @@ Rory Chen
 <h2>7.1 Build Your Own Shiny App</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
-<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=1&amp;min=45&amp;sec=0" frameborder="0">
+<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=45&amp;sec=0" frameborder="0">
 </iframe>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Use the GBD Data provided or your own data</li>
-<li>Combine what we learned today</li>
-<li>Build your own R Shiny app!</li>
+<li><p>Use the GBD Data provided <code>data/alz_gbd_agegp_sf.rds</code> or your own data</p></li>
+<li><p>Combine what we learned today</p></li>
+<li><p>Build your own R Shiny app!</p></li>
+<li><p>About the data</p>
+<ul>
+<li>Similar to the previous <code>gbd_60plus</code> dataset, contains the Global Burden of Disease (<code>GBD</code>) Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (<code>ADOD</code>) with geometry data.</li>
+<li>With additional <code>age</code> variable that categorizes the population into different age groups (60-64, 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95+)</li>
+</ul></li>
 </ul>
 </div></div>
 </section></section>

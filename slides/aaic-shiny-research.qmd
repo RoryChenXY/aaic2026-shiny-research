@@ -27,6 +27,12 @@ format:
 -   **Ashleigh Vella, PhD** 
 -   **James Lian, PhD** 
 
+\
+
+> *Attendance at this conference was supported by an AAIC 2026 Conference Fellowship.*
+
+\
+
 ------------------------------------------------------------------------
 
 ## 1.2 Today's agenda {.smaller}
@@ -2372,8 +2378,12 @@ Open `17-querychat.R`
 #### 6.5.2.1 Step 1: Initialize `QueryChat` {.smaller}
 
 In addition to `16-querychat-basic.R`, to  provide context to the user and the LLM:
+
 -  Add `data_description` markdown files 
+
 -  Add `greeting` markdown files 
+
+-  You can also add a `extra_instructions = "instructions.md"`. It is optional but can be helpful for more complex datasets or specific use cases.
 
 
 ```{r}
@@ -2439,8 +2449,13 @@ writeLines(greeting, './examples/17-querychat/gbd_60plus_greeting.md')
 
 ```
 
-Modify the .md file where you see fit. It usually starts with greeting the user, providing a brief overview of the dataset, and offering some example questions to get started.
+Modify the .md file where you see fit. 
 
+It usually includes:
+
+-  greeting the user 
+-  providing a brief overview of the dataset
+-  offering some example questions to get started.
 
 
 # 7. Independent Hands-On Exercise
@@ -2449,12 +2464,10 @@ Modify the .md file where you see fit. It usually starts with greeting the user,
 
 ## 7.1 Build Your Own Shiny App {.smaller}
 
-
-
 ::::: columns
 ::: {.column width="30%"}
 
-<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=1&amp;min=45&amp;sec=0" frameborder="0">
+<iframe style="width:100%;max-width:360px;height:500px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=45&amp;sec=0" frameborder="0">
 
 </iframe>
 
@@ -2462,11 +2475,17 @@ Modify the .md file where you see fit. It usually starts with greeting the user,
 
 ::: {.column width="70%"}
 
--   Use the GBD Data provided or your own data
+-   Use the GBD Data provided `data/alz_gbd_agegp_sf.rds` or your own data
 -   Combine what we learned today
 -   Build your own R Shiny app!
 
+-   About the data
+    -   Similar to the previous `gbd_60plus` dataset, contains the Global Burden of Disease (`GBD`) Data on Incidence and Prevalence of Alzheimer's Disease and other dementias (`ADOD`) with geometry data.
+    -   With additional `age` variable that categorizes the population into different age groups (60-64, 65-69, 70-74, 75-79, 80-84, 85-89,  90-94, 95+)
+  
+
 :::
+
 :::::
 
 

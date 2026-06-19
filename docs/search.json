@@ -4,7 +4,7 @@
     "href": "slides/aaic-shiny-research.html#welcome",
     "title": "Shiny Your Research",
     "section": "1.1 Welcome",
-    "text": "1.1 Welcome\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nGraham Bearden, PhD\nAshleigh Vella, PhD\nJames Lian, PhD"
+    "text": "1.1 Welcome\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nGraham Bearden, PhD\nAshleigh Vella, PhD\nJames Lian, PhD\n\n\n\n\nAttendance at this conference was supported by an AAIC 2026 Conference Fellowship."
   },
   {
     "objectID": "slides/aaic-shiny-research.html#todays-agenda",
@@ -165,7 +165,7 @@
     "href": "slides/aaic-shiny-research.html#build-your-own-shiny-app",
     "title": "Shiny Your Research",
     "section": "7.1 Build Your Own Shiny App",
-    "text": "7.1 Build Your Own Shiny App\n\n\n\n\n\n\nUse the GBD Data provided or your own data\nCombine what we learned today\nBuild your own R Shiny app!"
+    "text": "7.1 Build Your Own Shiny App\n\n\n\n\n\n\nUse the GBD Data provided data/alz_gbd_agegp_sf.rds or your own data\nCombine what we learned today\nBuild your own R Shiny app!\nAbout the data\n\nSimilar to the previous gbd_60plus dataset, contains the Global Burden of Disease (GBD) Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) with geometry data.\nWith additional age variable that categorizes the population into different age groups (60-64, 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95+)"
   },
   {
     "objectID": "slides/aaic-shiny-research.html#share-your-app",
