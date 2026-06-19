@@ -1805,14 +1805,14 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-3e7207279ce2f4ddb2b6" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-3e7207279ce2f4ddb2b6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-9feeb459b26456530d93" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-9feeb459b26456530d93">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="gbd-data">5.3.2 GBD Data</h3>
+<h3 id="gbd-data-description">5.3.2 GBD Data Description</h3>
 <p><strong>Global Burden of Disease(GBD)</strong> <strong>Prevalence and Incidence of ADOD by Country in 2023</strong></p>
 <div class="columns">
 <div class="column" style="width:30%;">
@@ -2072,7 +2072,6 @@ Rory Chen
 <section id="building-shiny-app-with-the-help-of-ai---shiny-assistant" class="slide level2 smaller">
 <h2>6.1 Building Shiny app with the help of AI - Shiny Assistant</h2>
 <p><a href="https://gallery.shinyapps.io/assistant/" class="uri">https://gallery.shinyapps.io/assistant/</a></p>
-<p>“Create an application that uses”ad_data” from library(modeldata).”</p>
 
 <img data-src="./img/s6.1-shiny-assistant.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>Shiny Assistant</code></p></section>
 <section id="where-ai-fits-in-a-shiny-app" class="slide level2">
@@ -2247,7 +2246,7 @@ Rory Chen
 <img data-src="./img/s6.5-querychat-parts.png" class="r-stretch quarto-figure-center"><p class="caption"><code>querychat Parts</code></p></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="basic-querychat-app">6.5.1 Basic <code>{querychat}</code> app</h3>
+<h3 class="smaller" id="basic-querychat-app">6.5.1 Basic querychat app</h3>
 <p>Open <code>16-querychat-basic.R</code></p>
 
 <img data-src="./img/16-querychat-basic.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>16-querychat-basic.R</code></p></section>
@@ -2258,24 +2257,25 @@ Rory Chen
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
 <span id="cb55-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
-<span id="cb55-3"><a href=""></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb55-4"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb55-5"><a href=""></a><span class="fu">library</span>(sf)</span>
-<span id="cb55-6"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb55-7"><a href=""></a><span class="fu">library</span>(querychat)</span>
-<span id="cb55-8"><a href=""></a></span>
+<span id="cb55-3"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb55-4"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb55-5"><a href=""></a><span class="fu">library</span>(DT)</span>
+<span id="cb55-6"><a href=""></a><span class="fu">library</span>(sf)</span>
+<span id="cb55-7"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb55-8"><a href=""></a><span class="fu">library</span>(querychat)</span>
 <span id="cb55-9"><a href=""></a><span class="co"># Load data </span></span>
-<span id="cb55-10"><a href=""></a>gbd_60plus <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"alz_gbd_60plus_sf.rds"</span>))</span>
-<span id="cb55-11"><a href=""></a>gbd_60plus_nogeo <span class="ot">&lt;-</span> gbd_60plus <span class="sc">|&gt;</span></span>
-<span id="cb55-12"><a href=""></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="co"># Do not need geometry data here</span></span>
-<span id="cb55-13"><a href=""></a></span>
-<span id="cb55-14"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
-<span id="cb55-15"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb55-16"><a href=""></a>  gbd_60plus_nogeo, </span>
-<span id="cb55-17"><a href=""></a>  <span class="st">'gbd_60plus_nogeo'</span>, </span>
-<span id="cb55-18"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'Hello!'</span>,</span>
-<span id="cb55-19"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb55-10"><a href=""></a>gbd_60plus <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"alz_gbd_60plus_sf.rds"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb55-11"><a href=""></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="co"># Do not need geometry data here</span></span>
+<span id="cb55-12"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
+<span id="cb55-13"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb55-14"><a href=""></a>  gbd_60plus, </span>
+<span id="cb55-15"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
+<span id="cb55-16"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'Hello!'</span>,</span>
+<span id="cb55-17"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section class="slide level2">
+
 <h4 class="smaller" id="step-2-add-ui-component">6.5.1.2 Step 2: Add UI component</h4>
 <p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
@@ -2295,6 +2295,9 @@ Rory Chen
 <span id="cb56-14"><a href=""></a>    )</span>
 <span id="cb56-15"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section class="slide level2">
+
 <h4 class="smaller" id="step-3-use-reactive-values-in-server">6.5.1.3 Step 3: Use reactive values in server</h4>
 <p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
@@ -2320,6 +2323,119 @@ Rory Chen
 <span id="cb57-20"><a href=""></a>      )</span>
 <span id="cb57-21"><a href=""></a>  })</span>
 <span id="cb57-22"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="smaller" id="querychat-with-context">6.5.2 Querychat with context</h3>
+<p>Open <code>17-querychat.R</code></p>
+
+<img data-src="./img/17-querychat.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>17-querychat.R</code></p></section>
+<section class="slide level2">
+
+<h4 class="smaller" id="step-1-initialize-querychat-1">6.5.2.1 Step 1: Initialize <code>QueryChat</code></h4>
+<p>In addition to <code>16-querychat-basic.R</code>, to provide context to the user and the LLM: - Add <code>data_description</code> markdown files - Add <code>greeting</code> markdown files</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58" data-code-line-numbers="5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
+<span id="cb58-2"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb58-3"><a href=""></a>  gbd_60plus, </span>
+<span id="cb58-4"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
+<span id="cb58-5"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'gbd_60plus_greeting.md'</span>,</span>
+<span id="cb58-6"><a href=""></a>  <span class="at">data_description =</span> <span class="st">'gbd_60plus_description.md'</span>,</span>
+<span id="cb58-7"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 class="smaller" id="step-2-data-description-file">6.5.2.2 Step 2: Data Description file</h4>
+<p>Open <code>./examples/17-querychat/gbd_60plus_description.md</code></p>
+<ul>
+<li><p>This dataset contains the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023.</p></li>
+<li><p>Variables:</p></li>
+</ul>
+<div style="font-size: 24px;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+<th>Example values</th>
+<th>Data type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>iso3</code></td>
+<td>Three-letter country code</td>
+<td><code>AUS</code>, <code>CHN</code>, <code>USA</code></td>
+<td>Character</td>
+</tr>
+<tr class="even">
+<td><code>country</code></td>
+<td>Country name</td>
+<td><code>Australia</code></td>
+<td>Character</td>
+</tr>
+<tr class="odd">
+<td><code>income_grp</code></td>
+<td>Country Income Group</td>
+<td><code>4. Lower middle income</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>continent</code></td>
+<td>Continent</td>
+<td><code>Asia</code>, <code>Africa</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
+<td><code>measure</code></td>
+<td>Type of measure reported</td>
+<td><code>Prevalence</code> or <code>Incidence</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>sex</code></td>
+<td>Sex</td>
+<td><code>Male</code>, <code>Female</code>, <code>Both</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="odd">
+<td><code>metric</code></td>
+<td>Unit or scale of the value</td>
+<td><code>Number</code> or <code>Percent</code></td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>val</code></td>
+<td>Reported numeric value</td>
+<td></td>
+<td>Numeric</td>
+</tr>
+<tr class="odd">
+<td><code>geometry</code></td>
+<td>Spatial boundary data for mapping</td>
+<td><code>multipolygon</code></td>
+<td>Geometry</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 class="smaller" id="step-3-greeting-file">6.5.2.3 Step 3: Greeting file</h4>
+<p>You can use <code>generate_greeting()</code> to generate a greeting message once based on the data and description you provided, and save it as a markdown file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="co"># Generate a greeting and save it</span></span>
+<span id="cb59-2"><a href=""></a>greeting <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">generate_greeting</span>()</span>
+<span id="cb59-3"><a href=""></a><span class="fu">writeLines</span>(greeting, <span class="st">'gbd_60plus_greeting.md'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>

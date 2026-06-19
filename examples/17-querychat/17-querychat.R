@@ -10,15 +10,13 @@ library(querychat)
 library(DT)
 
 # Load data 
-gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
-
-gbd_60plus_nogeo <- gbd_60plus |>
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds")) |>
   sf::st_drop_geometry() 
 
 # Step 1: Initialize QueryChat
 qc <- QueryChat$new(
-  gbd_60plus_nogeo, 
-  'gbd_60plus_nogeo', 
+  gbd_60plus, 
+  'gbd_60plus', 
   greeting = 'gbd_60plus_greeting.md',
   data_description = 'gbd_60plus_description.md',
   client = "claude/claude-sonnet-4-5")
@@ -34,10 +32,9 @@ ui <- page_sidebar(
     verbatimTextOutput("sql")
   ),
   card(
-    card_header("Interactive Map and Data Table"),
-    navset_tab(
-      nav_panel("Data", dataTableOutput(outputId = "datadt"))
-  ))
+    card_header("Interactive Data Table"),
+    dataTableOutput(outputId = "datadt")
+  )
 )
 
 # Step 3: Use reactive values in server

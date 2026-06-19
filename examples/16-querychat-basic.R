@@ -8,15 +8,13 @@ library(ellmer)
 library(querychat)
 
 # Load data 
-gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
-
-gbd_60plus_nogeo <- gbd_60plus |>
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds")) |>
   sf::st_drop_geometry() 
 
 # Step 1: Initialize QueryChat
 qc <- QueryChat$new(
-  gbd_60plus_nogeo, 
-  'gbd_60plus_nogeo', 
+  gbd_60plus, 
+  'gbd_60plus', 
   greeting = 'Hello!',
   client = "claude/claude-sonnet-4-5")
 

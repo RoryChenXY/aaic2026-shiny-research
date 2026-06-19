@@ -1815,7 +1815,7 @@ m
 
 ---------------------------------------------------------------
 
-### 5.3.2 GBD Data
+### 5.3.2 GBD Data Description
 
 **Global Burden of Disease(GBD)**
 **Prevalence and Incidence of ADOD by Country in 2023**
@@ -2079,8 +2079,6 @@ Step 5: Add Pop-up info inside `addPolygons`.
 ## 6.1 Building Shiny app with the help of AI - Shiny Assistant {.smaller}
 
 <https://gallery.shinyapps.io/assistant/>
-
-"Create an application that uses "ad_data" from library(modeldata)."
  
 ![`Shiny Assistant`](./img/s6.1-shiny-assistant.gif)
 
@@ -2287,14 +2285,12 @@ library(sf)
 library(ellmer)
 library(querychat)
 # Load data 
-gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds"))
-gbd_60plus_nogeo <- gbd_60plus |>
+gbd_60plus <- readRDS(here("data", "alz_gbd_60plus_sf.rds")) |>
   sf::st_drop_geometry() # Do not need geometry data here
-
 # Step 1: Initialize QueryChat
 qc <- QueryChat$new(
-  gbd_60plus_nogeo, 
-  'gbd_60plus_nogeo', 
+  gbd_60plus, 
+  'gbd_60plus', 
   greeting = 'Hello!',
   client = "claude/claude-sonnet-4-5")
 ```
@@ -2362,7 +2358,7 @@ server <- function(input, output, session) {
 
 ---------------------------------------------------------------
 
-### 6.5.2 Next steps with `querychat` {.smaller}
+### 6.5.2 Querychat with context {.smaller}
 
 Open `17-querychat.R`
 
@@ -2375,9 +2371,10 @@ Open `17-querychat.R`
 
 #### 6.5.2.1 Step 1: Initialize `QueryChat` {.smaller}
 
-Open `16-querychat-basic.R`
+In addition to `16-querychat-basic.R`, to  provide context to the user and the LLM:
+-  Add `data_description` markdown files 
 -  Add `greeting` markdown files 
--  Add `data_description` markdown files to provide context to the user and the LLM.
+
 
 ```{r}
 #| echo: true
@@ -2386,24 +2383,63 @@ Open `16-querychat-basic.R`
 
 # Step 1: Initialize QueryChat
 qc <- QueryChat$new(
-  gbd_60plus_nogeo, 
-  'gbd_60plus_nogeo', 
+  gbd_60plus, 
+  'gbd_60plus', 
   greeting = 'gbd_60plus_greeting.md',
   data_description = 'gbd_60plus_description.md',
   client = "claude/claude-sonnet-4-5")
 
 ```
 
+
+
+---------------------------------------------------------------
+
+#### 6.5.2.2 Step 2: Data Description file {.smaller}
+
+Open `./examples/17-querychat/gbd_60plus_description.md`
+
+-   This dataset contains the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer's Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023.
+
+-   Variables:
+
+<div style="font-size: 24px;">   
+
+| Variable      | Description                       | Example values               | Data type   |
+| ------------- | --------------------------------- | -----------------------------| ----------- |
+| `iso3`        | Three-letter country code         | `AUS`, `CHN`, `USA`          | Character   |
+| `country`     | Country name                      | `Australia`                  | Character   |
+| `income_grp`  | Country Income Group              | `4. Lower middle income`     | Categorical |
+| `continent`   | Continent                         | `Asia`, `Africa`             | Categorical |
+| `measure`     | Type of measure reported          | `Prevalence` or `Incidence`  | Categorical |
+| `sex`         | Sex                               | `Male`, `Female`, `Both`     | Categorical |
+| `metric`      | Unit or scale of the value        | `Number` or `Percent`        | Categorical |
+| `val`         | Reported numeric value            |                              | Numeric     |
+                                        
+
+: {tbl-colwidths="[20, 30, 30,20]"}
+
+</div>
+
+
+---------------------------------------------------------------
+
+
+#### 6.5.2.3 Step 3: Greeting file  {.smaller}
+
 You can use `generate_greeting()` to generate a greeting message once based on the data and description you provided, and save it as a markdown file.
 
 ```{r}
+#| echo: true
+#| eval: false
 # Generate a greeting and save it
 greeting <- qc$generate_greeting()
-writeLines(greeting, 'gbd_60plus_greeting.md')
+
+writeLines(greeting, './examples/17-querychat/gbd_60plus_greeting.md')
 
 ```
----------------------------------------------------------------
 
+Modify the .md file where you see fit. It usually starts with greeting the user, providing a brief overview of the dataset, and offering some example questions to get started.
 
 
 
@@ -2483,4 +2519,4 @@ writeLines(greeting, 'gbd_60plus_greeting.md')
 
 \
 
-Slides & code: <https://github.com/RoryChenXY/shiny-workshops>
+Slides & code: <https://github.com/RoryChenXY/aaic2026-shiny-research>
