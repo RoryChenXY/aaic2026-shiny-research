@@ -8,8 +8,9 @@ It includes slides, example Shiny apps, exercises, solution files, and supportin
 ## Before the workshop
 1. Install R: Download and install the latest version of R: https://cran.r-project.org/  
 2. Install R Studio: Download and install the latest version of RStudio Desktop: https://posit.co/download/rstudio-desktop/ 
-3. Install required R packages: run setup.R
+3. Install R packages: Run `/setup/setup.R` to install required packages.
 4. Download or clone this repository 
+5. Reach out if you have any issues
 
 
 ## Repository structure
