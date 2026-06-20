@@ -5,6 +5,13 @@ This repository contains materials for the **AAIC 2026 ISTAART Immersives Worksh
 
 It includes slides, example Shiny apps, exercises, solution files, and supporting datasets for dementia research use cases.
 
+## Before the workshop
+1. Install R: Download and install the latest version of R: https://cran.r-project.org/  
+2. Install R Studio: Download and install the latest version of RStudio Desktop: https://posit.co/download/rstudio-desktop/ 
+3. Install required R packages: run setup.R
+4. Download or clone this repository 
+
+
 ## Repository structure
 
 - `/slides` – Workshop slides (Quarto source and rendered HTML)
