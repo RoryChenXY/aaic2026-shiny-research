@@ -2543,9 +2543,8 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 -   **Rory Chen, MSc**
 -   **Ana W. Capuano, PhD**
 -   **Sarah Bauermeister, PhD**
--   **Graham Bearden, PhD**
 -   **Ashleigh Vella, PhD**
--   **James Lian, PhD**
+
 
 \
 
@@ -2553,4 +2552,5 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 \
 
-Slides & code: <https://github.com/RoryChenXY/aaic2026-shiny-research>
+Slides: <https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html>
+Repository: <https://github.com/RoryChenXY/aaic2026-shiny-research>

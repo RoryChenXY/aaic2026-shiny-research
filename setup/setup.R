@@ -19,7 +19,13 @@ pkglist <- c( "shiny",
 # install packages if not already installed
 
 new.packages <- pkglist[!(pkglist %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+if(length(new.packages)) {
+  warning("The following packages are not installed: ", paste(new.packages, collapse = ", "), 
+          "\nPlease run setup.R to install the required packages before proceeding with the workshop.")
+  install.packages(new.packages)
+  } else {
+    message("All required packages are already installed.") 
+  }
 
 # Use this to add your API keys to your .Renviron file at the workshop.
 # API key will be distributed at the workshop and disabled after. 
