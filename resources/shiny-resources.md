@@ -54,4 +54,6 @@
 - **querychat** — Tools for adding natural-language data exploration to Shiny apps:  
   <https://posit-dev.github.io/querychat/>
 
+## Python
 
+- **Shiny for Python official website**: <https://shiny.posit.co/py/>
