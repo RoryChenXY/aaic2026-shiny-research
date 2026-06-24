@@ -11,45 +11,20 @@ It includes slides, example Shiny apps, exercises, solution files, and supportin
 3. Install R packages: Run `/setup/setup.R` to install required packages.
 4. Download or clone this repository 
 5. Reach out if you have any issues
+6. Slides:  <https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html>
 
 
-## Repository structure
+## Repository structure (relevant to participants)
 
-- `/slides` – Workshop slides (Quarto source and rendered HTML)
-- `/examples` – Live coding examples, hands-on exercises, and solutions
-- `/data` – Data preparation scripts and datasets used in examples
-- `/setup` – Environment setup script for required R packages
-- `/resources` – Workshop planning and supporting documents
-- `/images` – Image assets used in materials
-- `/docs` – Additional documentation assets
+- [/data](/data) – Data preparation scripts and datasets used in examples
+- [/examples](/examples) – Live coding examples, hands-on exercises, and solutions
+- [/examples/exercises](/examples/exercises) - Hands-on exercises for user to complete
+- [/examples/solutions](/examples/solutions) - Solutions for hands-on exercises
+- [setup.R](/setup/setup.R) – Environment setup script for required R packages
+- [/resources](/resources) - Resources for post-workshop 
 
-## Prerequisites
 
-- R
-- RStudio
-- Basic familiarity with R
-
-## Setup
-
-1. Open the repository as an RStudio project.
-2. Run `/setup/setup.R` to install required packages.
-3. (Optional, for LLM demos) Add your API key to `.Renviron` using `usethis::edit_r_environ()`.
-
-> Do not commit API keys or other secrets to this repository.
-
-## Running examples
-
-Most workshop examples are standalone Shiny scripts in `/examples`.
-Open any `.R` file in RStudio and click **Run App** (or run it in the console).
-
-Example files include:
-
-- `examples/01-helloworld.R`
-- `examples/02-helloname.R`
-- `examples/03-helloshiny.R`
-- `examples/11-modhistogram/app.R`
-- `examples/17-querychat/17-querychat.R`
 
 ## License
 
-This project is distributed under the terms of the [LICENSE](./LICENSE) file.
+This project is distributed under the terms of the MIT licence; please refer to the [LICENSE](./LICENSE) file.
