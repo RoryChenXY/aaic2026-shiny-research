@@ -23,9 +23,7 @@ format:
 -   **Rory Chen, MSc** 
 -   **Ana W. Capuano, PhD** 
 -   **Sarah Bauermeister, PhD** 
--   **Graham Bearden, PhD** 
 -   **Ashleigh Vella, PhD** 
--   **James Lian, PhD** 
 
 \
 
@@ -33,7 +31,8 @@ format:
 
 \
 
-------------------------------------------------------------------------
+
+
 
 ## 1.2 Today's agenda {.smaller}
 
@@ -59,7 +58,7 @@ The workshop will run for 4 hours, 1-5 pm.
 
 -   `Integration with R`: R users can build web applications without HTML/CSS/JS knowledge and leverage the full power of R's data manipulation and visualization capabilities.
 
--   `Accessibility`: Shiny apps can be easily shared via URLs, making research findings more accessible to a wider audience.
+-   `Accessibility`: Shiny apps can be easily shared via URLs, making research findings accessible to a wider audience.
 
 -   `Engagement`: Interactive visualizations and user interfaces can enhance engagement, great for presentations, teaching, collaboration and more
 
@@ -75,7 +74,7 @@ By the end of this workshop, you will be able to:
 
 -   Understand the fundamental concepts and features of `shiny` package.
 -   Create an interactive and dynamic `shiny` dashboard following a guided, step-by-step coding exercise.
--   Design reproducible and salable `shiny` modules using structured development practices.
+-   Design reproducible and scalable `shiny` modules using structured development practices.
 -   Independently apply `shiny` to present own scientific outputs in an engaging, accessible format.
 -   Test the integration of large language models (LLMs) into Shiny applications using the `ellmer` and `querychat` package.
 
@@ -87,8 +86,8 @@ By the end of this workshop, you will be able to:
 -   No prior knowledge of Shiny apps required.
 -   Access Github: <https://github.com/RoryChenXY/aaic2026-shiny-research> 
 -   Install the required package if you haven't already
--   Access your Anthropic key and and save it to .Renviron
--   If you have any troubles, please raise your hand, one of the facilitators will come to assist you.
+-   Access your Anthropic key and save it to .Renviron
+-   If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 ------------------------------------------------------------------------
 
@@ -238,7 +237,7 @@ server <- function(input, output, session) {
 The Shiny package has `11` built-in examples.
 Each example is a self-contained Shiny app. 
 You can run these examples to see how different Shiny features work in practice.
-Also rstudio provides a collection of Shiny examples: <https://github.com/rstudio/shiny-examples>
+Rstudio provides a collection of Shiny examples: <https://github.com/rstudio/shiny-examples>
 
 -   Open and run any example from `00-helloexamples.R`
 
@@ -336,7 +335,7 @@ Drag the slider to see how the histogram changes with different number of bins.
 
 </iframe>
 
-If you have any troubles, please raise your hand, one of the facilitators will come to assist you.
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 :::
 
 ::: {.column width="70%"}
@@ -499,10 +498,9 @@ UI Contains elements such as:
 
 ### 2.2.1 Shiny UI - Inputs {.smaller}
 
--   A web element that your users can interact with. 
--   Widgets provide a way for your users to send messages to the Shiny app.
+-   A web element that your users can interact with and `send` messages to the Shiny app.
 -   The Shiny Widgets Gallery <https://shiny.posit.co/r/gallery/widgets/widget-gallery/> provides templates that you can use to quickly add widgets to your Shiny apps.
--   Open and run `05-uiinput.R`. It listed some commonly used input widgets
+-   Open and run `05-uiinput.R`. It lists some commonly used input widgets
 ![`UI Inputs`](./img/05-uiinput.png)
 
 ------------------------------------------------------------------------
@@ -514,6 +512,8 @@ UI Contains elements such as:
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=3&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -607,6 +607,8 @@ data(ad_data)
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=5&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -798,7 +800,7 @@ ui <- bslib::page_fillable(
 
 -   Tabs can distribute large amount of information to stackable tab panels.
 -   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
--   We used `navset_card_underline` in `06-uitables.R` example.
+-   We used `navset_card_underline` in the `06-uitables.R` example.
 
 ```{r}
 #| echo: true
@@ -818,7 +820,7 @@ navset_card_underline(
 
 -   Tabs can distribute large amount of information to stackable tab panels.
 -   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
--   We used `navset_card_underline` in `06-uitables.R` example.
+-   We used `navset_card_underline` in the `06-uitables.R` example.
 
 
 
@@ -836,6 +838,8 @@ navset_card_underline(
 
 </iframe>
 
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+
 :::
 
 ::: {.column width="70%"}
@@ -843,11 +847,10 @@ navset_card_underline(
 -   Open `07-uitabs.R`
 -   For this exercise, we will add a Plot tab to the `06-uitables.R` example.
 -   You can also refer to `03-helloshiny.R` for how to create a histogram.
-    -  In `ui`, `sidebar()`, add a new sliderInput for number of bins.
+    -  In `ui`, `sidebar()`, add a new `sliderInput` for number of bins.
     -  In `ui`, `navset_card_underline()`, add a new `nav_panel()` for the plot, and place a `plotOutput()` inside it.
-    -  In `server`, add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, 
-       using the number of bins specified by the new slider input.
-    -  Optional goal: Try other plots you want. 
+    -  In `server`, add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, using the number of bins specified by the new slider input.
+    -  Optional goal: Try other plots. 
 
 
 :::
@@ -966,9 +969,9 @@ Server
 
 -   Why we need reactive expressions?
     -  Sometimes the same processed data is needed in several places
-    -  Avoid code duplication
-    -  Improve organization and readability
-    -  Facilitate testing and maintenance
+    -  Avoids code duplication
+    -  Improves organization and readability
+    -  Facilitates testing and maintenance
 
 ![`Reactive Expression`](./img/s2.3.2-reactive-expression.png)
 
@@ -981,12 +984,12 @@ To illustrate `reactivity expression` we’re going to use the `ad_data` once ag
 
 Aiming to build an app that:
 
--    Let user `filter` the data by `APOE genotype`
--    Display text to show the `number of observations` in the filtered results
+-    Lets user `filter` the data by `APOE genotype`
+-    Displays text to show the `number of observations` in the filtered results
 -    Updates the `summary statistics` by filtered results
 -    Updates the `plots` by filtered results
 
--    Open `./exercises/08-reactiveexp.R`
+-    Let's open `./exercises/08-reactiveexp.R`
 
 -----------------------------------------------------------------
 
@@ -1090,7 +1093,7 @@ output$summary <- render_gt({
 
 ### 2.3.3 Reactive Expression Demo  {.small-contd}
 
-Step 5. We can create an `interactive plots` using the filtered data.
+Step 5. We can create an `interactive plot` using the filtered data.
 Just wrapping your ggplot object with `ggplotly()` from the `plotly` package will make it interactive.
 
 ```{r}
@@ -1133,6 +1136,8 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 
 </iframe>
 
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+
 :::
 
 ::: {.column width="70%"}
@@ -1140,7 +1145,7 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 -   Open `08_reactiveexp.R`
 -   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
 -   Updates the reactive expression (`ad_filtered`)
--   Add  another `plot` with variable of your choices
+-   Add  another `plot` with variables of your choice
 
 :::
 
@@ -1152,7 +1157,7 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 
 ### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
 
--   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
+-   Add an `checkboxGroupInput` to allow user to filter the data by both `gender` and `APOE genotype`
 
 ```{r}
 #| echo: true
@@ -1166,7 +1171,7 @@ checkboxGroupInput(
 
 ```
 
--   Updates the reactive expression (`ad_filtered`)
+-   Update the `reactive expression` (`ad_filtered`)
 
 ```{r}
 #| echo: true
@@ -1185,7 +1190,7 @@ ad_filtered <- reactive({
 
 ### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
 
--   Add  another `plot` with variable of your choices
+-   Add  another `plot` with variables of your choice
 
 UI
 ```{r}
@@ -1324,7 +1329,7 @@ shinyApp(ui = ui, server = server)
 
 ------------------------------------------------------------------------
 
-### 4.4.1 UI - siderbar {.smaller}
+### 4.4.1 UI - sidebar {.smaller}
 
 ::::: columns
 
@@ -1333,6 +1338,8 @@ shinyApp(ui = ui, server = server)
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=6&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -1354,7 +1361,7 @@ shinyApp(ui = ui, server = server)
 
 ------------------------------------------------------------------------
 
-### 4.4.2 UI - siderbar solution p1  {.smaller}
+### 4.4.2 UI - sidebar solution p1  {.smaller}
 ```{r}
 #| echo: true
 #| eval: false
@@ -1383,7 +1390,7 @@ sidebar = sidebar(
 
 ------------------------------------------------------------------------
 
-### 4.4.2 UI - siderbar solution p2  {.small-contd}
+### 4.4.2 UI - sidebar solution p2  {.small-contd}
 ```{r}
 #| echo: true
 #| eval: false
@@ -1418,6 +1425,8 @@ sidebar = sidebar(
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=3&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -1465,6 +1474,8 @@ card(
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=10&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -1875,6 +1886,8 @@ m
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=5&sec=0"  frameborder="0">
 
 </iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
 
 :::
 
@@ -2471,6 +2484,8 @@ It usually includes:
 
 </iframe>
 
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+
 :::
 
 ::: {.column width="70%"}
@@ -2500,7 +2515,7 @@ It usually includes:
 
 **You're invited to share with the group:**
 
--   📌 What dataset did you use?
+-   📌 Which dataset did you use?
 -   🎛️ What inputs did you add?
 -   📊 What does your visualization show?
 -   🌟 Any stretch goals you tackled?
