@@ -23,11 +23,17 @@ It includes slides, example Shiny apps, exercises, solution files, and supportin
 - [setup.R](/setup/setup.R) – Environment setup script for required R packages
 - [/resources](/resources) - Resources for post-workshop 
 
-## Acknowledgement
+## Data Acknowledgement
 
-This workshop uses data from the Global Burden of Disease Study, accessed through the Institute for Health Metrics and Evaluation (IHME) GBD Results Tool. <https://www.healthdata.org/data-tools-practices/interactive-visuals/gbd-results> 
-The data are used for non-commercial educational purposes.
+This workshop uses data from:
+- the Global Burden of Disease Study, accessed through the Institute for Health Metrics and Evaluation (IHME) GBD Results Tool. <https://www.healthdata.org/data-tools-practices/interactive-visuals/gbd-results>
+- `ad_data` from the {modeldata} package: <https://modeldata.tidymodels.org/reference/ad_data.html>
+- `OASIS_long_tbl_df` from the {NeuroDataSets} package: <https://www.rdocumentation.org/packages/NeuroDataSets/versions/0.3.0/topics/OASIS_long_tbl_df>
+- `countries50` from the {rnaturalearthdata} package: <https://ropensci.r-universe.dev/rnaturalearthdata/doc/manual.html#countries>
 
+All data are used for non-commercial educational purposes.
+
+## Funding Acknowledgement
 This workshop is supported by grants from the National Institute on Aging/ National Institute of Health (NIA/NIH) [1RF1AG057531-01] and an AAIC 2026 Conference Fellowship. 
 
 ## License
