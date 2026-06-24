@@ -23,7 +23,12 @@ It includes slides, example Shiny apps, exercises, solution files, and supportin
 - [setup.R](/setup/setup.R) – Environment setup script for required R packages
 - [/resources](/resources) - Resources for post-workshop 
 
+## Acknowledgement
 
+This workshop uses data from the Global Burden of Disease Study, accessed through the Institute for Health Metrics and Evaluation (IHME) GBD Results Tool. <https://www.healthdata.org/data-tools-practices/interactive-visuals/gbd-results> 
+The data are used for non-commercial educational purposes.
+
+This workshop is supported by grants from the National Institute on Aging/ National Institute of Health (NIA/NIH) [1RF1AG057531-01] and an AAIC 2026 Conference Fellowship. 
 
 ## License
 
