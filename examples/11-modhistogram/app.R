@@ -1,6 +1,7 @@
 # Load packages
 library(shiny)
 library(bslib)
+library(here)
 library(ggplot2)
 library(plotly)
 
@@ -8,7 +9,8 @@ library(plotly)
 source("histogram_module.R")
 
 # Load data
-oasis_df <- readRDS("oasis_df.rds") |> filter(visit == 1)
+oasis_df <- readRDS(here("data", "oasis_df.rds")) |> 
+  filter(visit == 1)
 
 # Define UI ----
 ui <- page_sidebar(
@@ -25,29 +27,25 @@ ui <- page_sidebar(
     )
   ),
   ## Main Panel ----
-  layout_columns(
-    histogramUI("mmse", "MMSE Histogram"),
-    histogramUI("etiv", "eTIV Histogram"),
-    histogramUI("nwbv", "nWBV Histogram"),
-    histogramUI("asf", "ASF Histogram"),
-    col_widths = c(6, 6, 6, 6)
+  navset_tab(
+    nav_panel("MMSE", histogramUI("mmse", "MMSE Histogram")),
+    nav_panel("eTIV", histogramUI("etiv", "eTIV Histogram")),
+    nav_panel("nWBV", histogramUI("nwbv", "nWBV Histogram")),
+    nav_panel("ASF", histogramUI("asf", "ASF Histogram"))
   )
 )
 
 # Define server ----
 server <- function(input, output, session) {
-  
   # Create a reactive for the grouping variable
   grouping_var <- reactive({
     input$gvar
   })
-  
   # Call histogram modules for each variable
   histogramServer("mmse", data = oasis_df, variable = "mmse", grouping_var = grouping_var)
   histogramServer("etiv", data = oasis_df, variable = "etiv", grouping_var = grouping_var)
   histogramServer("nwbv", data = oasis_df, variable = "nwbv", grouping_var = grouping_var)
   histogramServer("asf", data = oasis_df, variable = "asf", grouping_var = grouping_var)
-  
 }
 
 # Create a Shiny app object

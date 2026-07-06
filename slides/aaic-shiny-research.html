@@ -240,10 +240,12 @@ Rory Chen
 <section id="welcome" class="slide level2 smaller">
 <h2>1.1 Welcome</h2>
 <ul>
-<li><strong>Rory Chen, MSc</strong></li>
-<li><strong>Ana W. Capuano, PhD</strong></li>
-<li><strong>Sarah Bauermeister, PhD</strong></li>
-<li><strong>Ashleigh Vella, PhD</strong></li>
+<li><strong>Rory Chen, MSc, UNSW Sydney, Australia</strong></li>
+<li><strong>Ana W. Capuano, PhD, Univerity of Chicago, USA</strong></li>
+<li><strong>Sarah Bauermeister, PhD, Oxford University, UK</strong></li>
+<li><strong>Ashleigh Vella, PhD, UNSW Sydney, Australia</strong></li>
+<li><strong>Nikita Keshena Husein, UNSW Sydney, Australia</strong></li>
+<li><strong>Mai Ho, UNSW Sydney, Australia</strong></li>
 </ul>
 <p><br>
 </p>
@@ -330,7 +332,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 id="setup---api-keys">1.5.3 Setup - API keys</h3>
+<h3 id="setup---api-keys-optional">1.5.3 Setup - API keys (<strong>Optional</strong>)</h3>
 <ul>
 <li>Restart R Studio to make sure the API keys are loaded.</li>
 <li>You can check if the key is loaded by running <code>Sys.getenv("ANTHROPIC_KEY")</code> in the console.</li>
@@ -353,16 +355,16 @@ Rory Chen
 <p><strong>Shiny</strong> is an R package that makes it easy to build interactive web applications (apps) straight from R.</p>
 <p>Usually, a Shiny app consists of 3 main components:</p>
 <ul>
-<li><strong>UI (User Interface):</strong> How your app looks</li>
-<li><strong>Server:</strong> How your app works</li>
-<li><strong>Shiny app object:</strong> a call to <code>shinyApp(ui=ui, server=server)</code> function that put ui and server components together to create the shiny app.</li>
+<li><code>UI (User Interface)</code>: How your app looks</li>
+<li><code>Server</code>: How your app works</li>
+<li><code>Shiny app object</code>: a call to <code>shinyApp(ui=ui, server=server)</code> function that put ui and server components together to create the shiny app.</li>
 </ul>
 </section>
 <section class="slide level2">
 
 <h3 class="smaller" id="hello-world">2.1.1 Hello, World!</h3>
 <ul>
-<li>Open and run <code>01-helloworld.R</code></li>
+<li>Open and run <code>./examples/01-helloworld.R</code></li>
 <li>This is the most basic Shiny app you can create.</li>
 </ul>
 <div class="cell">
@@ -388,7 +390,7 @@ Rory Chen
 
 <h3 class="smaller" id="hello-name">2.1.2 Hello, Name!</h3>
 <ul>
-<li>Open and run <code>02-helloname.R</code></li>
+<li>Open and run <code>./examples/02-helloname.R</code></li>
 <li>Inside the ui we define:
 <ul>
 <li><code>textInput</code></li>
@@ -432,7 +434,7 @@ Rory Chen
 <h3 class="smaller" id="hello-shiny">2.1.3 Hello, Shiny!</h3>
 <p>The Shiny package has <code>11</code> built-in examples. Each example is a self-contained Shiny app. You can run these examples to see how different Shiny features work in practice. Rstudio provides a collection of Shiny examples: <a href="https://github.com/rstudio/shiny-examples" class="uri">https://github.com/rstudio/shiny-examples</a></p>
 <ul>
-<li>Open and run any example from <code>00-helloexamples.R</code></li>
+<li>Open and run any example from <code>./examples/00-helloexamples.R</code></li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
@@ -455,7 +457,7 @@ Rory Chen
 <h3 class="small-contd" id="hello-shiny---ui">2.1.3 Hello, Shiny! - UI</h3>
 <ul>
 <li>We will start with the Hello Shiny example.</li>
-<li>Open and run <code>03-helloshiny.R</code></li>
+<li>Open and run <code>./examples/03-helloshiny.R</code></li>
 <li>The UI provides two main components:
 <ul>
 <li>A <code>sidebar</code> with a <code>sliderInput</code> to control the number of bins in the histogram</li>
@@ -487,12 +489,12 @@ Rory Chen
 <li>This expression generates a histogram of the Faithful Data with requested number of bins</li>
 <li>It is wrapped in a call to <code>renderPlot</code> to indicate that:
 <ul>
-<li>It is <code>"reactive"</code> and therefore should be automatically re-executed when inputs (input$bins) change</li>
+<li>It is <code>"reactive"</code> and therefore should be automatically re-executed when inputs (<code>input$bins</code>) change</li>
 <li>Its output type is a plot</li>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-code-line-numbers="5-7|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb7-2"><a href=""></a>  output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
 <span id="cb7-3"><a href=""></a>    x    <span class="ot">&lt;-</span> faithful<span class="sc">$</span>waiting</span>
 <span id="cb7-4"><a href=""></a>    bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
@@ -519,7 +521,7 @@ Rory Chen
 <p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Open <code>./exercises/04-helloaaic.R</code></li>
+<li>Open <code>./examples/exercises/04-helloaaic.R</code></li>
 <li>UI
 <ul>
 <li>Change the title to “Hello AAIC!”</li>
@@ -532,7 +534,7 @@ Rory Chen
 <li>e.g.&nbsp;“Welcome to AAIC, [name]!”</li>
 <li>Change the histogram color to <code>#4a0d66</code> - AAIC purple</li>
 </ul></li>
-<li>You can also find the solution in <code>./solution/04-helloaaic-solution.R</code></li>
+<li>You can also find the solution in <code>./examples/solution/04-helloaaic-solution.R</code></li>
 </ul>
 </div></div>
 </section>
@@ -655,10 +657,9 @@ Rory Chen
 
 <h3 class="smaller" id="shiny-ui---inputs">2.2.1 Shiny UI - Inputs</h3>
 <ul>
-<li>A web element that your users can interact with.</li>
-<li>Widgets provide a way for your users to send messages to the Shiny app.</li>
+<li>Web elements that users can interact with and <code>send</code> messages to the Shiny app.</li>
 <li>The Shiny Widgets Gallery <a href="https://shiny.posit.co/r/gallery/widgets/widget-gallery/" class="uri">https://shiny.posit.co/r/gallery/widgets/widget-gallery/</a> provides templates that you can use to quickly add widgets to your Shiny apps.</li>
-<li>Open and run <code>05-uiinput.R</code>. It listed some commonly used input widgets <img data-src="./img/05-uiinput.png" alt="UI Inputs"></li>
+<li>Open and run <code>./examples/05-uiinput.R</code>. It lists some commonly used widgets <img data-src="./img/05-uiinput.png" alt="UI Inputs"></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -671,7 +672,7 @@ Rory Chen
 <p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Open and run <code>05-uiinput.R</code></li>
+<li>Open and run <code>./examples/05-uiinput.R</code></li>
 <li>Change the <code>choices</code> to options you like and re-run the app.</li>
 <li>Example:</li>
 </ul>
@@ -768,7 +769,7 @@ Rory Chen
 <ul>
 <li><p>Demographic characteristics such as <code>age</code> and <code>gender</code></p></li>
 <li><p>Apolipoprotein E genotype</p></li>
-<li><p>Protein measurements of Abeta, <code>Tau</code>, and a phosphorylated version of Tau (called <code>pTau</code>)</p></li>
+<li><p>Protein measurements of Abeta, <code>Tau</code>, and <code>pTau</code></p></li>
 <li><p>Protein measurements of 124 exploratory biomarkers, and</p></li>
 <li><p>Clinical dementia scores</p></li>
 </ul></li>
@@ -790,11 +791,12 @@ Rory Chen
 </div><div class="column" style="width:70%;">
 <p>We have used <code>plotOutput</code> and <code>textOutput</code> in previous examples. Now let’s try some other output types.</p>
 <ul>
-<li>Open <code>06-uitables.R</code></li>
+<li>Open <code>./examples/exercises/06-uitables.R</code></li>
 <li>a <code>sliderInput()</code> to control how many rows are displayed in <code>tableOutput</code></li>
 <li><code>tableOutput()</code> with <code>renderTable()</code></li>
 <li><code>dataTableOutput()</code> with <code>renderDataTable()</code></li>
 <li><code>DT</code> is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <a href="https://rstudio.github.io/DT/shiny.html" class="uri">https://rstudio.github.io/DT/shiny.html</a></li>
+<li>You can also find the solution in <code>./examples/solution/06-uitables-solution.R</code></li>
 </ul>
 </div></div>
 </section>
@@ -920,7 +922,7 @@ Rory Chen
 <ul>
 <li>Tabs can distribute large amount of information to stackable tab panels.</li>
 <li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
-<li><code>bslib</code> pacakage provides many styles:
+<li><code>bslib</code> package provides many styles:
 <ul>
 <li><code>navset_underline()</code> and <code>navset_card_underline()</code></li>
 <li><code>navset_tab()</code> and <code>navset_card_tab()</code></li>
@@ -937,7 +939,7 @@ Rory Chen
 <ul>
 <li>Tabs can distribute large amount of information to stackable tab panels.</li>
 <li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
-<li>We used <code>navset_card_underline</code> in <code>06-uitables.R</code> example.</li>
+<li>We used <code>navset_card_underline</code> in the <code>06-uitables.R</code> example.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">navset_card_underline</span>(</span>
@@ -952,7 +954,7 @@ Rory Chen
 <ul>
 <li>Tabs can distribute large amount of information to stackable tab panels.</li>
 <li>Each tab is created with <code>nav_panel()</code>, and the tabs are placed inside a navigation layout.</li>
-<li>We used <code>navset_card_underline</code> in <code>06-uitables.R</code> example.</li>
+<li>We used <code>navset_card_underline</code> in the <code>06-uitables.R</code> example.</li>
 </ul>
 
 <img data-src="./img/06-uitables.png" class="r-stretch quarto-figure-center"><p class="caption"><code>06-uitables.R</code></p></section>
@@ -966,15 +968,16 @@ Rory Chen
 <p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Open <code>07-uitabs.R</code></li>
-<li>For this exercise, we will add a Plot tab to the <code>06-uitables.R</code> example.</li>
+<li>Open <code>./examples/exercises/07-uitabs.R</code></li>
+<li>For this exercise, we will add a Plot tab to the previous example.</li>
 <li>You can also refer to <code>03-helloshiny.R</code> for how to create a histogram.
 <ul>
-<li>In <code>ui</code>, <code>sidebar()</code>, add a new sliderInput for number of bins.</li>
-<li>In <code>ui</code>, <code>navset_card_underline()</code>, add a new <code>nav_panel()</code> for the plot, and place a <code>plotOutput()</code> inside it.</li>
+<li>In <code>ui</code>, <code>sidebar()</code>, add a new <code>sliderInput</code> for number of bins.</li>
+<li>In <code>ui</code>, <code>navset_card_underline()</code>, add a new <code>nav_panel()</code>, and place a <code>plotOutput()</code> inside it.</li>
 <li>In <code>server</code>, add a new <code>renderPlot()</code> to generate the histogram of <code>p_tau</code> in the <code>ad_data</code> dataset, using the number of bins specified by the new slider input.</li>
-<li>Optional goal: Try other plots you want.</li>
+<li>Optional goal: Try other plots.</li>
 </ul></li>
+<li>You can also find the solution in <code>./examples/solution/07-uitabs-solution.R</code></li>
 </ul>
 </div></div>
 </section>
@@ -1066,9 +1069,9 @@ Rory Chen
 <li>Why we need reactive expressions?
 <ul>
 <li>Sometimes the same processed data is needed in several places</li>
-<li>Avoid code duplication</li>
-<li>Improve organization and readability</li>
-<li>Facilitate testing and maintenance</li>
+<li>Avoids code duplication</li>
+<li>Improves organization and readability</li>
+<li>Facilitates testing and maintenance</li>
 </ul></li>
 </ul>
 
@@ -1079,11 +1082,11 @@ Rory Chen
 <p>To illustrate <code>reactivity expression</code> we’re going to use the <code>ad_data</code> once again.</p>
 <p>Aiming to build an app that:</p>
 <ul>
-<li><p>Let user <code>filter</code> the data by <code>APOE genotype</code></p></li>
-<li><p>Display text to show the <code>number of observations</code> in the filtered results</p></li>
+<li><p>Lets user <code>filter</code> the data by <code>APOE genotype</code></p></li>
+<li><p>Displays text to show the <code>number of observations</code> in the filtered results</p></li>
 <li><p>Updates the <code>summary statistics</code> by filtered results</p></li>
 <li><p>Updates the <code>plots</code> by filtered results</p></li>
-<li><p>Open <code>./exercises/08-reactiveexp.R</code></p></li>
+<li><p>Let’s open <code>./examples/exercises/08-reactiveexp.R</code></p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1159,7 +1162,7 @@ Rory Chen
 <section class="slide level2">
 
 <h3 class="small-contd" id="reactive-expression-demo-4">2.3.3 Reactive Expression Demo</h3>
-<p>Step 5. We can create an <code>interactive plots</code> using the filtered data. Just wrapping your ggplot object with <code>ggplotly()</code> from the <code>plotly</code> package will make it interactive.</p>
+<p>Step 5. We can create an <code>interactive plot</code> using the filtered data. Just wrapping your ggplot object with <code>ggplotly()</code> from the <code>plotly</code> package will make it interactive.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a> output<span class="sc">$</span>plot1 <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
 <span id="cb26-2"><a href=""></a>    </span>
@@ -1194,10 +1197,11 @@ Rory Chen
 <p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Open <code>08_reactiveexp.R</code></li>
+<li>Open <code>./examples/exercises/08_reactiveexp.R</code></li>
 <li>Add an input to allow user to filter the data by both <code>gender</code> and <code>APOE genotype</code></li>
 <li>Updates the reactive expression (<code>ad_filtered</code>)</li>
-<li>Add another <code>plot</code> with variable of your choices</li>
+<li>Add another <code>plot</code> with variables of your choice</li>
+<li>You can also find the solution in <code>./examples/solution/08_reactiveexp-solution.R</code></li>
 </ul>
 </div></div>
 </section>
@@ -1205,7 +1209,7 @@ Rory Chen
 
 <h3 class="small-contd" id="your-turn---reactive-expression-solution">2.3.4 Your turn - Reactive Expression Solution</h3>
 <ul>
-<li>Add an input to allow user to filter the data by both <code>gender</code> and <code>APOE genotype</code></li>
+<li>Add an <code>checkboxGroupInput</code> to allow user to filter the data by both <code>gender</code> and <code>APOE genotype</code></li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">checkboxGroupInput</span>(</span>
@@ -1215,7 +1219,7 @@ Rory Chen
 <span id="cb27-5"><a href=""></a>   <span class="at">selected =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
-<li>Updates the reactive expression (<code>ad_filtered</code>)</li>
+<li>Update the <code>reactive expression</code> (<code>ad_filtered</code>)</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>ad_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
@@ -1230,7 +1234,7 @@ Rory Chen
 
 <h3 class="small-contd" id="your-turn---reactive-expression-solution-1">2.3.4 Your turn - Reactive Expression Solution</h3>
 <ul>
-<li>Add another <code>plot</code> with variable of your choices</li>
+<li>Add another <code>plot</code> with variables of your choice</li>
 </ul>
 <p>UI</p>
 <div class="cell">
@@ -1258,15 +1262,29 @@ Rory Chen
 <h3 class="small-contd" id="your-turn---reactive-expression-solution-2">2.3.4 Your turn - Reactive Expression Solution</h3>
 
 <img data-src="./img/08-reactiveexp-2.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>08-reactiveexp-solution.R</code></p></section></section>
+<section>
 <section id="real-life-shiny-apps" class="title-slide slide level1 smaller center">
 <h1>3. Real Life Shiny Apps</h1>
-<ul>
-<li><a href="https://rorychenxy.shinyapps.io/gladse/">rorychenxy.shinyapps.io/gladse</a></li>
-</ul>
-<p>….!! More to add</p>
-<p>Also - maybe use Recording not the live demo to avoid any technical issues.</p>
-</section>
 
+</section>
+<section id="datarepexp" class="slide level2">
+<h2>3.1 DataRepExp</h2>
+<p>DataRepExp: a R shiny Application that makes Data FAIR for Data Repositories</p>
+<p>Paper: <a href="https://joss.theoj.org/papers/10.21105/joss.06693">The Journal of Open Source Software, 2024</a></p>
+<p>Github: <a href="https://github.com/RoryChenXY/DataRepExp_public">github.com/rorychenxy/DataRepExp</a></p>
+</section>
+<section id="gladse" class="slide level2">
+<h2>3.2 GLADSE</h2>
+<ul>
+<li><a href="https://portal.dementiasplatform.com.au/crs-metadata-explorer">rorychenxy.shinyapps.io/gladse</a></li>
+</ul>
+</section>
+<section id="gladse---querychat" class="slide level2">
+<h2>3.3 GLADSE - querychat</h2>
+</section>
+<section class="slide level2">
+
+</section></section>
 <section>
 <section id="guided-practice-build-your-first-shiny-app---basic" class="title-slide slide level1 smaller center">
 <h1>4. Guided Practice: Build Your First Shiny App - Basic</h1>
@@ -1274,7 +1292,7 @@ Rory Chen
 </section>
 <section id="goals" class="slide level2">
 <h2>4.1 Goals</h2>
-<p><strong>Goal:</strong> Build a Data Explorer using the <code>OASIS_long_tbl_df</code> Data from <code>NeuroDataSets</code>.</p>
+<p><strong>Goal:</strong> Build a Data Explorer using the <code>OASIS_long_tbl_df</code> from <code>NeuroDataSets</code>.</p>
 <p><br></p>
 <p><code>OASIS_long_tbl_df</code>, is a tibble containing a longitudinal collection of MRI data from 150 subjects aged 60 to 96, obtained as part of the Open Access Series of Imaging Studies (<code>OASIS</code>).</p>
 <p><br></p>
@@ -1400,7 +1418,7 @@ Rory Chen
 </section>
 <section id="basic-app-skeleton" class="slide level2 smaller">
 <h2>4.3 Basic App Skeleton</h2>
-<p>Open <code>09-oasis.R</code>.</p>
+<p>Open <code>./examples/exercises/09-oasis.R</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="co"># Load packages</span></span>
 <span id="cb31-2"><a href=""></a><span class="fu">library</span>(shiny)</span>
@@ -1425,14 +1443,13 @@ Rory Chen
 <section id="ui" class="slide level2 smaller">
 <h2>4.4 UI</h2>
 <ul>
-<li>Add inputs widgets to sidebar</li>
-<li>Add output to main panel</li>
+<li>Add inputs widgets to sidebar and output to main panel</li>
 </ul>
 <p><img data-src="./img/09-oasis.gif" alt="09-oasis.R">]</p>
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="ui---siderbar">4.4.1 UI - siderbar</h3>
+<h3 class="smaller" id="ui---sidebar">4.4.1 UI - sidebar</h3>
 <div class="columns">
 <div class="column" style="width:30%;">
 <iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=6&amp;sec=0" frameborder="0">
@@ -1452,7 +1469,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="ui---siderbar-solution-p1">4.4.2 UI - siderbar solution p1</h3>
+<h3 class="smaller" id="ui---sidebar-solution-p1">4.4.2 UI - sidebar solution p1</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>sidebar <span class="ot">=</span> <span class="fu">sidebar</span>(</span>
 <span id="cb32-2"><a href=""></a>    <span class="do">## Filter for age range (slider)</span></span>
@@ -1477,7 +1494,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 class="small-contd" id="ui---siderbar-solution-p2">4.4.2 UI - siderbar solution p2</h3>
+<h3 class="small-contd" id="ui---sidebar-solution-p2">4.4.2 UI - sidebar solution p2</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>    <span class="do">## Choose x-axis variable </span></span>
 <span id="cb33-2"><a href=""></a>    <span class="fu">selectInput</span>(<span class="at">inputId =</span> <span class="st">"xvar"</span>,</span>
@@ -1574,10 +1591,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="building-the-outputs">4.5.2 Building the Outputs</h3>
-<ul>
-<li>gtsummary table</li>
-</ul>
+<h3 class="smaller" id="building-the-outputs---gtsummary-table">4.5.2 Building the Outputs - gtsummary table</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>output<span class="sc">$</span>summary <span class="ot">&lt;-</span> <span class="fu">render_gt</span>({</span>
 <span id="cb36-2"><a href=""></a>    <span class="fu">oasis_filtered</span>() <span class="sc">|&gt;</span></span>
@@ -1604,9 +1618,8 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="building-the-outputs-1">4.5.3 Building the Outputs</h3>
+<h3 class="smaller" id="building-the-outputs---dt-table">4.5.3 Building the Outputs - DT table</h3>
 <ul>
-<li>DT table</li>
 <li>Check <a href="https://rstudio.github.io/DT/" class="uri">https://rstudio.github.io/DT/</a> for more options</li>
 </ul>
 <div class="cell">
@@ -1626,16 +1639,13 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="building-the-outputs-2">4.5.4 Building the Outputs</h3>
-<ul>
-<li>Plotly scatter plot with selected variables</li>
-</ul>
+<h3 class="smaller" id="building-the-outputs---plotyly">4.5.4 Building the Outputs - plotyly</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>  output<span class="sc">$</span>scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>output<span class="sc">$</span>scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
 <span id="cb38-2"><a href=""></a>    p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
 <span id="cb38-3"><a href=""></a>      <span class="fu">oasis_filtered</span>(),</span>
 <span id="cb38-4"><a href=""></a>      <span class="fu">aes</span>(</span>
-<span id="cb38-5"><a href=""></a>        <span class="at">x =</span> .data[[input<span class="sc">$</span>xvar]],,</span>
+<span id="cb38-5"><a href=""></a>        <span class="at">x =</span> .data[[input<span class="sc">$</span>xvar]],</span>
 <span id="cb38-6"><a href=""></a>        <span class="at">y =</span> .data[[input<span class="sc">$</span>yvar]],</span>
 <span id="cb38-7"><a href=""></a>        <span class="at">colour =</span> .data[[input<span class="sc">$</span>gvar]],</span>
 <span id="cb38-8"><a href=""></a>        <span class="at">text =</span> <span class="fu">paste</span>(</span>
@@ -1646,7 +1656,7 @@ Rory Chen
 <span id="cb38-13"><a href=""></a>        ))) <span class="sc">+</span></span>
 <span id="cb38-14"><a href=""></a>      <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
 <span id="cb38-15"><a href=""></a>      <span class="fu">labs</span>(</span>
-<span id="cb38-16"><a href=""></a>        <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"input$xvar and"</span>, input<span class="sc">$</span>yvar),</span>
+<span id="cb38-16"><a href=""></a>        <span class="at">title =</span> <span class="fu">paste</span>(input<span class="sc">$</span>xvar, <span class="st">"and"</span>, input<span class="sc">$</span>yvar),</span>
 <span id="cb38-17"><a href=""></a>        <span class="at">x =</span> input<span class="sc">$</span>xvar,</span>
 <span id="cb38-18"><a href=""></a>        <span class="at">y =</span> input<span class="sc">$</span>yvar,</span>
 <span id="cb38-19"><a href=""></a>        <span class="at">colour =</span> input<span class="sc">$</span>gvar</span>
@@ -1654,8 +1664,7 @@ Rory Chen
 <span id="cb38-21"><a href=""></a>      <span class="fu">theme_minimal</span>()</span>
 <span id="cb38-22"><a href=""></a>    </span>
 <span id="cb38-23"><a href=""></a>    <span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span>
-<span id="cb38-24"><a href=""></a>    </span>
-<span id="cb38-25"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb38-24"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="deploy-through-shinyapps.io" class="slide level2 smaller">
@@ -1721,55 +1730,141 @@ Rory Chen
 
 <h3 class="smaller" id="modules-example">5.2.1 Modules Example</h3>
 <ul>
-<li>Open and run <code>10-nomodules.R</code></li>
+<li>Open and run <code>./examples/10-nomodules.R</code></li>
 </ul>
 
-<img data-src="./img/10-nomodules.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Modules</code></p></section>
+<img data-src="./img/10-nomodules.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>Modules</code></p></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="defined-histogram-module">5.2.2 Defined Histogram Module</h3>
-<p>Open <code>11_modhistogram/histogram_module.R</code></p>
+<h3 class="small-contd" id="modules-example---no-module-code">5.2.1 Modules Example - No module code</h3>
+<ul>
+<li><code>10-nomodules.R</code> has 200 lines.</li>
+<li>In <code>./examples/11-modhistogram</code>, <code>app.R</code> and <code>histogram_module.R</code> together have 120 lines.</li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="do">## Module UI</span></span>
-<span id="cb42-2"><a href=""></a>histogramUI <span class="ot">&lt;-</span> <span class="cf">function</span>(id, title) {</span>
-<span id="cb42-3"><a href=""></a>  ns <span class="ot">&lt;-</span> <span class="fu">NS</span>(id)</span>
-<span id="cb42-4"><a href=""></a>  <span class="fu">card</span>(</span>
-<span id="cb42-5"><a href=""></a>    <span class="fu">card_header</span>(title),</span>
-<span id="cb42-6"><a href=""></a>    <span class="fu">plotlyOutput</span>(<span class="at">outputId =</span> <span class="fu">ns</span>(<span class="st">"plot"</span>))</span>
-<span id="cb42-7"><a href=""></a>  )</span>
-<span id="cb42-8"><a href=""></a>}</span>
-<span id="cb42-9"><a href=""></a></span>
-<span id="cb42-10"><a href=""></a><span class="do">## Module Server</span></span>
-<span id="cb42-11"><a href=""></a>histogramServer <span class="ot">&lt;-</span> <span class="cf">function</span>(id, data, variable, grouping_var) {</span>
-<span id="cb42-12"><a href=""></a>  <span class="fu">moduleServer</span>(id, <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb42-13"><a href=""></a>    </span>
-<span id="cb42-14"><a href=""></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
-<span id="cb42-15"><a href=""></a>      ...    </span>
-<span id="cb42-16"><a href=""></a>      })</span>
-<span id="cb42-17"><a href=""></a>  }</span>
-<span id="cb42-18"><a href=""></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="co"># Define server ----</span></span>
+<span id="cb42-2"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb42-3"><a href=""></a>  <span class="do">## MMSE Histogram ----</span></span>
+<span id="cb42-4"><a href=""></a>  output<span class="sc">$</span>mmseplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb42-5"><a href=""></a>    p <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">data =</span> oasis_df,<span class="at">x =</span> <span class="sc">~</span>.data[[<span class="st">'mmse'</span>]],<span class="at">color =</span> <span class="sc">~</span>.data[[input<span class="sc">$</span>gvar]],</span>
+<span id="cb42-6"><a href=""></a>                         ...)</span>
+<span id="cb42-7"><a href=""></a>        <span class="fu">return</span>(p)  </span>
+<span id="cb42-8"><a href=""></a>  })</span>
+<span id="cb42-9"><a href=""></a>  </span>
+<span id="cb42-10"><a href=""></a>  </span>
+<span id="cb42-11"><a href=""></a>  <span class="do">## eTIV Histogram ----</span></span>
+<span id="cb42-12"><a href=""></a>  output<span class="sc">$</span>etivplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb42-13"><a href=""></a>    p <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">data =</span> oasis_df, <span class="at">x =</span> <span class="sc">~</span>.data[[<span class="st">'etiv'</span>]],<span class="at">color =</span> <span class="sc">~</span>.data[[input<span class="sc">$</span>gvar]],</span>
+<span id="cb42-14"><a href=""></a>                         ...)</span>
+<span id="cb42-15"><a href=""></a>    <span class="fu">return</span>(p)  </span>
+<span id="cb42-16"><a href=""></a>  })</span>
+<span id="cb42-17"><a href=""></a>  </span>
+<span id="cb42-18"><a href=""></a>  <span class="do">## nWBV Histogram ----</span></span>
+<span id="cb42-19"><a href=""></a>  output<span class="sc">$</span>nwbvplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb42-20"><a href=""></a>    p <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">data =</span> oasis_df, <span class="at">x =</span> <span class="sc">~</span>.data[[<span class="st">'nwbv'</span>]],  <span class="at">color =</span> <span class="sc">~</span>.data[[input<span class="sc">$</span>gvar]],</span>
+<span id="cb42-21"><a href=""></a>                         ...)</span>
+<span id="cb42-22"><a href=""></a>    <span class="fu">return</span>(p)  </span>
+<span id="cb42-23"><a href=""></a>  })</span>
+<span id="cb42-24"><a href=""></a></span>
+<span id="cb42-25"><a href=""></a>  <span class="do">## eTIV Histogram ----</span></span>
+<span id="cb42-26"><a href=""></a>  output<span class="sc">$</span>asfplot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb42-27"><a href=""></a>    p <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(<span class="at">data =</span> oasis_df, <span class="at">x =</span> <span class="sc">~</span>.data[[<span class="st">'asf'</span>]],<span class="at">color =</span> <span class="sc">~</span>.data[[input<span class="sc">$</span>gvar]],</span>
+<span id="cb42-28"><a href=""></a>                         ...)</span>
+<span id="cb42-29"><a href=""></a>    <span class="fu">return</span>(p)  </span>
+<span id="cb42-30"><a href=""></a>  })</span>
+<span id="cb42-31"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="updated-app">5.2.3 Updated App</h3>
-<p>Open <code>11_modhistogram/app.R</code></p>
+<h3 class="smaller" id="defined-histogram-module">5.2.2 Defined Histogram Module</h3>
+<ul>
+<li>Like we can define a function to reuse, we can define a module to create a histogram.</li>
+<li>Open <code>./examples/11_modhistogram/histogram_module.R</code></li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>  <span class="fu">layout_columns</span>(</span>
-<span id="cb43-2"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"mmse"</span>, <span class="st">"MMSE Histogram"</span>),</span>
-<span id="cb43-3"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"etiv"</span>, <span class="st">"eTIV Histogram"</span>),</span>
-<span id="cb43-4"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"nwbv"</span>, <span class="st">"nWBV Histogram"</span>),</span>
-<span id="cb43-5"><a href=""></a>    <span class="fu">histogramUI</span>(<span class="st">"asf"</span>, <span class="st">"ASF Histogram"</span>),</span>
-<span id="cb43-6"><a href=""></a>    <span class="at">col_widths =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
-<span id="cb43-7"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="do">## Module UI</span></span>
+<span id="cb43-2"><a href=""></a>histogramUI <span class="ot">&lt;-</span> <span class="cf">function</span>(id, title) {</span>
+<span id="cb43-3"><a href=""></a>  ns <span class="ot">&lt;-</span> <span class="fu">NS</span>(id)</span>
+<span id="cb43-4"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb43-5"><a href=""></a>    <span class="fu">card_header</span>(title),</span>
+<span id="cb43-6"><a href=""></a>    <span class="fu">plotlyOutput</span>(<span class="at">outputId =</span> <span class="fu">ns</span>(<span class="st">"plot"</span>))</span>
+<span id="cb43-7"><a href=""></a>  )</span>
+<span id="cb43-8"><a href=""></a>}</span>
+<span id="cb43-9"><a href=""></a></span>
+<span id="cb43-10"><a href=""></a><span class="do">## Module Server</span></span>
+<span id="cb43-11"><a href=""></a>histogramServer <span class="ot">&lt;-</span> <span class="cf">function</span>(id, data, variable, grouping_var) {</span>
+<span id="cb43-12"><a href=""></a>  <span class="fu">moduleServer</span>(id, <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb43-13"><a href=""></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlotly</span>({</span>
+<span id="cb43-14"><a href=""></a>      <span class="co"># Get the grouping variable name for the legend</span></span>
+<span id="cb43-15"><a href=""></a>      gvar_name <span class="ot">&lt;-</span> <span class="fu">grouping_var</span>()</span>
+<span id="cb43-16"><a href=""></a>      </span>
+<span id="cb43-17"><a href=""></a>      p <span class="ot">&lt;-</span> plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb43-18"><a href=""></a>        <span class="at">data =</span> data,</span>
+<span id="cb43-19"><a href=""></a>        <span class="at">x =</span> <span class="sc">~</span>.data[[variable]],</span>
+<span id="cb43-20"><a href=""></a>        <span class="at">color =</span> <span class="sc">~</span>.data[[gvar_name]],</span>
+<span id="cb43-21"><a href=""></a>        <span class="at">colors =</span> <span class="st">"Pastel1"</span>,</span>
+<span id="cb43-22"><a href=""></a>        <span class="at">alpha =</span> <span class="fl">0.6</span>,</span>
+<span id="cb43-23"><a href=""></a>        <span class="at">hovertemplate =</span> <span class="fu">paste</span>(</span>
+<span id="cb43-24"><a href=""></a>          <span class="fu">paste0</span>(<span class="fu">toupper</span>(variable), <span class="st">': %{x}'</span>),</span>
+<span id="cb43-25"><a href=""></a>          <span class="st">'&lt;br&gt;Counts: %{y}&lt;br&gt;'</span></span>
+<span id="cb43-26"><a href=""></a>        )</span>
+<span id="cb43-27"><a href=""></a>      ) <span class="sc">|&gt;</span></span>
+<span id="cb43-28"><a href=""></a>        plotly<span class="sc">::</span><span class="fu">add_histogram</span>() <span class="sc">|&gt;</span></span>
+<span id="cb43-29"><a href=""></a>        plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb43-30"><a href=""></a>          <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="fu">toupper</span>(variable)),</span>
+<span id="cb43-31"><a href=""></a>          <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Counts"</span>, <span class="at">showgrid =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb43-32"><a href=""></a>          <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="fu">list</span>(<span class="at">text =</span> gvar_name), <span class="at">orientation =</span> <span class="st">"v"</span>),</span>
+<span id="cb43-33"><a href=""></a>          <span class="at">updatemenus =</span> <span class="fu">list</span>(</span>
+<span id="cb43-34"><a href=""></a>            <span class="fu">list</span>(</span>
+<span id="cb43-35"><a href=""></a>              <span class="at">x =</span> <span class="fl">1.2</span>,</span>
+<span id="cb43-36"><a href=""></a>              <span class="at">y =</span> <span class="fl">0.4</span>,</span>
+<span id="cb43-37"><a href=""></a>              <span class="at">type =</span> <span class="st">"buttons"</span>,</span>
+<span id="cb43-38"><a href=""></a>              <span class="at">buttons =</span> <span class="fu">list</span>(</span>
+<span id="cb43-39"><a href=""></a>                <span class="fu">list</span>(</span>
+<span id="cb43-40"><a href=""></a>                  <span class="at">method =</span> <span class="st">"relayout"</span>,</span>
+<span id="cb43-41"><a href=""></a>                  <span class="at">args =</span> <span class="fu">list</span>(<span class="st">"barmode"</span>, <span class="st">"group"</span>),</span>
+<span id="cb43-42"><a href=""></a>                  <span class="at">label =</span> <span class="st">"Group"</span></span>
+<span id="cb43-43"><a href=""></a>                ),</span>
+<span id="cb43-44"><a href=""></a>                <span class="fu">list</span>(</span>
+<span id="cb43-45"><a href=""></a>                  <span class="at">method =</span> <span class="st">"relayout"</span>,</span>
+<span id="cb43-46"><a href=""></a>                  <span class="at">args =</span> <span class="fu">list</span>(<span class="st">"barmode"</span>, <span class="st">"stack"</span>),</span>
+<span id="cb43-47"><a href=""></a>                  <span class="at">label =</span> <span class="st">"Stack"</span></span>
+<span id="cb43-48"><a href=""></a>                ),</span>
+<span id="cb43-49"><a href=""></a>                <span class="fu">list</span>(</span>
+<span id="cb43-50"><a href=""></a>                  <span class="at">method =</span> <span class="st">"relayout"</span>,</span>
+<span id="cb43-51"><a href=""></a>                  <span class="at">args =</span> <span class="fu">list</span>(<span class="st">"barmode"</span>, <span class="st">"overlay"</span>),</span>
+<span id="cb43-52"><a href=""></a>                  <span class="at">label =</span> <span class="st">"Overlay"</span></span>
+<span id="cb43-53"><a href=""></a>                )</span>
+<span id="cb43-54"><a href=""></a>              )</span>
+<span id="cb43-55"><a href=""></a>            )</span>
+<span id="cb43-56"><a href=""></a>          )</span>
+<span id="cb43-57"><a href=""></a>        )</span>
+<span id="cb43-58"><a href=""></a>      </span>
+<span id="cb43-59"><a href=""></a>      <span class="fu">return</span>(p)</span>
+<span id="cb43-60"><a href=""></a>    })</span>
+<span id="cb43-61"><a href=""></a>  })</span>
+<span id="cb43-62"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><br></p>
+</section>
+<section class="slide level2">
+
+<h3 class="smaller" id="what-is-the-double-bracket">5.2.3 What is the double bracket “[[ ]]”?</h3>
+<ul>
+<li><p><code>.data[[variable]]</code> means: Use the column whose name is stored in variable</p></li>
+<li><p>Example:</p></li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"mmse"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"mmse"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb44-2"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"etiv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"etiv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb44-3"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"nwbv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"nwbv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
-<span id="cb44-4"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"asf"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"asf"</span>, <span class="at">grouping_var =</span> grouping_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>variable <span class="ot">&lt;-</span> <span class="st">"mmse"</span></span>
+<span id="cb44-2"><a href=""></a>.data[[variable]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>is the same as</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a>.data[[<span class="st">"mmse"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>This is important for the module reusability.</li>
+</ul>
 </section>
 <section class="slide level2">
 
@@ -1782,6 +1877,82 @@ Rory Chen
 <li>Example: <code>plotlyOutput(outputId = ns("plot"))</code></li>
 </ul>
 </section>
+<section class="slide level2">
+
+<h3 class="smaller" id="updated-app">5.2.5 Updated App</h3>
+<p>Open <code>./examples/11_modhistogram/app.R</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>  <span class="fu">navset_tab</span>(</span>
+<span id="cb46-2"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"MMSE"</span>, <span class="fu">histogramUI</span>(<span class="st">"mmse"</span>, <span class="st">"MMSE Histogram"</span>)),</span>
+<span id="cb46-3"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"eTIV"</span>, <span class="fu">histogramUI</span>(<span class="st">"etiv"</span>, <span class="st">"eTIV Histogram"</span>)),</span>
+<span id="cb46-4"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"nWBV"</span>, <span class="fu">histogramUI</span>(<span class="st">"nwbv"</span>, <span class="st">"nWBV Histogram"</span>)),</span>
+<span id="cb46-5"><a href=""></a>    <span class="fu">nav_panel</span>(<span class="st">"ASF"</span>, <span class="fu">histogramUI</span>(<span class="st">"asf"</span>, <span class="st">"ASF Histogram"</span>))</span>
+<span id="cb46-6"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="co"># Define server ----</span></span>
+<span id="cb47-2"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb47-3"><a href=""></a>  <span class="co"># Create a reactive for the grouping variable</span></span>
+<span id="cb47-4"><a href=""></a>  grouping_var <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb47-5"><a href=""></a>    input<span class="sc">$</span>gvar</span>
+<span id="cb47-6"><a href=""></a>  })</span>
+<span id="cb47-7"><a href=""></a>  <span class="co"># Call histogram modules for each variable</span></span>
+<span id="cb47-8"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"mmse"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"mmse"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb47-9"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"etiv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"etiv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb47-10"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"nwbv"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"nwbv"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb47-11"><a href=""></a>  <span class="fu">histogramServer</span>(<span class="st">"asf"</span>, <span class="at">data =</span> oasis_df, <span class="at">variable =</span> <span class="st">"asf"</span>, <span class="at">grouping_var =</span> grouping_var)</span>
+<span id="cb47-12"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="smaller" id="your-turn---modules">5.2.6 Your turn - Modules</h3>
+<div class="columns">
+<div class="column" style="width:30%;">
+<iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&amp;color=purple&amp;hrs=0&amp;min=6&amp;sec=0" frameborder="0">
+</iframe>
+<p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>Review <code>./examples/exercises/12-appwithmodules/scatter_module.R</code></p></li>
+<li><p>Now update the <code>./examples/exercises/12-appwithmodules/app.R</code> to use the <code>scatter_module</code> for the scatter plot.</p></li>
+<li><p>Source scatter plot module</p></li>
+<li><p>UI: add <code>nav_panel</code> and call the scatter plot module UI</p></li>
+<li><p>Server: Call scatter module server for MMSE vs eTIV and nwbv vs asf</p></li>
+<li><p>Stretch goal: Create your own module and use it in the app.</p></li>
+<li><p>You can find the solution in <code>./examples/solutions/12-appwithmodules-solution</code></p></li>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---modules-1">5.2.6 Your turn - Modules</h3>
+
+<img data-src="./img/12-appwithmodules.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>12-appwithmodules</code></p></section>
+<section class="slide level2">
+
+<h3 class="small-contd" id="your-turn---modules-solution">5.2.6 Your turn - Modules Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="fu">source</span>(<span class="st">"scatter_module.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="fu">nav_panel</span>(<span class="st">"MMSE vs eTIV"</span>, </span>
+<span id="cb49-2"><a href=""></a>          <span class="fu">scatterUI</span>(<span class="st">"mmse_etiv"</span>, <span class="st">"MMSE vs eTIV Scatter Plot"</span>)),</span>
+<span id="cb49-3"><a href=""></a><span class="fu">nav_panel</span>(<span class="st">"nWBV vs ASF"</span>, </span>
+<span id="cb49-4"><a href=""></a>          <span class="fu">scatterUI</span>(<span class="st">"nwbv_asf"</span>, <span class="st">"nWBV vs ASF Scatter Plot"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a>  <span class="fu">scatterServer</span>(<span class="st">"mmse_etiv"</span>,<span class="at">data =</span> oasis_df, </span>
+<span id="cb50-2"><a href=""></a>                <span class="at">xvar =</span> <span class="st">"mmse"</span>, <span class="at">yvar =</span> <span class="st">"etiv"</span>,</span>
+<span id="cb50-3"><a href=""></a>                <span class="at">colorvar =</span> grouping_var)</span>
+<span id="cb50-4"><a href=""></a>  <span class="fu">scatterServer</span>(<span class="st">"nwbv_asf"</span>, <span class="at">data =</span> oasis_df, </span>
+<span id="cb50-5"><a href=""></a>                <span class="at">xvar =</span> <span class="st">"nwbv"</span>, <span class="at">yvar =</span> <span class="st">"asf"</span>,</span>
+<span id="cb50-6"><a href=""></a>                <span class="at">colorvar =</span> grouping_var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 <section id="interactive-map-visualization" class="slide level2 smaller">
 <h2>5.3 Interactive Map Visualization</h2>
 <p>Maps visualization including <code>choropleth</code> are useful to explore:</p>
@@ -1792,7 +1963,7 @@ Rory Chen
 <li>participant recruitment areas</li>
 <li>disease burden by country or region</li>
 </ul>
-<p>One of the most popular R packages for creating interactive maps in Shiny is <code>leaflet</code>.</p>
+<p><code>leaflet</code> is one of the most popular R packages for creating interactive maps.</p>
 <p><a href="https://rstudio.github.io/leaflet/articles/leaflet.html" class="uri">https://rstudio.github.io/leaflet/articles/leaflet.html</a></p>
 </section>
 <section class="slide level2">
@@ -1800,16 +1971,15 @@ Rory Chen
 <h3 id="basic-usage">5.3.1 Basic Usage</h3>
 <ol type="1">
 <li>Create a map widget by calling leaflet().</li>
-<li>Add layers (i.e., features) to the map by using layer functions (e.g., addTiles, addMarkers, addPolygons) to modify the map widget.</li>
-<li>Repeat step 2 as desired.</li>
+<li>Add layers (i.e., features) to the map by using layer functions (e.g., <code>addTiles</code>, <code>addMarkers</code>, <code>addPolygons</code>) to modify the map widget.</li>
 <li>Print the map widget to display it.</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb45-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href=""></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
-<span id="cb45-4"><a href=""></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="fl">0.0291</span>, <span class="at">lat=</span><span class="fl">51.5083</span>, <span class="at">popup =</span> <span class="st">"AAIC 2026"</span>)</span>
-<span id="cb45-5"><a href=""></a>m </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb51-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href=""></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb51-4"><a href=""></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="fl">0.0291</span>, <span class="at">lat=</span><span class="fl">51.5083</span>, <span class="at">popup =</span> <span class="st">"AAIC 2026"</span>)</span>
+<span id="cb51-5"><a href=""></a>m </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1817,8 +1987,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-63a3b6339180963d5de8" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-63a3b6339180963d5de8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-f5b6b8f32f06a03595b5" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-f5b6b8f32f06a03595b5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -1830,7 +2000,7 @@ Rory Chen
 <div class="column" style="width:30%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="./img/12-gbd60plus-data.png"></p>
+<p><img data-src="./img/13-gbd60plus-data.png"></p>
 <figcaption><code>GBD Data Search</code></figcaption>
 </figure>
 </div>
@@ -1921,54 +2091,56 @@ Rory Chen
 <p>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</p>
 </div><div class="column" style="width:70%;">
 <ul>
-<li>Open <code>12-gbd60plus.R</code></li>
+<li>Open <code>./examples/exercises/13-gbd60plus.R</code></li>
 <li>Add three <code>selectInput()</code> for users to select <code>sex</code>, <code>measure</code> and <code>metric.</code></li>
+<li>Define the <code>reactive expression</code> to filter the data based on the selected inputs.</li>
+<li>You can find the solution in <code>./examples/solutions/13-gbd60plus-solution.R</code></li>
 </ul>
 </div></div>
 </section>
 <section class="slide level2">
 
-<h3 class="small-contd" id="your-turn-inputs-1">5.3.3 Your turn: Inputs</h3>
+<h3 class="small-contd" id="your-turn-inputs---solution">5.3.3 Your turn: Inputs - Solution</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>    <span class="do">## Filter for sex</span></span>
-<span id="cb46-2"><a href=""></a>    <span class="fu">selectInput</span>(</span>
-<span id="cb46-3"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_sex"</span>,</span>
-<span id="cb46-4"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Sex:"</span>,</span>
-<span id="cb46-5"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>sex),</span>
-<span id="cb46-6"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Both"</span>),</span>
-<span id="cb46-7"><a href=""></a>    <span class="do">## Filter for measure</span></span>
-<span id="cb46-8"><a href=""></a>    <span class="fu">selectInput</span>(</span>
-<span id="cb46-9"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_measure"</span>,</span>
-<span id="cb46-10"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Measure:"</span>,</span>
-<span id="cb46-11"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>measure),</span>
-<span id="cb46-12"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Prevalence"</span>),</span>
-<span id="cb46-13"><a href=""></a>    <span class="do">## Filter for measure</span></span>
-<span id="cb46-14"><a href=""></a>    <span class="fu">selectInput</span>(</span>
-<span id="cb46-15"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_metric"</span>,</span>
-<span id="cb46-16"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Metric:"</span>,</span>
-<span id="cb46-17"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>metric),</span>
-<span id="cb46-18"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Percent"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>    <span class="do">## Filter for sex</span></span>
+<span id="cb52-2"><a href=""></a>    <span class="fu">selectInput</span>(</span>
+<span id="cb52-3"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_sex"</span>,</span>
+<span id="cb52-4"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Sex:"</span>,</span>
+<span id="cb52-5"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>sex),</span>
+<span id="cb52-6"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Both"</span>),</span>
+<span id="cb52-7"><a href=""></a>    <span class="do">## Filter for measure</span></span>
+<span id="cb52-8"><a href=""></a>    <span class="fu">selectInput</span>(</span>
+<span id="cb52-9"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_measure"</span>,</span>
+<span id="cb52-10"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Measure:"</span>,</span>
+<span id="cb52-11"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>measure),</span>
+<span id="cb52-12"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Prevalence"</span>),</span>
+<span id="cb52-13"><a href=""></a>    <span class="do">## Filter for measure</span></span>
+<span id="cb52-14"><a href=""></a>    <span class="fu">selectInput</span>(</span>
+<span id="cb52-15"><a href=""></a>      <span class="at">inputId  =</span> <span class="st">"selected_metric"</span>,</span>
+<span id="cb52-16"><a href=""></a>      <span class="at">label    =</span> <span class="st">"Select Metric:"</span>,</span>
+<span id="cb52-17"><a href=""></a>      <span class="at">choices  =</span> <span class="fu">levels</span>(gbd_60plus<span class="sc">$</span>metric),</span>
+<span id="cb52-18"><a href=""></a>      <span class="at">selected =</span> <span class="st">"Percent"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 class="smaller" id="your-turn-reactive-expression">5.3.4 Your turn: Reactive Expression</h3>
+<h3 class="smaller" id="your-turn-reactive-expression---solution">5.3.4 Your turn: Reactive Expression - Solution</h3>
 <ul>
 <li>Define the <code>reactive expression</code> to filter the data based on the selected inputs.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb47-2"><a href=""></a>    <span class="fu">req</span>(input<span class="sc">$</span>selected_sex,</span>
-<span id="cb47-3"><a href=""></a>        input<span class="sc">$</span>selected_measure, </span>
-<span id="cb47-4"><a href=""></a>        input<span class="sc">$</span>selected_metric)</span>
-<span id="cb47-5"><a href=""></a>    </span>
-<span id="cb47-6"><a href=""></a>    gbd_60plus <span class="sc">|&gt;</span></span>
-<span id="cb47-7"><a href=""></a>      <span class="fu">filter</span>(</span>
-<span id="cb47-8"><a href=""></a>        sex <span class="sc">==</span> input<span class="sc">$</span>selected_sex,</span>
-<span id="cb47-9"><a href=""></a>        measure <span class="sc">==</span> input<span class="sc">$</span>selected_measure,</span>
-<span id="cb47-10"><a href=""></a>        metric <span class="sc">==</span> input<span class="sc">$</span>selected_metric</span>
-<span id="cb47-11"><a href=""></a>      )</span>
-<span id="cb47-12"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb53-2"><a href=""></a>    <span class="fu">req</span>(input<span class="sc">$</span>selected_sex,</span>
+<span id="cb53-3"><a href=""></a>        input<span class="sc">$</span>selected_measure, </span>
+<span id="cb53-4"><a href=""></a>        input<span class="sc">$</span>selected_metric)</span>
+<span id="cb53-5"><a href=""></a>    </span>
+<span id="cb53-6"><a href=""></a>    gbd_60plus <span class="sc">|&gt;</span></span>
+<span id="cb53-7"><a href=""></a>      <span class="fu">filter</span>(</span>
+<span id="cb53-8"><a href=""></a>        sex <span class="sc">==</span> input<span class="sc">$</span>selected_sex,</span>
+<span id="cb53-9"><a href=""></a>        measure <span class="sc">==</span> input<span class="sc">$</span>selected_measure,</span>
+<span id="cb53-10"><a href=""></a>        metric <span class="sc">==</span> input<span class="sc">$</span>selected_metric</span>
+<span id="cb53-11"><a href=""></a>      )</span>
+<span id="cb53-12"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1978,7 +2150,7 @@ Rory Chen
 <p>You can refer to the documentation for more options: <a href="https://rstudio.github.io/leaflet/articles/shiny.html" class="uri">https://rstudio.github.io/leaflet/articles/shiny.html</a></p>
 <p>Using <code>leafletOutput</code> and <code>renderLeaflet</code> to create a reactive map output in your <code>Shiny</code> app.</p>
 
-<img data-src="./img/12-gbd60plus.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>12-gbd60plus.R</code></p></section>
+<img data-src="./img/13-gbd60plus.gif" class="r-stretch quarto-figure-center"><p class="caption"><code>13-gbd60plus.R</code></p></section>
 <section class="slide level2">
 
 <h4 class="smaller" id="building-the-map-output-1">5.3.5.1 Building the map output</h4>
@@ -1987,68 +2159,68 @@ Rory Chen
 <li>Step 2: Add the choropleth layer using <code>addPolygons()</code></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-code-line-numbers="3-4|5-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a>  output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb48-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb48-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb48-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb48-5"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
-<span id="cb48-6"><a href=""></a>        <span class="at">fillColor =</span> <span class="st">"#4a0d66"</span>,</span>
-<span id="cb48-7"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb48-8"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb48-9"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
-<span id="cb48-10"><a href=""></a>       )</span>
-<span id="cb48-11"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" data-code-line-numbers="3-4|5-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a>  output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb54-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb54-3"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb54-4"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb54-5"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
+<span id="cb54-6"><a href=""></a>        <span class="at">fillColor =</span> <span class="st">"#4a0d66"</span>,</span>
+<span id="cb54-7"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb54-8"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb54-9"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span></span>
+<span id="cb54-10"><a href=""></a>       )</span>
+<span id="cb54-11"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h4 class="small-contd" id="building-the-map-output-2">5.3.5.1 Building the map output</h4>
 
-<img data-src="./img/12-gbd60plus-step1.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Step1 - Basemap</code></p></section>
+<img data-src="./img/13-gbd60plus-step1.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Step1 - Basemap</code></p></section>
 <section class="slide level2">
 
 <h4 class="small-contd" id="building-the-map-output-3">5.3.5.1 Building the map output</h4>
 
-<img data-src="./img/12-gbd60plus-step2.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Step2 - addPolygons</code></p></section>
+<img data-src="./img/13-gbd60plus-step2.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Step2 - addPolygons</code></p></section>
 <section class="slide level2">
 
 <h4 class="smaller" id="building-the-map-output-4">5.3.5.2 Building the map output</h4>
 <p>Step 3: Add a color palette that reflects the value, and change the <code>fillColor</code> in <code>addPolygons()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49" data-code-line-numbers="3-6|9-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb49-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
-<span id="cb49-3"><a href=""></a>    pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(</span>
-<span id="cb49-4"><a href=""></a>      <span class="at">palette =</span> <span class="st">"Purples"</span>,</span>
-<span id="cb49-5"><a href=""></a>      <span class="at">domain =</span> map_data<span class="sc">$</span>val,</span>
-<span id="cb49-6"><a href=""></a>      <span class="at">na.color =</span> <span class="st">"#f0f0f0"</span>)</span>
-<span id="cb49-7"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
-<span id="cb49-8"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
-<span id="cb49-9"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
-<span id="cb49-10"><a href=""></a>        <span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">pal</span>(val),</span>
-<span id="cb49-11"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb49-12"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb49-13"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span>)</span>
-<span id="cb49-14"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-code-line-numbers="3-6|9-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a>output<span class="sc">$</span>choropleth_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb55-2"><a href=""></a>    map_data <span class="ot">&lt;-</span> <span class="fu">filtered_data</span>()</span>
+<span id="cb55-3"><a href=""></a>    pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(</span>
+<span id="cb55-4"><a href=""></a>      <span class="at">palette =</span> <span class="st">"Purples"</span>,</span>
+<span id="cb55-5"><a href=""></a>      <span class="at">domain =</span> map_data<span class="sc">$</span>val,</span>
+<span id="cb55-6"><a href=""></a>      <span class="at">na.color =</span> <span class="st">"#f0f0f0"</span>)</span>
+<span id="cb55-7"><a href=""></a>    <span class="fu">leaflet</span>(map_data) <span class="sc">|&gt;</span></span>
+<span id="cb55-8"><a href=""></a>      <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">|&gt;</span></span>
+<span id="cb55-9"><a href=""></a>      <span class="fu">addPolygons</span>(</span>
+<span id="cb55-10"><a href=""></a>        <span class="at">fillColor =</span> <span class="sc">~</span><span class="fu">pal</span>(val),</span>
+<span id="cb55-11"><a href=""></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb55-12"><a href=""></a>        <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb55-13"><a href=""></a>        <span class="at">weight =</span> <span class="fl">0.5</span>)</span>
+<span id="cb55-14"><a href=""></a>  })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <h4 class="small-contd" id="building-the-map-output-5">5.3.5.2 Building the map output</h4>
-<p>Step 3: Add a color palette that reflects the value, and change the <code>fillColor</code> in <code>addPolygons()</code>. <img data-src="./img/12-gbd60plus-step3.png" alt="Polygon with Color Palette"></p>
+<p>Step 3: Add a color palette that reflects the value, and change the <code>fillColor</code> in <code>addPolygons()</code>. <img data-src="./img/13-gbd60plus-step3.png" alt="Polygon with Color Palette"></p>
 </section>
 <section class="slide level2">
 
 <h4 class="smaller" id="building-the-map-output-6">5.3.5.3 Building the map output</h4>
 <p>Step 4: Add Legends for the color palette using <code>addLegend()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a><span class="sc">|&gt;</span></span>
-<span id="cb50-2"><a href=""></a>      <span class="fu">addLegend</span>(</span>
-<span id="cb50-3"><a href=""></a>        <span class="at">pal =</span> pal,</span>
-<span id="cb50-4"><a href=""></a>        <span class="at">values =</span> <span class="sc">~</span>val,</span>
-<span id="cb50-5"><a href=""></a>        <span class="at">title =</span> <span class="st">"Value"</span>,</span>
-<span id="cb50-6"><a href=""></a>        <span class="at">opacity =</span> <span class="fl">0.8</span>,</span>
-<span id="cb50-7"><a href=""></a>        <span class="at">position =</span> <span class="st">"bottomright"</span></span>
-<span id="cb50-8"><a href=""></a>      )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href=""></a>      <span class="fu">addLegend</span>(</span>
+<span id="cb56-3"><a href=""></a>        <span class="at">pal =</span> pal,</span>
+<span id="cb56-4"><a href=""></a>        <span class="at">values =</span> <span class="sc">~</span>val,</span>
+<span id="cb56-5"><a href=""></a>        <span class="at">title =</span> <span class="st">"Value"</span>,</span>
+<span id="cb56-6"><a href=""></a>        <span class="at">opacity =</span> <span class="fl">0.8</span>,</span>
+<span id="cb56-7"><a href=""></a>        <span class="at">position =</span> <span class="st">"bottomright"</span></span>
+<span id="cb56-8"><a href=""></a>      )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2056,19 +2228,19 @@ Rory Chen
 <h4 class="small-contd" id="building-the-map-output-7">5.3.5.3 Building the map output</h4>
 <p>Step 4: Add Legends for the color palette using <code>addLegend()</code></p>
 
-<img data-src="./img/12-gbd60plus-step4.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Legend</code></p></section>
+<img data-src="./img/13-gbd60plus-step4.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Legend</code></p></section>
 <section class="slide level2">
 
 <h4 class="smaller" id="building-the-map-output-8">5.3.5.4 Building the map output</h4>
 <p>Step 5: Add Pop-up info inside <code>addPolygons</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a>popup <span class="ot">=</span> <span class="er">~</span><span class="fu">paste0</span>(</span>
-<span id="cb51-2"><a href=""></a>          <span class="st">"&lt;strong&gt;Country:&lt;/strong&gt; "</span>, country, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb51-3"><a href=""></a>          <span class="st">"&lt;strong&gt;Measure:&lt;/strong&gt; "</span>, measure, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb51-4"><a href=""></a>          <span class="st">"&lt;strong&gt;Sex:&lt;/strong&gt; "</span>, sex, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb51-5"><a href=""></a>          <span class="st">"&lt;strong&gt;Metric:&lt;/strong&gt; "</span>, metric, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb51-6"><a href=""></a>          <span class="st">"&lt;strong&gt;Value:&lt;/strong&gt; "</span>, <span class="fu">round</span>(val, <span class="dv">2</span>)</span>
-<span id="cb51-7"><a href=""></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a>popup <span class="ot">=</span> <span class="er">~</span><span class="fu">paste0</span>(</span>
+<span id="cb57-2"><a href=""></a>          <span class="st">"&lt;strong&gt;Country:&lt;/strong&gt; "</span>, country, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb57-3"><a href=""></a>          <span class="st">"&lt;strong&gt;Measure:&lt;/strong&gt; "</span>, measure, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb57-4"><a href=""></a>          <span class="st">"&lt;strong&gt;Sex:&lt;/strong&gt; "</span>, sex, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb57-5"><a href=""></a>          <span class="st">"&lt;strong&gt;Metric:&lt;/strong&gt; "</span>, metric, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb57-6"><a href=""></a>          <span class="st">"&lt;strong&gt;Value:&lt;/strong&gt; "</span>, <span class="fu">round</span>(val, <span class="dv">2</span>)</span>
+<span id="cb57-7"><a href=""></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2076,7 +2248,7 @@ Rory Chen
 <h4 class="small-contd" id="building-the-map-output-9">5.3.5.4 Building the map output</h4>
 <p>Step 5: Add Pop-up info inside <code>addPolygons</code>.</p>
 
-<img data-src="./img/12-gbd60plus-step5.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Popup</code></p></section></section>
+<img data-src="./img/13-gbd60plus-step5.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Popup</code></p></section></section>
 <section>
 <section id="shiny-app-with-ai" class="title-slide slide level1 center">
 <h1>6. Shiny App with AI</h1>
@@ -2126,7 +2298,7 @@ Rory Chen
 
 <h3 id="set-up-your-environment-variable">6.4.1 Set up your environment variable</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Copy your token in the .Renviron file, and save it. Then restart your R session.</p>
 <div style="font-size: 25px;">
@@ -2187,21 +2359,21 @@ Rory Chen
 <h3 class="smaller" id="minimal-ellmer-chat">6.4.2 Minimal <code>{ellmer}</code> chat</h3>
 <p>Open <code>14-minichat.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb53-2"><a href=""></a></span>
-<span id="cb53-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(</span>
-<span id="cb53-4"><a href=""></a>  <span class="at">system_prompt =</span> <span class="st">"</span></span>
-<span id="cb53-5"><a href=""></a><span class="st">  You are an epidemiologist specialising in dementia research.</span></span>
-<span id="cb53-6"><a href=""></a></span>
-<span id="cb53-7"><a href=""></a><span class="st">  Explain concepts in plain English for researchers and clinicians.</span></span>
-<span id="cb53-8"><a href=""></a><span class="st">  Use dementia-related examples where helpful.</span></span>
-<span id="cb53-9"><a href=""></a></span>
-<span id="cb53-10"><a href=""></a><span class="st">  Do not invent findings, numbers, references, or study results.</span></span>
-<span id="cb53-11"><a href=""></a><span class="st">  Do not provide medical advice.</span></span>
-<span id="cb53-12"><a href=""></a><span class="st">  If unsure, say what information is missing. "</span></span>
-<span id="cb53-13"><a href=""></a>)</span>
-<span id="cb53-14"><a href=""></a></span>
-<span id="cb53-15"><a href=""></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Explain the difference between incidence rate and prevalence in dementia epidemiology"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb59-2"><a href=""></a></span>
+<span id="cb59-3"><a href=""></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_anthropic</span>(</span>
+<span id="cb59-4"><a href=""></a>  <span class="at">system_prompt =</span> <span class="st">"</span></span>
+<span id="cb59-5"><a href=""></a><span class="st">  You are an epidemiologist specialising in dementia research.</span></span>
+<span id="cb59-6"><a href=""></a></span>
+<span id="cb59-7"><a href=""></a><span class="st">  Explain concepts in plain English for researchers and clinicians.</span></span>
+<span id="cb59-8"><a href=""></a><span class="st">  Use dementia-related examples where helpful.</span></span>
+<span id="cb59-9"><a href=""></a></span>
+<span id="cb59-10"><a href=""></a><span class="st">  Do not invent findings, numbers, references, or study results.</span></span>
+<span id="cb59-11"><a href=""></a><span class="st">  Do not provide medical advice.</span></span>
+<span id="cb59-12"><a href=""></a><span class="st">  If unsure, say what information is missing. "</span></span>
+<span id="cb59-13"><a href=""></a>)</span>
+<span id="cb59-14"><a href=""></a></span>
+<span id="cb59-15"><a href=""></a>chat<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Explain the difference between incidence rate and prevalence in dementia epidemiology"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2214,32 +2386,32 @@ Rory Chen
 <h3 class="smaller" id="the-chat-inside-a-shiny-app">6.4.3 The chat inside a shiny app</h3>
 <p>Open <code>15-shinychat.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb54-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
-<span id="cb54-3"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb54-4"><a href=""></a><span class="fu">library</span>(shinychat)</span>
-<span id="cb54-5"><a href=""></a></span>
-<span id="cb54-6"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
-<span id="cb54-7"><a href=""></a>  <span class="fu">chat_ui</span>(</span>
-<span id="cb54-8"><a href=""></a>    <span class="at">id =</span> <span class="st">"chat"</span>,</span>
-<span id="cb54-9"><a href=""></a>    <span class="at">messages =</span> <span class="st">"**Hello!** How can I help you today?"</span></span>
-<span id="cb54-10"><a href=""></a>  ),</span>
-<span id="cb54-11"><a href=""></a>  <span class="at">fillable_mobile =</span> <span class="cn">TRUE</span></span>
-<span id="cb54-12"><a href=""></a>)</span>
-<span id="cb54-13"><a href=""></a></span>
-<span id="cb54-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb54-15"><a href=""></a>  chat <span class="ot">&lt;-</span></span>
-<span id="cb54-16"><a href=""></a>    ellmer<span class="sc">::</span><span class="fu">chat_anthropic</span>(</span>
-<span id="cb54-17"><a href=""></a>      <span class="at">system_prompt =</span> <span class="st">"....."</span></span>
-<span id="cb54-18"><a href=""></a>    )</span>
-<span id="cb54-19"><a href=""></a>  </span>
-<span id="cb54-20"><a href=""></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>chat_user_input, {</span>
-<span id="cb54-21"><a href=""></a>    stream <span class="ot">&lt;-</span> chat<span class="sc">$</span><span class="fu">stream_async</span>(input<span class="sc">$</span>chat_user_input)</span>
-<span id="cb54-22"><a href=""></a>    <span class="fu">chat_append</span>(<span class="st">"chat"</span>, stream)</span>
-<span id="cb54-23"><a href=""></a>  })</span>
-<span id="cb54-24"><a href=""></a>}</span>
-<span id="cb54-25"><a href=""></a></span>
-<span id="cb54-26"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb60-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb60-3"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb60-4"><a href=""></a><span class="fu">library</span>(shinychat)</span>
+<span id="cb60-5"><a href=""></a></span>
+<span id="cb60-6"><a href=""></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fillable</span>(</span>
+<span id="cb60-7"><a href=""></a>  <span class="fu">chat_ui</span>(</span>
+<span id="cb60-8"><a href=""></a>    <span class="at">id =</span> <span class="st">"chat"</span>,</span>
+<span id="cb60-9"><a href=""></a>    <span class="at">messages =</span> <span class="st">"**Hello!** How can I help you today?"</span></span>
+<span id="cb60-10"><a href=""></a>  ),</span>
+<span id="cb60-11"><a href=""></a>  <span class="at">fillable_mobile =</span> <span class="cn">TRUE</span></span>
+<span id="cb60-12"><a href=""></a>)</span>
+<span id="cb60-13"><a href=""></a></span>
+<span id="cb60-14"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb60-15"><a href=""></a>  chat <span class="ot">&lt;-</span></span>
+<span id="cb60-16"><a href=""></a>    ellmer<span class="sc">::</span><span class="fu">chat_anthropic</span>(</span>
+<span id="cb60-17"><a href=""></a>      <span class="at">system_prompt =</span> <span class="st">"....."</span></span>
+<span id="cb60-18"><a href=""></a>    )</span>
+<span id="cb60-19"><a href=""></a>  </span>
+<span id="cb60-20"><a href=""></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>chat_user_input, {</span>
+<span id="cb60-21"><a href=""></a>    stream <span class="ot">&lt;-</span> chat<span class="sc">$</span><span class="fu">stream_async</span>(input<span class="sc">$</span>chat_user_input)</span>
+<span id="cb60-22"><a href=""></a>    <span class="fu">chat_append</span>(<span class="st">"chat"</span>, stream)</span>
+<span id="cb60-23"><a href=""></a>  })</span>
+<span id="cb60-24"><a href=""></a>}</span>
+<span id="cb60-25"><a href=""></a></span>
+<span id="cb60-26"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2268,23 +2440,23 @@ Rory Chen
 <h4 class="smaller" id="step-1-initialize-querychat">6.5.1.1 Step 1: Initialize <code>QueryChat</code></h4>
 <p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb55-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
-<span id="cb55-3"><a href=""></a><span class="fu">library</span>(here)</span>
-<span id="cb55-4"><a href=""></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb55-5"><a href=""></a><span class="fu">library</span>(DT)</span>
-<span id="cb55-6"><a href=""></a><span class="fu">library</span>(sf)</span>
-<span id="cb55-7"><a href=""></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb55-8"><a href=""></a><span class="fu">library</span>(querychat)</span>
-<span id="cb55-9"><a href=""></a><span class="co"># Load data </span></span>
-<span id="cb55-10"><a href=""></a>gbd_60plus <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"alz_gbd_60plus_sf.rds"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb55-11"><a href=""></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="co"># Do not need geometry data here</span></span>
-<span id="cb55-12"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
-<span id="cb55-13"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb55-14"><a href=""></a>  gbd_60plus, </span>
-<span id="cb55-15"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
-<span id="cb55-16"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'Hello!'</span>,</span>
-<span id="cb55-17"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb61-2"><a href=""></a><span class="fu">library</span>(bslib)</span>
+<span id="cb61-3"><a href=""></a><span class="fu">library</span>(here)</span>
+<span id="cb61-4"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb61-5"><a href=""></a><span class="fu">library</span>(DT)</span>
+<span id="cb61-6"><a href=""></a><span class="fu">library</span>(sf)</span>
+<span id="cb61-7"><a href=""></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb61-8"><a href=""></a><span class="fu">library</span>(querychat)</span>
+<span id="cb61-9"><a href=""></a><span class="co"># Load data </span></span>
+<span id="cb61-10"><a href=""></a>gbd_60plus <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"alz_gbd_60plus_sf.rds"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb61-11"><a href=""></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="co"># Do not need geometry data here</span></span>
+<span id="cb61-12"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
+<span id="cb61-13"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb61-14"><a href=""></a>  gbd_60plus, </span>
+<span id="cb61-15"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
+<span id="cb61-16"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'Hello!'</span>,</span>
+<span id="cb61-17"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2292,21 +2464,21 @@ Rory Chen
 <h4 class="smaller" id="step-2-add-ui-component">6.5.1.2 Step 2: Add UI component</h4>
 <p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a><span class="co"># Step 2: Add UI component</span></span>
-<span id="cb56-2"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
-<span id="cb56-3"><a href=""></a>  <span class="co"># App title ----</span></span>
-<span id="cb56-4"><a href=""></a>  <span class="at">title =</span> <span class="st">"GBD ADOD Data Explorer"</span>,</span>
-<span id="cb56-5"><a href=""></a>  <span class="at">sidebar =</span> qc<span class="sc">$</span><span class="fu">sidebar</span>(),</span>
-<span id="cb56-6"><a href=""></a>  <span class="fu">card</span>(</span>
-<span id="cb56-7"><a href=""></a>    <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb56-8"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"SQL Query"</span>),</span>
-<span id="cb56-9"><a href=""></a>    <span class="fu">verbatimTextOutput</span>(<span class="st">"sql"</span>)</span>
-<span id="cb56-10"><a href=""></a>  ),</span>
-<span id="cb56-11"><a href=""></a>  <span class="fu">card</span>(</span>
-<span id="cb56-12"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"Interactive Data Table"</span>),</span>
-<span id="cb56-13"><a href=""></a>    <span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"datadt"</span>)</span>
-<span id="cb56-14"><a href=""></a>    )</span>
-<span id="cb56-15"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="co"># Step 2: Add UI component</span></span>
+<span id="cb62-2"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">page_sidebar</span>(</span>
+<span id="cb62-3"><a href=""></a>  <span class="co"># App title ----</span></span>
+<span id="cb62-4"><a href=""></a>  <span class="at">title =</span> <span class="st">"GBD ADOD Data Explorer"</span>,</span>
+<span id="cb62-5"><a href=""></a>  <span class="at">sidebar =</span> qc<span class="sc">$</span><span class="fu">sidebar</span>(),</span>
+<span id="cb62-6"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb62-7"><a href=""></a>    <span class="at">fill =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb62-8"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"SQL Query"</span>),</span>
+<span id="cb62-9"><a href=""></a>    <span class="fu">verbatimTextOutput</span>(<span class="st">"sql"</span>)</span>
+<span id="cb62-10"><a href=""></a>  ),</span>
+<span id="cb62-11"><a href=""></a>  <span class="fu">card</span>(</span>
+<span id="cb62-12"><a href=""></a>    <span class="fu">card_header</span>(<span class="st">"Interactive Data Table"</span>),</span>
+<span id="cb62-13"><a href=""></a>    <span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"datadt"</span>)</span>
+<span id="cb62-14"><a href=""></a>    )</span>
+<span id="cb62-15"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2314,28 +2486,28 @@ Rory Chen
 <h4 class="smaller" id="step-3-use-reactive-values-in-server">6.5.1.3 Step 3: Use reactive values in server</h4>
 <p>Open <code>16-querychat-basic.R</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="co"># Step 3: Use reactive values in server</span></span>
-<span id="cb57-2"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb57-3"><a href=""></a>  qc_vals <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">server</span>()</span>
-<span id="cb57-4"><a href=""></a>  </span>
-<span id="cb57-5"><a href=""></a>  output<span class="sc">$</span>sql <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb57-6"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">sql</span>() <span class="sc">%||%</span> <span class="st">"SELECT * FROM gbd_60plus"</span></span>
-<span id="cb57-7"><a href=""></a>  })</span>
-<span id="cb57-8"><a href=""></a>  </span>
-<span id="cb57-9"><a href=""></a>  <span class="do">## DT</span></span>
-<span id="cb57-10"><a href=""></a>  output<span class="sc">$</span>datadt <span class="ot">&lt;-</span> <span class="fu">renderDataTable</span>({</span>
-<span id="cb57-11"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">df</span>() <span class="sc">|&gt;</span></span>
-<span id="cb57-12"><a href=""></a>      <span class="fu">datatable</span>(</span>
-<span id="cb57-13"><a href=""></a>        <span class="at">filter =</span> <span class="st">"top"</span>, <span class="co"># Enable built-in filters at the top of the columns</span></span>
-<span id="cb57-14"><a href=""></a>        <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb57-15"><a href=""></a>          <span class="at">pageLength =</span> <span class="dv">25</span>, <span class="co"># Control initial page size</span></span>
-<span id="cb57-16"><a href=""></a>          <span class="at">autoWidth =</span> <span class="cn">TRUE</span>, <span class="co"># Auto adjusting column width</span></span>
-<span id="cb57-17"><a href=""></a>          <span class="at">search =</span> <span class="fu">list</span>(<span class="at">smart =</span> <span class="cn">TRUE</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>), <span class="co"># Enable "smart" space-separated searching globally</span></span>
-<span id="cb57-18"><a href=""></a>          <span class="at">scrollX =</span> <span class="cn">TRUE</span> <span class="co"># Enable horizontal scrolling for wide data frames</span></span>
-<span id="cb57-19"><a href=""></a>        )</span>
-<span id="cb57-20"><a href=""></a>      )</span>
-<span id="cb57-21"><a href=""></a>  })</span>
-<span id="cb57-22"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a><span class="co"># Step 3: Use reactive values in server</span></span>
+<span id="cb63-2"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb63-3"><a href=""></a>  qc_vals <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">server</span>()</span>
+<span id="cb63-4"><a href=""></a>  </span>
+<span id="cb63-5"><a href=""></a>  output<span class="sc">$</span>sql <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb63-6"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">sql</span>() <span class="sc">%||%</span> <span class="st">"SELECT * FROM gbd_60plus"</span></span>
+<span id="cb63-7"><a href=""></a>  })</span>
+<span id="cb63-8"><a href=""></a>  </span>
+<span id="cb63-9"><a href=""></a>  <span class="do">## DT</span></span>
+<span id="cb63-10"><a href=""></a>  output<span class="sc">$</span>datadt <span class="ot">&lt;-</span> <span class="fu">renderDataTable</span>({</span>
+<span id="cb63-11"><a href=""></a>    qc_vals<span class="sc">$</span><span class="fu">df</span>() <span class="sc">|&gt;</span></span>
+<span id="cb63-12"><a href=""></a>      <span class="fu">datatable</span>(</span>
+<span id="cb63-13"><a href=""></a>        <span class="at">filter =</span> <span class="st">"top"</span>, <span class="co"># Enable built-in filters at the top of the columns</span></span>
+<span id="cb63-14"><a href=""></a>        <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb63-15"><a href=""></a>          <span class="at">pageLength =</span> <span class="dv">25</span>, <span class="co"># Control initial page size</span></span>
+<span id="cb63-16"><a href=""></a>          <span class="at">autoWidth =</span> <span class="cn">TRUE</span>, <span class="co"># Auto adjusting column width</span></span>
+<span id="cb63-17"><a href=""></a>          <span class="at">search =</span> <span class="fu">list</span>(<span class="at">smart =</span> <span class="cn">TRUE</span>, <span class="at">regex =</span> <span class="cn">TRUE</span>), <span class="co"># Enable "smart" space-separated searching globally</span></span>
+<span id="cb63-18"><a href=""></a>          <span class="at">scrollX =</span> <span class="cn">TRUE</span> <span class="co"># Enable horizontal scrolling for wide data frames</span></span>
+<span id="cb63-19"><a href=""></a>        )</span>
+<span id="cb63-20"><a href=""></a>      )</span>
+<span id="cb63-21"><a href=""></a>  })</span>
+<span id="cb63-22"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2354,13 +2526,13 @@ Rory Chen
 <li><p>You can also add a <code>extra_instructions = "instructions.md"</code>. It is optional but can be helpful for more complex datasets or specific use cases.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58" data-code-line-numbers="5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
-<span id="cb58-2"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb58-3"><a href=""></a>  gbd_60plus, </span>
-<span id="cb58-4"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
-<span id="cb58-5"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'gbd_60plus_greeting.md'</span>,</span>
-<span id="cb58-6"><a href=""></a>  <span class="at">data_description =</span> <span class="st">'gbd_60plus_description.md'</span>,</span>
-<span id="cb58-7"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64" data-code-line-numbers="5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href=""></a><span class="co"># Step 1: Initialize QueryChat</span></span>
+<span id="cb64-2"><a href=""></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb64-3"><a href=""></a>  gbd_60plus, </span>
+<span id="cb64-4"><a href=""></a>  <span class="st">'gbd_60plus'</span>, </span>
+<span id="cb64-5"><a href=""></a>  <span class="at">greeting =</span> <span class="st">'gbd_60plus_greeting.md'</span>,</span>
+<span id="cb64-6"><a href=""></a>  <span class="at">data_description =</span> <span class="st">'gbd_60plus_description.md'</span>,</span>
+<span id="cb64-7"><a href=""></a>  <span class="at">client =</span> <span class="st">"claude/claude-sonnet-4-5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -2445,10 +2617,10 @@ Rory Chen
 <h4 class="smaller" id="step-3-greeting-file">6.5.2.3 Step 3: Greeting file</h4>
 <p>You can use <code>generate_greeting()</code> to generate a greeting message once based on the data and description you provided, and save it as a markdown file.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="co"># Generate a greeting and save it</span></span>
-<span id="cb59-2"><a href=""></a>greeting <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">generate_greeting</span>()</span>
-<span id="cb59-3"><a href=""></a></span>
-<span id="cb59-4"><a href=""></a><span class="fu">writeLines</span>(greeting, <span class="st">'./examples/17-querychat/gbd_60plus_greeting.md'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="co"># Generate a greeting and save it</span></span>
+<span id="cb65-2"><a href=""></a>greeting <span class="ot">&lt;-</span> qc<span class="sc">$</span><span class="fu">generate_greeting</span>()</span>
+<span id="cb65-3"><a href=""></a></span>
+<span id="cb65-4"><a href=""></a><span class="fu">writeLines</span>(greeting, <span class="st">'./examples/17-querychat/gbd_60plus_greeting.md'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Modify the .md file where you see fit.</p>
 <p>It usually includes:</p>
@@ -2457,6 +2629,72 @@ Rory Chen
 <li>providing a brief overview of the dataset</li>
 <li>offering some example questions to get started.</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h4 class="small-contd" id="step-3-greeting-file-1">6.5.2.3 Step 3: Greeting file</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a>Hello<span class="sc">!</span> 👋</span>
+<span id="cb66-2"><a href=""></a></span>
+<span id="cb66-3"><a href=""></a>I<span class="st">'m here to help you explore the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer'</span>s Disease and other <span class="fu">dementias</span> (ADOD) among people aged <span class="dv">60</span> years and older worldwide <span class="cf">in</span> <span class="fl">2023.</span></span>
+<span id="cb66-4"><a href=""></a></span>
+<span id="cb66-5"><a href=""></a>I can filter and sort the dashboard, answer questions about the data, and help you discover insights.</span>
+<span id="cb66-6"><a href=""></a></span>
+<span id="cb66-7"><a href=""></a>This dataset includes information about disease incidence and prevalence across different countries.</span>
+<span id="cb66-8"><a href=""></a></span>
+<span id="cb66-9"><a href=""></a>Let<span class="st">'s dive in!</span></span>
+<span id="cb66-10"><a href=""></a></span>
+<span id="cb66-11"><a href=""></a><span class="st">##### Explore the data</span></span>
+<span id="cb66-12"><a href=""></a></span>
+<span id="cb66-13"><a href=""></a><span class="st">&lt;ul&gt;</span></span>
+<span id="cb66-14"><a href=""></a></span>
+<span id="cb66-15"><a href=""></a><span class="st">&lt;li&gt;[Show me the top 10 countries by prevalence]{.suggestion}&lt;/li&gt;</span></span>
+<span id="cb66-16"><a href=""></a></span>
+<span id="cb66-17"><a href=""></a><span class="st">&lt;li&gt;[What continents are represented?]{.suggestion}&lt;/li&gt;</span></span>
+<span id="cb66-18"><a href=""></a></span>
+<span id="cb66-19"><a href=""></a><span class="st">&lt;li&gt;[How many records are in the dataset?]{.suggestion}&lt;/li&gt;</span></span>
+<span id="cb66-20"><a href=""></a></span>
+<span id="cb66-21"><a href=""></a><span class="st">&lt;/ul&gt;</span></span>
+<span id="cb66-22"><a href=""></a></span>
+<span id="cb66-23"><a href=""></a><span class="st">##### Compare groups</span></span>
+<span id="cb66-24"><a href=""></a></span>
+<span id="cb66-25"><a href=""></a><span class="st">&lt;ul&gt;</span></span>
+<span id="cb66-26"><a href=""></a></span>
+<span id="cb66-27"><a href=""></a><span class="st">&lt;li&gt;[Show me the difference between male and female incidence rates]{.suggestion}&lt;/li&gt;</span></span>
+<span id="cb66-28"><a href=""></a></span>
+<span id="cb66-29"><a href=""></a><span class="st">&lt;li&gt;[Compare high income OECD countries to low income countries]{.suggestion}&lt;/li&gt;</span></span>
+<span id="cb66-30"><a href=""></a></span>
+<span id="cb66-31"><a href=""></a><span class="st">&lt;li&gt;[What'</span>s the average prevalence by income group?]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-32"><a href=""></a></span>
+<span id="cb66-33"><a href=""></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span>
+<span id="cb66-34"><a href=""></a></span>
+<span id="cb66-35"><a href=""></a><span class="do">##### Filter the dashboard</span></span>
+<span id="cb66-36"><a href=""></a></span>
+<span id="cb66-37"><a href=""></a><span class="er">&lt;</span>ul<span class="sc">&gt;</span></span>
+<span id="cb66-38"><a href=""></a></span>
+<span id="cb66-39"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Show only high income countries]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-40"><a href=""></a></span>
+<span id="cb66-41"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Filter to prevalence measures]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-42"><a href=""></a></span>
+<span id="cb66-43"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Show records <span class="cf">for</span> Asia only]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-44"><a href=""></a></span>
+<span id="cb66-45"><a href=""></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span>
+<span id="cb66-46"><a href=""></a></span>
+<span id="cb66-47"><a href=""></a><span class="do">##### Ask research-style questions</span></span>
+<span id="cb66-48"><a href=""></a></span>
+<span id="cb66-49"><a href=""></a><span class="er">&lt;</span>ul<span class="sc">&gt;</span></span>
+<span id="cb66-50"><a href=""></a></span>
+<span id="cb66-51"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Which countries have the highest prevalence values?]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-52"><a href=""></a></span>
+<span id="cb66-53"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Which countries have the highest incidence values?]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-54"><a href=""></a></span>
+<span id="cb66-55"><a href=""></a><span class="er">&lt;</span>li<span class="sc">&gt;</span>[Summarise the main differences by income group]{.suggestion}<span class="sc">&lt;</span><span class="er">/</span>li<span class="sc">&gt;</span></span>
+<span id="cb66-56"><a href=""></a></span>
+<span id="cb66-57"><a href=""></a><span class="er">&lt;/</span>ul<span class="sc">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
 <section id="independent-hands-on-exercise" class="title-slide slide level1 center">
@@ -2492,7 +2730,7 @@ Rory Chen
 <h2>8.1 Share Your App</h2>
 <p><strong>You’re invited to share with the group:</strong></p>
 <ul>
-<li>📌 What dataset did you use?</li>
+<li>📌 Which dataset did you use?</li>
 <li>🎛️ What inputs did you add?</li>
 <li>📊 What does your visualization show?</li>
 <li>🌟 Any stretch goals you tackled?</li>
@@ -2542,9 +2780,9 @@ Rory Chen
 <li><strong>Rory Chen, MSc</strong></li>
 <li><strong>Ana W. Capuano, PhD</strong></li>
 <li><strong>Sarah Bauermeister, PhD</strong></li>
-<li><strong>Graham Bearden, PhD</strong></li>
 <li><strong>Ashleigh Vella, PhD</strong></li>
-<li><strong>James Lian, PhD</strong></li>
+<li><strong>Nikita Keshena Husein</strong></li>
+<li><strong>Mai Ho</strong></li>
 </ul>
 <p><br>
 </p>
@@ -2553,7 +2791,7 @@ Rory Chen
 </blockquote>
 <p><br>
 </p>
-<p>Slides &amp; code: <a href="https://github.com/RoryChenXY/aaic2026-shiny-research" class="uri">https://github.com/RoryChenXY/aaic2026-shiny-research</a></p>
+<p>Slides: <a href="https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html" class="uri">https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html</a> Repository: <a href="https://github.com/RoryChenXY/aaic2026-shiny-research" class="uri">https://github.com/RoryChenXY/aaic2026-shiny-research</a></p>
 
 </section></section>
     </div>

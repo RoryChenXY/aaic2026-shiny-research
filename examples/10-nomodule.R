@@ -1,11 +1,14 @@
 # Load packages
 library(shiny)
 library(bslib)
+library(here)
+library(dplyr)
 library(ggplot2)
 library(plotly)
 
 # Load data
-oasis_df <- readRDS("../data/oasis_df.rds") |> filter(visit == 1)
+oasis_df <- readRDS(here("data", "oasis_df.rds")) |> 
+  filter(visit == 1)
 
 # Define UI ----
 ui <- page_sidebar(
@@ -20,26 +23,28 @@ ui <- page_sidebar(
                 selected = "group")
   ),
   ## Main Panel ----
-  layout_columns(
-    card(
-      card_header("MMSE Histogram"),
-      plotlyOutput(outputId = "mmseplot")
-    ),
-    card(
-      card_header("eTIV Histogram"),
-      plotlyOutput(outputId = "etivplot")
-    ),
-    card(
-      card_header("nWBV Histogram"),
-      plotlyOutput(outputId = "nwbvplot")
-    ),
-    card(
-      card_header("ASF Histogram"),
-      plotlyOutput(outputId = "asfplot")
-    ),
-    col_widths = c(6,6,6,6)
-  )  
-  
+  navset_tab(
+    nav_panel("MMSE", 
+              card(
+                card_header("MMSE Histogram"),
+                plotlyOutput(outputId = "mmseplot")
+              )),
+    nav_panel("eTIV", 
+              card(
+                card_header("eTIV Histogram"),
+                plotlyOutput(outputId = "etivplot")
+              )),
+    nav_panel("nWBV", 
+              card(
+                card_header("nWBV Histogram"),
+                plotlyOutput(outputId = "nwbvplot")
+              )),
+    nav_panel("ASF", 
+              card(
+                card_header("ASF Histogram"),
+                plotlyOutput(outputId = "asfplot")
+              ))
+  )
 ) 
 
 # Define server ----
@@ -62,7 +67,7 @@ server <- function(input, output, session) {
                                           legend = list(title = list(text = input$gvar), orientation = "v"),
                                           updatemenus = list(
                                             list(
-                                              x = 1.2,
+                                              x = 1.3,
                                               y = 0.4,
                                               type = "buttons",
                                               buttons = list(
@@ -98,7 +103,7 @@ server <- function(input, output, session) {
                      legend = list(title = list(text = input$gvar), orientation = "v"),
                      updatemenus = list(
                        list(
-                         x = 1.2,
+                         x = 1.3,
                          y = 0.4,
                          type = "buttons",
                          buttons = list(
@@ -133,7 +138,7 @@ server <- function(input, output, session) {
                      legend = list(title = list(text = input$gvar), orientation = "v"),
                      updatemenus = list(
                        list(
-                         x = 1.2,
+                         x = 1.3,
                          y = 0.4,
                          type = "buttons",
                          buttons = list(
@@ -169,7 +174,7 @@ server <- function(input, output, session) {
                      legend = list(title = list(text = input$gvar), orientation = "v"),
                      updatemenus = list(
                        list(
-                         x = 1.2,
+                         x = 1.3,
                          y = 0.4,
                          type = "buttons",
                          buttons = list(

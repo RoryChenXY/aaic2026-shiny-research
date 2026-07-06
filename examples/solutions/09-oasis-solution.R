@@ -161,7 +161,6 @@ server <- function(input, output, session) {
       theme_minimal()
     
     ggplotly(p, tooltip = "text")
-    
   })
 
 }

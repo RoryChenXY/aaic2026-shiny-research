@@ -20,10 +20,12 @@ format:
 
 ## 1.1 Welcome {.smaller}
 
--   **Rory Chen, MSc** 
--   **Ana W. Capuano, PhD** 
--   **Sarah Bauermeister, PhD** 
--   **Ashleigh Vella, PhD** 
+-   **Rory Chen, MSc, UNSW Sydney, Australia** 
+-   **Ana W. Capuano, PhD, Univerity of Chicago, USA** 
+-   **Sarah Bauermeister, PhD, Oxford University, UK** 
+-   **Ashleigh Vella, PhD, UNSW Sydney, Australia** 
+-   **Nikita Keshena Husein, UNSW Sydney, Australia**
+-   **Mai Ho, UNSW Sydney, Australia**
 
 \
 
@@ -125,7 +127,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 ------------------------------------------------------------------------
 
-###  1.5.3 Setup - API keys
+###  1.5.3 Setup - API keys (**Optional**)
 
 -   Restart R Studio to make sure the API keys are loaded. 
 -   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 
@@ -150,15 +152,15 @@ usethis::edit_r_environ()
 
 Usually, a Shiny app consists of 3 main components:
 
--   **UI (User Interface):** How your app looks
--   **Server:** How your app works
--   **Shiny app object:** a call to `shinyApp(ui=ui, server=server)` function that put ui and server components together to create the shiny app.
+-   `UI (User Interface)`: How your app looks
+-   `Server`: How your app works
+-   ``Shiny app object``: a call to `shinyApp(ui=ui, server=server)` function that put ui and server components together to create the shiny app.
 
 ------------------------------------------------------------------------
 
 ### 2.1.1 Hello, World! {.smaller}
 
--   Open and run `01-helloworld.R`
+-   Open and run `./examples/01-helloworld.R`
 -   This is the most basic Shiny app you can create. 
 
 ```{r}
@@ -188,7 +190,7 @@ shinyApp(ui = ui, server = server)
 
 ### 2.1.2 Hello, Name! {.smaller}
 
--   Open and run `02-helloname.R`
+-   Open and run `./examples/02-helloname.R`
 -   Inside the ui we define:
     -   `textInput`
     -   `textOutput`
@@ -239,7 +241,7 @@ Each example is a self-contained Shiny app.
 You can run these examples to see how different Shiny features work in practice.
 Rstudio provides a collection of Shiny examples: <https://github.com/rstudio/shiny-examples>
 
--   Open and run any example from `00-helloexamples.R`
+-   Open and run any example from `./examples/00-helloexamples.R`
 
 ```{r}
 #| echo: true
@@ -267,7 +269,7 @@ runExample("11_timer")      # an automated timer
 ### 2.1.3 Hello, Shiny! - UI {.small-contd} 
 
 -   We will start with the Hello Shiny example.
--   Open and run `03-helloshiny.R`
+-   Open and run `./examples/03-helloshiny.R`
 -   The UI provides two main components:
     -   A `sidebar` with a `sliderInput` to control the number of bins in the histogram
     -   A `plotOutput` to display the plot
@@ -298,13 +300,13 @@ ui <- bslib::page_sidebar(
 
 -   This expression generates a histogram of the Faithful Data with requested number of bins
 -   It is wrapped in a call to `renderPlot` to indicate that:
-    -   It is `"reactive"` and therefore should be automatically re-executed when inputs (input$bins) change
+    -   It is `"reactive"` and therefore should be automatically re-executed when inputs (`input$bins`) change
     -   Its output type is a plot
 
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "5-7|2"
+
 server <- function(input, output) {
   output$distPlot <- renderPlot({
     x    <- faithful$waiting
@@ -340,7 +342,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ::: {.column width="70%"}
 
--  Open `./exercises/04-helloaaic.R`
+-  Open `./examples/exercises/04-helloaaic.R`
 -  UI
    -  Change the title to "Hello AAIC!"
    -  In sidebar, add `textInput` to ask for the user's name
@@ -349,7 +351,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
    - Define the greeting output to display a personalized greeting using the user's name
    - e.g. "Welcome to AAIC, [name]!"
    -  Change the histogram color to `#4a0d66` - AAIC purple
--  You can also find the solution in `./solution/04-helloaaic-solution.R`
+-  You can also find the solution in `./examples/solution/04-helloaaic-solution.R`
 
 :::
 
@@ -498,9 +500,9 @@ UI Contains elements such as:
 
 ### 2.2.1 Shiny UI - Inputs {.smaller}
 
--   A web element that your users can interact with and `send` messages to the Shiny app.
+-   Web elements that users can interact with and `send` messages to the Shiny app.
 -   The Shiny Widgets Gallery <https://shiny.posit.co/r/gallery/widgets/widget-gallery/> provides templates that you can use to quickly add widgets to your Shiny apps.
--   Open and run `05-uiinput.R`. It lists some commonly used input widgets
+-   Open and run `./examples/05-uiinput.R`. It lists some commonly used widgets
 ![`UI Inputs`](./img/05-uiinput.png)
 
 ------------------------------------------------------------------------
@@ -519,7 +521,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ::: {.column width="70%"}
 
--   Open and run `05-uiinput.R`
+-   Open and run `./examples/05-uiinput.R`
 -   Change the `choices` to options you like and re-run the app. 
 -   Example: 
 
@@ -581,7 +583,7 @@ radioButtons(
 
     -  Apolipoprotein E genotype
 
-    -  Protein measurements of Abeta, `Tau`, and a phosphorylated version of Tau (called `pTau`)
+    -  Protein measurements of Abeta, `Tau`, and `pTau`
 
     -  Protein measurements of 124 exploratory biomarkers, and
 
@@ -617,15 +619,15 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 We have used `plotOutput` and `textOutput` in previous examples. 
 Now let's try some other output types.
 
--   Open `06-uitables.R`
+-   Open `./examples/exercises/06-uitables.R`
 -   a `sliderInput()` to control how many rows are displayed in `tableOutput`
 -   `tableOutput()` with `renderTable()`
 -   `dataTableOutput()` with `renderDataTable()`
--    `DT` is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <https://rstudio.github.io/DT/shiny.html>
+-   `DT` is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <https://rstudio.github.io/DT/shiny.html>
+-   You can also find the solution in `./examples/solution/06-uitables-solution.R`
 
 
 :::
-
 
 ::::: 
 
@@ -786,7 +788,7 @@ ui <- bslib::page_fillable(
 
 -   Tabs can distribute large amount of information to stackable tab panels.
 -   Each tab is created with `nav_panel()`, and the tabs are placed inside a navigation layout.
--   `bslib` pacakage provides many styles:
+-   `bslib` package provides many styles:
     - `navset_underline()` and `navset_card_underline()`
     - `navset_tab()` and `navset_card_tab()`
     - `navset_pill_list()`
@@ -844,14 +846,14 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ::: {.column width="70%"}
 
--   Open `07-uitabs.R`
--   For this exercise, we will add a Plot tab to the `06-uitables.R` example.
+-   Open `./examples/exercises/07-uitabs.R`
+-   For this exercise, we will add a Plot tab to the previous example.
 -   You can also refer to `03-helloshiny.R` for how to create a histogram.
     -  In `ui`, `sidebar()`, add a new `sliderInput` for number of bins.
-    -  In `ui`, `navset_card_underline()`, add a new `nav_panel()` for the plot, and place a `plotOutput()` inside it.
+    -  In `ui`, `navset_card_underline()`, add a new `nav_panel()`, and place a `plotOutput()` inside it.
     -  In `server`, add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, using the number of bins specified by the new slider input.
     -  Optional goal: Try other plots. 
-
+-  You can also find the solution in `./examples/solution/07-uitabs-solution.R`
 
 :::
 
@@ -989,7 +991,8 @@ Aiming to build an app that:
 -    Updates the `summary statistics` by filtered results
 -    Updates the `plots` by filtered results
 
--    Let's open `./exercises/08-reactiveexp.R`
+-    Let's open `./examples/exercises/08-reactiveexp.R`
+
 
 -----------------------------------------------------------------
 
@@ -1142,10 +1145,11 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ::: {.column width="70%"}
 
--   Open `08_reactiveexp.R`
+-   Open `./examples/exercises/08_reactiveexp.R`
 -   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
 -   Updates the reactive expression (`ad_filtered`)
 -   Add  another `plot` with variables of your choice
+-  You can also find the solution in `./examples/solution/08_reactiveexp-solution.R`
 
 :::
 
@@ -1231,11 +1235,30 @@ output$plot2 <- renderPlotly({
 
 # 3. Real Life Shiny Apps {.smaller}
 
--   [rorychenxy.shinyapps.io/gladse](https://rorychenxy.shinyapps.io/gladse/)
+## 3.1 DataRepExp
 
-....!! More to add
+DataRepExp: a R shiny Application that makes Data FAIR for Data Repositories
 
-Also - maybe use Recording not the live demo to avoid any technical issues.
+Paper: [The Journal of Open Source Software, 2024](https://joss.theoj.org/papers/10.21105/joss.06693)
+
+Github: [github.com/rorychenxy/DataRepExp](https://github.com/RoryChenXY/DataRepExp_public)
+
+
+------------------------------------------------------------------------
+
+
+## 3.2 GLADSE
+
+-   [rorychenxy.shinyapps.io/gladse](https://portal.dementiasplatform.com.au/crs-metadata-explorer)
+
+
+------------------------------------------------------------------------
+
+
+## 3.3 GLADSE - querychat
+
+
+------------------------------------------------------------------------
 
 
 # 4. Guided Practice: Build Your First Shiny App - Basic {.smaller}
@@ -1246,7 +1269,7 @@ Also - maybe use Recording not the live demo to avoid any technical issues.
 
 ## 4.1 Goals 
 
-**Goal:** Build a Data Explorer using the `OASIS_long_tbl_df` Data from `NeuroDataSets`.
+**Goal:** Build a Data Explorer using the `OASIS_long_tbl_df` from `NeuroDataSets`.
 
 </br>
 
@@ -1293,7 +1316,7 @@ Also - maybe use Recording not the live demo to avoid any technical issues.
 
 ## 4.3 Basic App Skeleton {.smaller}
 
-Open `09-oasis.R`.
+Open `./examples/exercises/09-oasis.R`.
 
 ```{r}
 #| echo: true
@@ -1322,8 +1345,7 @@ shinyApp(ui = ui, server = server)
 
 ## 4.4 UI  {.smaller}
 
--   Add inputs widgets to sidebar
--   Add output to main panel
+-   Add inputs widgets to sidebar and output to main panel
 
 ![09-oasis.R](./img/09-oasis.gif)]
 
@@ -1523,9 +1545,8 @@ oasis_filtered <- reactive({
 
 ---------------------------------------------------------
 
-### 4.5.2 Building the Outputs {.smaller}
+### 4.5.2 Building the Outputs - gtsummary table {.smaller}
 
--   gtsummary table
 
 ```{r}
 #| echo: true
@@ -1557,11 +1578,9 @@ output$summary <- render_gt({
 
 ------------------------------------------------------------------------
 
-### 4.5.3 Building the Outputs {.smaller}
+### 4.5.3 Building the Outputs - DT table{.smaller}
 
--   DT table
 -   Check <https://rstudio.github.io/DT/> for more options
-
 
 ```{r}
 #| echo: true
@@ -1584,18 +1603,16 @@ output$datadt <- renderDT({
 
 ------------------------------------------------------------------------
 
-### 4.5.4 Building the Outputs {.smaller}
-
--   Plotly scatter plot with selected variables
+### 4.5.4 Building the Outputs - plotyly {.smaller}
 
 ```{r}
 #| echo: true
 #| eval: false
-  output$scatterplot <- renderPlotly({
+output$scatterplot <- renderPlotly({
     p <- ggplot(
       oasis_filtered(),
       aes(
-        x = .data[[input$xvar]],,
+        x = .data[[input$xvar]],
         y = .data[[input$yvar]],
         colour = .data[[input$gvar]],
         text = paste(
@@ -1606,7 +1623,7 @@ output$datadt <- renderDT({
         ))) +
       geom_point(size = 2, alpha = 0.8) +
       labs(
-        title = paste("input$xvar and", input$yvar),
+        title = paste(input$xvar, "and", input$yvar),
         x = input$xvar,
         y = input$yvar,
         colour = input$gvar
@@ -1614,9 +1631,7 @@ output$datadt <- renderDT({
       theme_minimal()
     
     ggplotly(p, tooltip = "text")
-    
   })
-
 ```
 
 ------------------------------------------------------------------------
@@ -1702,20 +1717,63 @@ Refer to <https://shiny.posit.co/r/articles/share/shinyapps/>
 ### 5.2.1 Modules Example {.smaller}
 
 
--  Open and run `10-nomodules.R`
+-  Open and run `./examples/10-nomodules.R`
 
- ![`Modules`](./img/10-nomodules.png)
+ ![`Modules`](./img/10-nomodules.gif)
+
+------------------------------------------------------------------------
+
+### 5.2.1 Modules Example - No module code {.small-contd}
+
+-   `10-nomodules.R` has 200 lines.
+-   In `./examples/11-modhistogram`, `app.R` and `histogram_module.R` together have 120 lines.
+
+```{r}
+#| echo: true
+#| eval: false
+# Define server ----
+server <- function(input, output, session) {
+  ## MMSE Histogram ----
+  output$mmseplot <- renderPlotly({
+    p <- plotly::plot_ly(data = oasis_df,x = ~.data[['mmse']],color = ~.data[[input$gvar]],
+                         ...)
+        return(p)  
+  })
+  
+  
+  ## eTIV Histogram ----
+  output$etivplot <- renderPlotly({
+    p <- plotly::plot_ly(data = oasis_df, x = ~.data[['etiv']],color = ~.data[[input$gvar]],
+                         ...)
+    return(p)  
+  })
+  
+  ## nWBV Histogram ----
+  output$nwbvplot <- renderPlotly({
+    p <- plotly::plot_ly(data = oasis_df, x = ~.data[['nwbv']],  color = ~.data[[input$gvar]],
+                         ...)
+    return(p)  
+  })
+
+  ## eTIV Histogram ----
+  output$asfplot <- renderPlotly({
+    p <- plotly::plot_ly(data = oasis_df, x = ~.data[['asf']],color = ~.data[[input$gvar]],
+                         ...)
+    return(p)  
+  })
+}
+```
 
 ------------------------------------------------------------------------
 
 ### 5.2.2 Defined Histogram Module {.smaller}
 
-Open `11_modhistogram/histogram_module.R`
+-  Like we can define a function to reuse, we can define a module to create a histogram.
+-  Open `./examples/11_modhistogram/histogram_module.R`
 
 ```{r}
 #| echo: true
 #| eval: false
-
 ## Module UI
 histogramUI <- function(id, title) {
   ns <- NS(id)
@@ -1728,30 +1786,109 @@ histogramUI <- function(id, title) {
 ## Module Server
 histogramServer <- function(id, data, variable, grouping_var) {
   moduleServer(id, function(input, output, session) {
-    
     output$plot <- renderPlotly({
-      ...    
-      })
-  }
+      # Get the grouping variable name for the legend
+      gvar_name <- grouping_var()
+      
+      p <- plotly::plot_ly(
+        data = data,
+        x = ~.data[[variable]],
+        color = ~.data[[gvar_name]],
+        colors = "Pastel1",
+        alpha = 0.6,
+        hovertemplate = paste(
+          paste0(toupper(variable), ': %{x}'),
+          '<br>Counts: %{y}<br>'
+        )
+      ) |>
+        plotly::add_histogram() |>
+        plotly::layout(
+          xaxis = list(title = toupper(variable)),
+          yaxis = list(title = "Counts", showgrid = TRUE),
+          legend = list(title = list(text = gvar_name), orientation = "v"),
+          updatemenus = list(
+            list(
+              x = 1.2,
+              y = 0.4,
+              type = "buttons",
+              buttons = list(
+                list(
+                  method = "relayout",
+                  args = list("barmode", "group"),
+                  label = "Group"
+                ),
+                list(
+                  method = "relayout",
+                  args = list("barmode", "stack"),
+                  label = "Stack"
+                ),
+                list(
+                  method = "relayout",
+                  args = list("barmode", "overlay"),
+                  label = "Overlay"
+                )
+              )
+            )
+          )
+        )
+      
+      return(p)
+    })
+  })
 }
 
 ```
 
 ------------------------------------------------------------------------
 
-### 5.2.3 Updated App {.smaller}
+### 5.2.3 What is the double bracket "[[ ]] "? {.smaller}
 
-Open `11_modhistogram/app.R`
+-   `.data[[variable]]` means: Use the column whose name is stored in variable
+
+-    Example:
+```{r}
+#| echo: true
+#| eval: false
+variable <- "mmse"
+.data[[variable]]
+```
+is the same as
+```{r}
+#| echo: true
+#| eval: false
+.data[["mmse"]]
+```
+
+-  This is important for the module reusability.
+
+------------------------------------------------------------------------
+
+
+
+### 5.2.4 The key new concept: `NS()` {.smaller}
+
+-   In all modules, the UI function bodies should start with `ns <- NS(id)`. 
+-   It takes the string id and creates a namespace function.
+-   All input and output `IDs` that appear in the function body needs to be wrapped in a call to `ns()`.
+-   This ensures that the `IDs` are `unique` across multiple instances of the module, preventing `conflicts` and ensuring that each module instance works `independently`.
+-   Example: `plotlyOutput(outputId = ns("plot"))`
+
+
+------------------------------------------------------------------------
+
+
+### 5.2.5 Updated App {.smaller}
+
+Open `./examples/11_modhistogram/app.R`
 
 ```{r}
 #| echo: true
 #| eval: false
-  layout_columns(
-    histogramUI("mmse", "MMSE Histogram"),
-    histogramUI("etiv", "eTIV Histogram"),
-    histogramUI("nwbv", "nWBV Histogram"),
-    histogramUI("asf", "ASF Histogram"),
-    col_widths = c(6, 6, 6, 6)
+  navset_tab(
+    nav_panel("MMSE", histogramUI("mmse", "MMSE Histogram")),
+    nav_panel("eTIV", histogramUI("etiv", "eTIV Histogram")),
+    nav_panel("nWBV", histogramUI("nwbv", "nWBV Histogram")),
+    nav_panel("ASF", histogramUI("asf", "ASF Histogram"))
   )
 
 ```
@@ -1761,22 +1898,96 @@ Open `11_modhistogram/app.R`
 ```{r}
 #| echo: true
 #| eval: false
+# Define server ----
+server <- function(input, output, session) {
+  # Create a reactive for the grouping variable
+  grouping_var <- reactive({
+    input$gvar
+  })
+  # Call histogram modules for each variable
   histogramServer("mmse", data = oasis_df, variable = "mmse", grouping_var = grouping_var)
   histogramServer("etiv", data = oasis_df, variable = "etiv", grouping_var = grouping_var)
   histogramServer("nwbv", data = oasis_df, variable = "nwbv", grouping_var = grouping_var)
   histogramServer("asf", data = oasis_df, variable = "asf", grouping_var = grouping_var)
-
+}
 ```
 
 ------------------------------------------------------------------------
 
-### 5.2.4 The key new concept: `NS()` {.smaller}
 
--   In all modules, the UI function bodies should start with `ns <- NS(id)`. 
--   It takes the string id and creates a namespace function.
--   All input and output `IDs` that appear in the function body needs to be wrapped in a call to `ns()`.
--   This ensures that the `IDs` are `unique` across multiple instances of the module, preventing `conflicts` and ensuring that each module instance works `independently`.
--   Example: `plotlyOutput(outputId = ns("plot"))`
+
+### 5.2.6 Your turn - Modules {.smaller}
+
+
+::::: columns
+::: {.column width="30%"}
+
+<iframe style="width:80%;max-width:360px;height:360px;" src="https://stopwatch-app.com/widget/timer?theme=dark&color=purple&hrs=0&min=6&sec=0"  frameborder="0">
+
+</iframe>
+
+If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+
+:::
+
+::: {.column width="70%"}
+
+-   Review `./examples/exercises/12-appwithmodules/scatter_module.R`
+
+-   Now update the `./examples/exercises/12-appwithmodules/app.R` to use the `scatter_module` for the scatter plot.
+
+   - Source scatter plot module
+   - UI: add `nav_panel` and call the scatter plot module UI
+   - Server: Call scatter module server for MMSE vs eTIV and nwbv vs asf
+
+-   Stretch goal: Create your own module and use it in the app.
+
+-   You can find the solution in `./examples/solutions/12-appwithmodules-solution`
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+
+
+### 5.2.6 Your turn - Modules {.small-contd}
+
+![`12-appwithmodules`](./img/12-appwithmodules.gif)
+
+------------------------------------------------------------------------
+
+### 5.2.6 Your turn - Modules Solution {.small-contd}
+```{r}
+#| echo: true
+#| eval: false
+source("scatter_module.R")
+```
+<br>
+
+```{r}
+#| echo: true
+#| eval: false
+nav_panel("MMSE vs eTIV", 
+          scatterUI("mmse_etiv", "MMSE vs eTIV Scatter Plot")),
+nav_panel("nWBV vs ASF", 
+          scatterUI("nwbv_asf", "nWBV vs ASF Scatter Plot"))
+    
+```
+<br>
+
+```{r}
+#| echo: true
+#| eval: false
+  scatterServer("mmse_etiv",data = oasis_df, 
+                xvar = "mmse", yvar = "etiv",
+                colorvar = grouping_var)
+  scatterServer("nwbv_asf", data = oasis_df, 
+                xvar = "nwbv", yvar = "asf",
+                colorvar = grouping_var)
+
+```
 
 ------------------------------------------------------------------------
 
@@ -1790,7 +2001,7 @@ Maps visualization including `choropleth` are useful to explore:
 -   participant recruitment areas
 -   disease burden by country or region
 
-One of the most popular R packages for creating interactive maps in Shiny is `leaflet`. 
+`leaflet` is one of the most popular R packages for creating interactive maps. 
 
 <https://rstudio.github.io/leaflet/articles/leaflet.html>
 
@@ -1799,9 +2010,8 @@ One of the most popular R packages for creating interactive maps in Shiny is `le
 ### 5.3.1 Basic Usage
 
 1. Create a map widget by calling leaflet().
-2. Add layers (i.e., features) to the map by using layer functions (e.g., addTiles, addMarkers, addPolygons) to modify the map widget.
-3. Repeat step 2 as desired.
-4. Print the map widget to display it.  
+2. Add layers (i.e., features) to the map by using layer functions (e.g., `addTiles`, `addMarkers`, `addPolygons`) to modify the map widget.
+3. Print the map widget to display it.  
 
 ```{r}
 #| echo: true
@@ -1842,7 +2052,7 @@ m
 
 ::: {.column width="30%"}
 
-![`GBD Data Search`](./img/12-gbd60plus-data.png)
+![`GBD Data Search`](./img/13-gbd60plus-data.png)
 
 :::
 
@@ -1892,8 +2102,11 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 :::
 
 ::: {.column width="70%"}
--   Open `12-gbd60plus.R`
+-   Open `./examples/exercises/13-gbd60plus.R`
 -   Add three `selectInput()` for users to select `sex`, `measure` and `metric.`
+-   Define the `reactive expression` to filter the data based on the selected inputs.
+-   You can find the solution in `./examples/solutions/13-gbd60plus-solution.R`
+
 
 :::
 
@@ -1901,7 +2114,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ---------------------------------------------------------------
 
-### 5.3.3 Your turn: Inputs {.small-contd}
+### 5.3.3 Your turn: Inputs - Solution {.small-contd}
 
 ```{r}
 #| echo: true
@@ -1930,7 +2143,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ---------------------------------------------------------------
 
-### 5.3.4 Your turn: Reactive Expression {.smaller}
+### 5.3.4 Your turn: Reactive Expression  - Solution  {.smaller}
 
 -   Define the `reactive expression` to filter the data based on the selected inputs.
 
@@ -1962,7 +2175,7 @@ You can refer to the documentation for more options: <https://rstudio.github.io/
 
 Using `leafletOutput` and `renderLeaflet` to create a reactive map output in your `Shiny` app.
 
-![`12-gbd60plus.R`](./img/12-gbd60plus.gif)
+![`13-gbd60plus.R`](./img/13-gbd60plus.gif)
 
 ---------------------------------------------------------------
 
@@ -1993,14 +2206,14 @@ Using `leafletOutput` and `renderLeaflet` to create a reactive map output in you
 #### 5.3.5.1 Building the map output {.small-contd}
 
 
-![`Step1 - Basemap`](./img/12-gbd60plus-step1.png)
+![`Step1 - Basemap`](./img/13-gbd60plus-step1.png)
 
 ---------------------------------------------------------------
 
 #### 5.3.5.1 Building the map output {.small-contd}
 
 
-![`Step2 - addPolygons`](./img/12-gbd60plus-step2.png)
+![`Step2 - addPolygons`](./img/13-gbd60plus-step2.png)
 
 ---------------------------------------------------------------
 
@@ -2032,7 +2245,7 @@ output$choropleth_map <- renderLeaflet({
 
 #### 5.3.5.2 Building the map output {.small-contd}
 Step 3: Add a color palette that reflects the value, and change the `fillColor` in `addPolygons()`.
-![`Polygon with Color Palette`](./img/12-gbd60plus-step3.png)
+![`Polygon with Color Palette`](./img/13-gbd60plus-step3.png)
 
 
 ---------------------------------------------------------------
@@ -2061,7 +2274,7 @@ Step 4: Add Legends for the color palette using `addLegend()`
 
 Step 4: Add Legends for the color palette using `addLegend()`
 
-![`Legend`](./img/12-gbd60plus-step4.png)
+![`Legend`](./img/13-gbd60plus-step4.png)
 
 ---------------------------------------------------------------
 
@@ -2087,7 +2300,7 @@ popup = ~paste0(
 
 Step 5: Add Pop-up info inside `addPolygons`.
 
-![`Popup`](./img/12-gbd60plus-step5.png)
+![`Popup`](./img/13-gbd60plus-step5.png)
 
 
 
@@ -2471,6 +2684,79 @@ It usually includes:
 -  offering some example questions to get started.
 
 
+---------------------------------------------------------------
+
+
+#### 6.5.2.3 Step 3: Greeting file  {.small-contd}
+
+```{r}
+#| echo: true
+#| eval: false
+
+Hello! 👋
+
+I'm here to help you explore the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer's Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023.
+
+I can filter and sort the dashboard, answer questions about the data, and help you discover insights.
+
+This dataset includes information about disease incidence and prevalence across different countries.
+
+Let's dive in!
+
+##### Explore the data
+
+<ul>
+
+<li>[Show me the top 10 countries by prevalence]{.suggestion}</li>
+
+<li>[What continents are represented?]{.suggestion}</li>
+
+<li>[How many records are in the dataset?]{.suggestion}</li>
+
+</ul>
+
+##### Compare groups
+
+<ul>
+
+<li>[Show me the difference between male and female incidence rates]{.suggestion}</li>
+
+<li>[Compare high income OECD countries to low income countries]{.suggestion}</li>
+
+<li>[What's the average prevalence by income group?]{.suggestion}</li>
+
+</ul>
+
+##### Filter the dashboard
+
+<ul>
+
+<li>[Show only high income countries]{.suggestion}</li>
+
+<li>[Filter to prevalence measures]{.suggestion}</li>
+
+<li>[Show records for Asia only]{.suggestion}</li>
+
+</ul>
+
+##### Ask research-style questions
+
+<ul>
+
+<li>[Which countries have the highest prevalence values?]{.suggestion}</li>
+
+<li>[Which countries have the highest incidence values?]{.suggestion}</li>
+
+<li>[Summarise the main differences by income group]{.suggestion}</li>
+
+</ul>
+
+
+```
+
+---------------------------------------------------------------
+
+
 # 7. Independent Hands-On Exercise
 
 ------------------------------------------------------------------------
@@ -2540,11 +2826,12 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ## 8.3 Thank You! {.smaller}
 
--   **Rory Chen, MSc**
--   **Ana W. Capuano, PhD**
--   **Sarah Bauermeister, PhD**
--   **Ashleigh Vella, PhD**
-
+-   **Rory Chen, MSc** 
+-   **Ana W. Capuano, PhD** 
+-   **Sarah Bauermeister, PhD** 
+-   **Ashleigh Vella, PhD** 
+-   **Nikita Keshena Husein**
+-   **Mai Ho**
 
 \
 
