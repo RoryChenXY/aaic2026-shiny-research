@@ -7,35 +7,28 @@ ui <- page_fillable(
   layout_columns(
     card(
       card_header("Single checkbox"),
-      checkboxInput("checkbox", "Checkbox",value = FALSE)
-    ),
+      checkboxInput("checkbox", "Checkbox",value = FALSE)),
     card(
       card_header("Radio buttons"),
       radioButtons(
         "radio",
         "Select option",
         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-        selected = 1
-      )
-    ),
+        selected = 1)),
     card(
       card_header("Select box"),
       selectInput(
         "select",
         "Select option",
         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-        selected = 1
-      )
-    ),
+        selected = 1)),
     card(
       card_header("Checkbox group"),
       checkboxGroupInput(
         "checkGroup",
         "Select all that apply",
         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-        selected = 1
-      )
-    ),
+        selected = 1)),
     card(
       card_header("Select (Multiple)"),
       selectInput(
@@ -43,22 +36,16 @@ ui <- page_fillable(
         "Select option (Multiple)",
         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
         selected = 1,
-        multiple = TRUE
-      ),
-    ),
+        multiple = TRUE)),
     card(
       card_header("Date input"),
-      dateInput("date", "Select date", value = "2026-07-10")
-    ),
+      dateInput("date", "Select date", value = "2026-07-10")),
     card(
       card_header("Date range input"),
-      dateRangeInput("dates", "Select dates")
-    ),
+      dateRangeInput("dates", "Select dates")),
     card(
       card_header("Numeric input"),
-      numericInput("num", "Input number", value = 1)
-    ),
-    
+      numericInput("num", "Input number", value = 1)),
     card(
       card_header("Sliders"),
       sliderInput(
@@ -66,9 +53,7 @@ ui <- page_fillable(
         "Set value",
         min = 0,
         max = 100,
-        value = 50
-      )
-    ),
+        value = 50)),
     card(
       card_header("Slider range"),
       sliderInput(
@@ -76,15 +61,11 @@ ui <- page_fillable(
         "Set value range",
         min = 0,
         max = 100,
-        value = c(25, 75)
-      )          
-    ),
-    
+        value = c(25, 75))),
     col_widths = c(2,3,4,3, 
                    5, 3,4,
                    -1,2, 4, 5),
     row_heights = c(4,5,3)
-      
   )
 )
 

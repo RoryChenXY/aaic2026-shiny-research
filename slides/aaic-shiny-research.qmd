@@ -236,10 +236,9 @@ server <- function(input, output, session) {
 
 ### 2.1.3 Hello, Shiny! {.smaller}
 
-The Shiny package has `11` built-in examples.
-Each example is a self-contained Shiny app. 
-You can run these examples to see how different Shiny features work in practice.
-Rstudio provides a collection of Shiny examples: <https://github.com/rstudio/shiny-examples>
+-   Rstudio Shiny examples: <https://github.com/rstudio/shiny-examples>
+
+-   `Shiny` package has `11` built-in examples.Each example is a self-contained Shiny app. You can run these examples to see how different Shiny features work in practice.
 
 -   Open and run any example from `./examples/00-helloexamples.R`
 
@@ -268,8 +267,7 @@ runExample("11_timer")      # an automated timer
 
 ### 2.1.3 Hello, Shiny! - UI {.small-contd} 
 
--   We will start with the Hello Shiny example.
--   Open and run `./examples/03-helloshiny.R`
+-   Hello Shiny example: Open and run `./examples/03-helloshiny.R`
 -   The UI provides two main components:
     -   A `sidebar` with a `sliderInput` to control the number of bins in the histogram
     -   A `plotOutput` to display the plot
@@ -351,7 +349,7 @@ If you have any trouble, please raise your hand, one of the facilitators will co
    - Define the greeting output to display a personalized greeting using the user's name
    - e.g. "Welcome to AAIC, [name]!"
    -  Change the histogram color to `#4a0d66` - AAIC purple
--  You can also find the solution in `./examples/solution/04-helloaaic-solution.R`
+-  You can find the solution in `./examples/solution/04-helloaaic-solution.R`
 
 :::
 
@@ -505,6 +503,88 @@ UI Contains elements such as:
 -   Open and run `./examples/05-uiinput.R`. It lists some commonly used widgets
 ![`UI Inputs`](./img/05-uiinput.png)
 
+----------------------
+
+### 2.2.1 Shiny UI - Inputs {.small-contd}
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(shiny)
+library(bslib)
+
+# Define UI ----
+ui <- page_fillable(
+  titlePanel("Basic widgets"),
+  layout_columns(
+    card(
+      card_header("Single checkbox"),
+      checkboxInput("checkbox", "Checkbox",value = FALSE)),
+    card(
+      card_header("Radio buttons"),
+      radioButtons(
+        "radio",
+        "Select option",
+        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+        selected = 1)),
+    card(
+      card_header("Select box"),
+      selectInput(
+        "select",
+        "Select option",
+        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+        selected = 1)),
+    card(
+      card_header("Checkbox group"),
+      checkboxGroupInput(
+        "checkGroup",
+        "Select all that apply",
+        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+        selected = 1)),
+    card(
+      card_header("Select (Multiple)"),
+      selectInput(
+        "selectmulti",
+        "Select option (Multiple)",
+        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+        selected = 1,
+        multiple = TRUE)),
+    card(
+      card_header("Date input"),
+      dateInput("date", "Select date", value = "2026-07-10")),
+    card(
+      card_header("Date range input"),
+      dateRangeInput("dates", "Select dates")),
+    card(
+      card_header("Numeric input"),
+      numericInput("num", "Input number", value = 1)),
+    card(
+      card_header("Sliders"),
+      sliderInput(
+        "slider1",
+        "Set value",
+        min = 0,
+        max = 100,
+        value = 50)),
+    card(
+      card_header("Slider range"),
+      sliderInput(
+        "slider2",
+        "Set value range",
+        min = 0,
+        max = 100,
+        value = c(25, 75))),
+    col_widths = c(2,3,4,3, 
+                   5, 3,4,
+                   -1,2, 4, 5),
+    row_heights = c(4,5,3)
+  )
+)
+```
+
+
+
 ------------------------------------------------------------------------
 
 ### 2.2.2 Shiny UI - Inputs Exercises {.smaller}
@@ -620,11 +700,11 @@ We have used `plotOutput` and `textOutput` in previous examples.
 Now let's try some other output types.
 
 -   Open `./examples/exercises/06-uitables.R`
--   a `sliderInput()` to control how many rows are displayed in `tableOutput`
--   `tableOutput()` with `renderTable()`
--   `dataTableOutput()` with `renderDataTable()`
+    -   Add a `sliderInput()` to control how many rows are displayed in `tableOutput`
+    -   Add `tableOutput()` with `renderTable()`
+    -   Add `dataTableOutput()` with `renderDataTable()`
 -   `DT` is a really powerful package for rendering interactive tables in Shiny. You can explore the documentation and examples here: <https://rstudio.github.io/DT/shiny.html>
--   You can also find the solution in `./examples/solution/06-uitables-solution.R`
+-   You can find the solution in `./examples/solution/06-uitables-solution.R`
 
 
 :::
@@ -847,13 +927,14 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 ::: {.column width="70%"}
 
 -   Open `./examples/exercises/07-uitabs.R`
--   For this exercise, we will add a Plot tab to the previous example.
--   You can also refer to `03-helloshiny.R` for how to create a histogram.
-    -  In `ui`, `sidebar()`, add a new `sliderInput` for number of bins.
-    -  In `ui`, `navset_card_underline()`, add a new `nav_panel()`, and place a `plotOutput()` inside it.
-    -  In `server`, add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, using the number of bins specified by the new slider input.
-    -  Optional goal: Try other plots. 
--  You can also find the solution in `./examples/solution/07-uitabs-solution.R`
+-   For this exercise, we will add a Plot tab to the previous example. (You can also refer to `03-helloshiny.R` for how to create a histogram.)
+-   UI:
+    -  In `sidebar()`, add a new `sliderInput` for number of bins.
+    -  In `navset_card_underline()`, add a new `nav_panel()`, and place a `plotOutput()` inside it.
+-   Server:
+    -  Add a new `renderPlot()` to generate the histogram of `p_tau` in the `ad_data` dataset, using the number of bins specified by the new slider input.
+    -  Optional goal: Try different plot types. 
+-  You can find the solution in `./examples/solution/07-uitabs-solution.R`
 
 :::
 
@@ -936,10 +1017,10 @@ Server
 
 -   What makes shiny `interactive`?
 
--   When you change an input, the server automatically re-runs the relevant code to update the outputs. This is called `reactivity`.
+-   When user changes an input, the server automatically re-runs the relevant code to update the outputs. This is called `reactivity`.
 
 -    How to do this?
-     -  1. Add an R object to your user interface.
+     -  1. Add an R object to user interface.
      -  2. Define the output in the server function, wrapped in a call to `render*()` to indicate that it is reactive and specify its output type. 
 
 
@@ -1130,6 +1211,8 @@ Just wrapping your ggplot object with `ggplotly()` from the `plotly` package wil
 
 -----------------------------------------------------------------
 
+
+
 ### 2.3.4  Your turn - Reactive Expression Exercise {.smaller}
 
 ::::: columns
@@ -1149,12 +1232,18 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 -   Add an input to allow user to filter the data by both `gender` and `APOE genotype`
 -   Updates the reactive expression (`ad_filtered`)
 -   Add  another `plot` with variables of your choice
--  You can also find the solution in `./examples/solution/08_reactiveexp-solution.R`
+-  You can find the solution in `./examples/solution/08_reactiveexp-solution.R`
 
 :::
 
 
 ::::: 
+
+-----------------------------------------------------------------
+
+### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
+
+![`08-reactiveexp-solution.R`](./img/08-reactiveexp-2.gif)
 
 
 -----------------------------------------------------------------
@@ -1227,11 +1316,7 @@ output$plot2 <- renderPlotly({
 ```
 
 
------------------------------------------------------------------
 
-### 2.3.4  Your turn - Reactive Expression Solution {.small-contd}
-
-![`08-reactiveexp-solution.R`](./img/08-reactiveexp-2.gif)
 
 # 3. Real Life Shiny Apps {.smaller}
 
