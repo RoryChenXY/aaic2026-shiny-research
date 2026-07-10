@@ -11,7 +11,7 @@ It includes slides, example Shiny apps, exercises, solution files, and supportin
 3. Install R packages: Run `/setup/setup.R` to install required packages.
 4. Download or clone this repository 
 5. Reach out if you have any issues
-6. Slides:  <https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html>
+6. Slides:  <https://rorychenxy.github.io/aaic2026-shiny-research/aaic-shiny-research.html>
 7. Create a shinyapps.io account, refer to <https://shiny.posit.co/r/articles/share/shinyapps/>
 
 
