@@ -1,324 +1,219 @@
 [
   {
-    "objectID": "slides/aaic-shiny-research.html#welcome",
-    "href": "slides/aaic-shiny-research.html#welcome",
+    "objectID": "aaic-shiny-research.html#welcome",
+    "href": "aaic-shiny-research.html#welcome",
     "title": "Shiny Your Research",
     "section": "1.1 Welcome",
-    "text": "1.1 Welcome\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nGraham Bearden, PhD\nAshleigh Vella, PhD\nJames Lian, PhD\n\n\n\n\nAttendance at this conference was supported by an AAIC 2026 Conference Fellowship."
+    "text": "1.1 Welcome\n\nRory Chen, MSc, UNSW Sydney, Australia\nAna W. Capuano, PhD, Univerity of Chicago, USA\nSarah Bauermeister, PhD, Oxford University, UK\nAshleigh Vella, PhD, UNSW Sydney, Australia\nNikita Keshena Husein, UNSW Sydney, Australia\nMai Ho, UNSW Sydney, Australia\n\n\n\n\nAttendance at this conference was supported by an AAIC 2026 Conference Fellowship."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#todays-agenda",
-    "href": "slides/aaic-shiny-research.html#todays-agenda",
+    "objectID": "aaic-shiny-research.html#todays-agenda",
+    "href": "aaic-shiny-research.html#todays-agenda",
     "title": "Shiny Your Research",
     "section": "1.2 Today’s agenda",
-    "text": "1.2 Today’s agenda\nThe workshop will run for 4 hours, 1-5 pm.\n\n1:00 - 1:30 p.m. - Introductions and Scene Setting\n1:30 - 2:00 p.m. - Theory and Real-World App Demo\n2:00 - 3:00 p.m. - Guided Practice: Build Your First Shiny App\n3:00 - 3:30 p.m. - Break\n3:30 - 4:30 p.m. - Independent Hands-On Exercise\n4:30 - 5:00 p.m. - Group Sharing and Wrap-Up"
+    "text": "1.2 Today’s agenda\nThe workshop will run for 4 hours, 1-5 pm.\n\n1:00 - 1:30 p.m. - troductions: welcome remarks, goals, facilitator and participant introductions, background and rearrange in groups (Ana Capuano)\n1:30 - 2:00 p.m. - Theory and Real-World App Demo\n2:00 - 3:00 p.m. - Guided Practice: Build Your First Shiny App\n3:00 - 3:30 p.m. - Break\n3:30 - 4:30 p.m. - Independent Hands-On Exercise\n4:30 - 5:00 p.m. - Group Sharing and Wrap-Up"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#why-use-shiny-for-your-research",
-    "href": "slides/aaic-shiny-research.html#why-use-shiny-for-your-research",
+    "objectID": "aaic-shiny-research.html#workshop-goal",
+    "href": "aaic-shiny-research.html#workshop-goal",
     "title": "Shiny Your Research",
-    "section": "1.3 Why use shiny for your research",
-    "text": "1.3 Why use shiny for your research\n\nShiny is an R package that makes it easy to build interactive web applications (apps) straight from R. .\nIntegration with R: R users can build web applications without HTML/CSS/JS knowledge and leverage the full power of R’s data manipulation and visualization capabilities.\nAccessibility: Shiny apps can be easily shared via URLs, making research findings more accessible to a wider audience.\nEngagement: Interactive visualizations and user interfaces can enhance engagement, great for presentations, teaching, collaboration and more\nCustomization: Shiny offers extensive customization options, enabling researchers to tailor their applications to specific research questions and audiences.\n\n… and more!"
+    "section": "1.3 Workshop Goal",
+    "text": "1.3 Workshop Goal\nThis hands-on workshop will help dementia researchers design, build, and share interactive dashboards using R Shiny.\nBy the end of the workshop, participants will be able to:\n\nTransform static research outputs into interactive, transparent, and reproducible data tools.\nBuild a working Shiny dashboard using openly available GBD Alzheimer’s disease and other dementias data.\nApply core Shiny concepts.\nExplore real-world dementia research examples, including the DPAU Metadata Explorer app."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#learning-objectives",
-    "href": "slides/aaic-shiny-research.html#learning-objectives",
+    "objectID": "aaic-shiny-research.html#why-use-shiny-for-your-research",
+    "href": "aaic-shiny-research.html#why-use-shiny-for-your-research",
     "title": "Shiny Your Research",
-    "section": "1.4 Learning Objectives",
-    "text": "1.4 Learning Objectives\nBy the end of this workshop, you will be able to:\n\nUnderstand the fundamental concepts and features of shiny package.\nCreate an interactive and dynamic shiny dashboard following a guided, step-by-step coding exercise.\nDesign reproducible and salable shiny modules using structured development practices.\nIndependently apply shiny to present own scientific outputs in an engaging, accessible format.\nTest the integration of large language models (LLMs) into Shiny applications using the ellmer and querychat package."
+    "section": "1.4 Why use shiny for your research",
+    "text": "1.4 Why use shiny for your research\nR Shiny allows researchers to turn analyses, figures, tables, and statistical results into interactive tools that collaborators and stakeholders can explore.\nAdvantages of R Shiny\n\nCreates interactive dashboards directly from R.\nAllows users to explore data without editing code.\nCombines figures, tables, maps, models, and text in one interface.\nMakes research outputs easier to share and interpret.\nSupports transparent and reproducible workflows.\nHelps collaborators interact with results instead of receiving static files.\nCan be used for teaching, communication, team science, and knowledge translation."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#setup",
-    "href": "slides/aaic-shiny-research.html#setup",
+    "objectID": "aaic-shiny-research.html#examples-of-r-shiny-in-research",
+    "href": "aaic-shiny-research.html#examples-of-r-shiny-in-research",
     "title": "Shiny Your Research",
-    "section": "1.5 Setup",
-    "text": "1.5 Setup\n\nYou are comfortable coding in R and R Studio\nNo prior knowledge of Shiny apps required.\nAccess Github: https://github.com/RoryChenXY/aaic2026-shiny-research\nInstall the required package if you haven’t already\nAccess your Anthropic key and and save it to .Renviron\nIf you have any troubles, please raise your hand, one of the facilitators will come to assist you."
+    "section": "1.5 Examples of R Shiny in Research",
+    "text": "1.5 Examples of R Shiny in Research\nPosit Shiny Gallery https://shiny.posit.co/r/gallery/#feature-demos Epidemiologist R Handbook: Shiny dashboards - https://epirhandbook.com/en/"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#anatomy-of-a-shiny-app",
-    "href": "slides/aaic-shiny-research.html#anatomy-of-a-shiny-app",
+    "objectID": "aaic-shiny-research.html#examples-of-r-shiny-in-research-1",
+    "href": "aaic-shiny-research.html#examples-of-r-shiny-in-research-1",
+    "title": "Shiny Your Research",
+    "section": "1.5.1 Examples of R Shiny in Research",
+    "text": "1.5.1 Examples of R Shiny in Research\n\nExamples"
+  },
+  {
+    "objectID": "aaic-shiny-research.html#lets-learn-who-is-in-the-room",
+    "href": "aaic-shiny-research.html#lets-learn-who-is-in-the-room",
+    "title": "Shiny Your Research",
+    "section": "1.6 Let’s Learn Who Is in the Room",
+    "text": "1.6 Let’s Learn Who Is in the Room\nPlease briefly introduce yourself.\nPlease share\n\nYour name\nYour affiliation or association\nThe type of research you do\nThe type of data you work with\nYour prior experience with R or R Shiny\n\nPurpose: This will help us understand the range of backgrounds in the room and organize groups for the hands-on portion."
+  },
+  {
+    "objectID": "aaic-shiny-research.html#anatomy-of-a-shiny-app",
+    "href": "aaic-shiny-research.html#anatomy-of-a-shiny-app",
     "title": "Shiny Your Research",
     "section": "2.1 Anatomy of a Shiny app",
     "text": "2.1 Anatomy of a Shiny app\nShiny is an R package that makes it easy to build interactive web applications (apps) straight from R.\nUsually, a Shiny app consists of 3 main components:\n\nUI (User Interface): How your app looks\nServer: How your app works\nShiny app object: a call to shinyApp(ui=ui, server=server) function that put ui and server components together to create the shiny app."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#shiny-ui-components",
-    "href": "slides/aaic-shiny-research.html#shiny-ui-components",
+    "objectID": "aaic-shiny-research.html#shiny-ui-components",
+    "href": "aaic-shiny-research.html#shiny-ui-components",
     "title": "Shiny Your Research",
     "section": "2.2 Shiny UI Components",
     "text": "2.2 Shiny UI Components\n\n\nInputs\n\nAction Buttons\n\nCheckbox\n\nDate\n\nText\n\nNumeric\n\nSlider\n…\n\n\nOutputs\n\nText\n\nTables\n\nPlots\n\nImages\n…\n\n\nLayout\n\nSidebar\n\nTabs and tabset\n\nCards\n\nValue Boxes\n\nconditionalPanel"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#shiny-server",
-    "href": "slides/aaic-shiny-research.html#shiny-server",
+    "objectID": "aaic-shiny-research.html#shiny-server",
+    "href": "aaic-shiny-research.html#shiny-server",
     "title": "Shiny Your Research",
     "section": "2.3 Shiny Server",
-    "text": "2.3 Shiny Server\n\nWhat makes shiny interactive?\nWhen you change an input, the server automatically re-runs the relevant code to update the outputs. This is called reactivity.\nHow to do this?\n\n\nAdd an R object to your user interface.\n\n\nDefine the output in the server function, wrapped in a call to render*() to indicate that it is reactive and specify its output type."
+    "text": "2.3 Shiny Server\n\nWhat makes shiny interactive?\nWhen user changes an input, the server automatically re-runs the relevant code to update the outputs. This is called reactivity.\nHow to do this?\n\n\nAdd an R object to user interface.\n\n\nDefine the output in the server function, wrapped in a call to render*() to indicate that it is reactive and specify its output type."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#goals",
-    "href": "slides/aaic-shiny-research.html#goals",
+    "objectID": "aaic-shiny-research.html#datarepexp",
+    "href": "aaic-shiny-research.html#datarepexp",
+    "title": "Shiny Your Research",
+    "section": "3.1 DataRepExp",
+    "text": "3.1 DataRepExp\nDataRepExp: a R shiny Application that makes Data FAIR for Data Repositories\nPaper: The Journal of Open Source Software, 2024\nGithub: github.com/rorychenxy/DataRepExp"
+  },
+  {
+    "objectID": "aaic-shiny-research.html#gladse-dpau-explorer",
+    "href": "aaic-shiny-research.html#gladse-dpau-explorer",
+    "title": "Shiny Your Research",
+    "section": "3.2 GLADSE (DPAU Explorer)",
+    "text": "3.2 GLADSE (DPAU Explorer)\n\nrorychenxy.shinyapps.io/gladse"
+  },
+  {
+    "objectID": "aaic-shiny-research.html#goals",
+    "href": "aaic-shiny-research.html#goals",
     "title": "Shiny Your Research",
     "section": "4.1 Goals",
-    "text": "4.1 Goals\nGoal: Build a Data Explorer using the OASIS_long_tbl_df Data from NeuroDataSets.\n\nOASIS_long_tbl_df, is a tibble containing a longitudinal collection of MRI data from 150 subjects aged 60 to 96, obtained as part of the Open Access Series of Imaging Studies (OASIS).\n\n\nUI Design: Create a user-friendly interface using page_sidebar() layout for inputs widgets, and tabsets for outputs.\nReactive Expression: Create a reactive expression to be used across multiple output, using dplyr for data manipulation\nInteractive Outputs: Using DT and plotly to create interactive tables and plots\nSummary Table: using gtsummary to create a summary table for baseline data"
+    "text": "4.1 Goals\nGoal: Build a Data Explorer using the OASIS_long_tbl_df from NeuroDataSets.\n\nOASIS_long_tbl_df, is a tibble containing a longitudinal collection of MRI data from 150 subjects aged 60 to 96, obtained as part of the Open Access Series of Imaging Studies (OASIS).\n\n\nUI Design: Create a user-friendly interface using page_sidebar() layout for inputs widgets, and tabsets for outputs.\nReactive Expression: Create a reactive expression to be used across multiple output, using dplyr for data manipulation\nInteractive Outputs: Using DT and plotly to create interactive tables and plots\nSummary Table: using gtsummary to create a summary table for baseline data"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#about-the-data",
-    "href": "slides/aaic-shiny-research.html#about-the-data",
+    "objectID": "aaic-shiny-research.html#about-the-data",
+    "href": "aaic-shiny-research.html#about-the-data",
     "title": "Shiny Your Research",
     "section": "4.2 About the data",
     "text": "4.2 About the data\n\n\n\n\n\n\n\n\n\n\nVariable\nVariable\nDescription\nType\n\n\n\n\nSubject ID\nsubject_id\nUnique identifier for each subject\nCharacter\n\n\nMRI ID\nmri_id\nIdentifier for each MRI session\nCharacter\n\n\nGroup\ngroup\nClinical group classification\nFactor\n\n\nVisit\nvisit\nVisit number for longitudinal assessment\nNumeric\n\n\nMR Delay\nmr_delay\nTime in days between MRI sessions\nNumeric\n\n\nM/F\nmf\nSex of the participant\nFactor\n\n\nHand\nhand\nHandedness of the participant\nFactor\n\n\nAge\nage\nAge in years at the time of the visit\nNumeric\n\n\nEDUC\neduc\nYears of education\nNumeric\n\n\nSES\nses\nSocioeconomic status score\nFactor\n\n\nMMSE\nmmse\nMini-Mental State Examination score\nNumeric\n\n\nCDR\ncdr\nClinical Dementia Rating score\nFactor\n\n\neTIV\netiv\nEstimated total intracranial volume\nNumeric\n\n\nnWBV\nnwbv\nNormalised whole-brain volume\nNumeric\n\n\nASF\nasf\nAtlas scaling factor\nNumeric"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#basic-app-skeleton",
-    "href": "slides/aaic-shiny-research.html#basic-app-skeleton",
+    "objectID": "aaic-shiny-research.html#basic-app-skeleton",
+    "href": "aaic-shiny-research.html#basic-app-skeleton",
     "title": "Shiny Your Research",
     "section": "4.3 Basic App Skeleton",
-    "text": "4.3 Basic App Skeleton\nOpen 09-oasis.R.\n\n# Load packages\nlibrary(shiny)\nlibrary(bslib)\n...\n\n# Load data\noasis_df &lt;- readRDS(here(\"data\", \"oasis_df.rds\"))\n\n# Define UI\nui &lt;- page_sidebar(\n) \n\n# Define server\nserver &lt;- function(input, output, session) {\n}\n\n# Create a Shiny app object\nshinyApp(ui = ui, server = server)"
+    "text": "4.3 Basic App Skeleton\nOpen ./examples/exercises/09-oasis.R.\n\n# Load packages\nlibrary(shiny)\nlibrary(bslib)\n...\n\n# Load data\noasis_df &lt;- readRDS(here(\"data\", \"oasis_df.rds\"))\n\n# Define UI\nui &lt;- page_sidebar(\n) \n\n# Define server\nserver &lt;- function(input, output, session) {\n}\n\n# Create a Shiny app object\nshinyApp(ui = ui, server = server)"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#ui",
-    "href": "slides/aaic-shiny-research.html#ui",
+    "objectID": "aaic-shiny-research.html#ui",
+    "href": "aaic-shiny-research.html#ui",
     "title": "Shiny Your Research",
     "section": "4.4 UI",
-    "text": "4.4 UI\n\nAdd inputs widgets to sidebar\nAdd output to main panel\n\n]"
+    "text": "4.4 UI\n\nAdd inputs widgets to sidebar and output to main panel\n\n]"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#server",
-    "href": "slides/aaic-shiny-research.html#server",
+    "objectID": "aaic-shiny-research.html#server",
+    "href": "aaic-shiny-research.html#server",
     "title": "Shiny Your Research",
     "section": "4.5 Server",
-    "text": "4.5 Server\n\n\n\n\n\n\nCreate a reactive expression to filter the data based on user input\nCreate outputs that depend on the reactive expression\n\nNumber of observations\nSummary table with gtsummary\nDT table\nPlotly scatter plot with selected variables"
+    "text": "4.5 Server\n\n\n\n\nIf you have any trouble, please raise your hand, one of the facilitators will come to assist you.\n\n\nCreate a reactive expression to filter the data based on user input\nCreate outputs that depend on the reactive expression\n\nNumber of observations\nSummary table with gtsummary\nDT table\nPlotly scatter plot with selected variables"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#deploy-through-shinyapps.io",
-    "href": "slides/aaic-shiny-research.html#deploy-through-shinyapps.io",
+    "objectID": "aaic-shiny-research.html#deploy-through-shinyapps.io",
+    "href": "aaic-shiny-research.html#deploy-through-shinyapps.io",
     "title": "Shiny Your Research",
     "section": "4.6 Deploy through shinyapps.io",
     "text": "4.6 Deploy through shinyapps.io\nOptional\nRefer to https://shiny.posit.co/r/articles/share/shinyapps/\n\nCreate an account on shinyapps.io\nInstall and load rsconnect package\nConfigure rsconnect with your shinyapps.io account\nDeploy your app using through shinyapps.io"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#shiny-file-structures",
-    "href": "slides/aaic-shiny-research.html#shiny-file-structures",
+    "objectID": "aaic-shiny-research.html#shiny-file-structures",
+    "href": "aaic-shiny-research.html#shiny-file-structures",
     "title": "Shiny Your Research",
     "section": "5.1 Shiny file structures",
     "text": "5.1 Shiny file structures\n\n\nSingle-file\n~/appdir\n|-- app.R\n\nTwo-file\n~/appdir\n|-- ui.R\n|-- server.R\n|-- *global.R\n\nModules/as a pkg\n../app-pkg\n|-- DESCRIPTION\n|-- inst\n|   `-- app\n|       |-- server.R\n|       `-- ui.R\n|-- man\n|   `-- startApplication.Rd\n|-- NAMESPACE\n`-- R\n    |-- clusterPlot.R\n    `-- startApplication.R"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#modules",
-    "href": "slides/aaic-shiny-research.html#modules",
+    "objectID": "aaic-shiny-research.html#modules",
+    "href": "aaic-shiny-research.html#modules",
     "title": "Shiny Your Research",
     "section": "5.2 Modules",
     "text": "5.2 Modules\n\nModules are reusable pieces of Shiny app logic that can be called multiple times.\nWhy we need modules:\n\nAvoid code duplication\nImprove organization and readability\nFacilitate testing and maintenance\n\nA module consists of a UI function and a Server function like a mini shiny app\nTo use a module, you call the UI function in your main UI and the Server function in your main Server, passing a unique ID to both."
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#interactive-map-visualization",
-    "href": "slides/aaic-shiny-research.html#interactive-map-visualization",
+    "objectID": "aaic-shiny-research.html#interactive-map-visualization",
+    "href": "aaic-shiny-research.html#interactive-map-visualization",
     "title": "Shiny Your Research",
     "section": "5.3 Interactive Map Visualization",
-    "text": "5.3 Interactive Map Visualization\nMaps visualization including choropleth are useful to explore:\n\nregional patterns\nsite locations\nservice coverage\nparticipant recruitment areas\ndisease burden by country or region\n\nOne of the most popular R packages for creating interactive maps in Shiny is leaflet.\nhttps://rstudio.github.io/leaflet/articles/leaflet.html"
+    "text": "5.3 Interactive Map Visualization\nMaps visualization including choropleth are useful to explore:\n\nregional patterns\nsite locations\nservice coverage\nparticipant recruitment areas\ndisease burden by country or region\n\nleaflet is one of the most popular R packages for creating interactive maps.\nhttps://rstudio.github.io/leaflet/articles/leaflet.html"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#building-shiny-app-with-the-help-of-ai---shiny-assistant",
-    "href": "slides/aaic-shiny-research.html#building-shiny-app-with-the-help-of-ai---shiny-assistant",
+    "objectID": "aaic-shiny-research.html#building-shiny-app-with-the-help-of-ai---shiny-assistant",
+    "href": "aaic-shiny-research.html#building-shiny-app-with-the-help-of-ai---shiny-assistant",
     "title": "Shiny Your Research",
     "section": "6.1 Building Shiny app with the help of AI - Shiny Assistant",
     "text": "6.1 Building Shiny app with the help of AI - Shiny Assistant\nhttps://gallery.shinyapps.io/assistant/\n\nShiny Assistant"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#where-ai-fits-in-a-shiny-app",
-    "href": "slides/aaic-shiny-research.html#where-ai-fits-in-a-shiny-app",
+    "objectID": "aaic-shiny-research.html#where-ai-fits-in-a-shiny-app",
+    "href": "aaic-shiny-research.html#where-ai-fits-in-a-shiny-app",
     "title": "Shiny Your Research",
     "section": "6.2 Where AI fits in a Shiny app",
     "text": "6.2 Where AI fits in a Shiny app\n\nShiny already helps users explore data interactively\nAI can add a conversational layer\nUseful when users do not know which filter, plot, or table they need\nEspecially useful for:\n\nexplaining dashboard outputs\nguiding exploration\ntranslating plain-English questions into data queries\nsupporting non-technical research users"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#todays-ai-pathway",
-    "href": "slides/aaic-shiny-research.html#todays-ai-pathway",
+    "objectID": "aaic-shiny-research.html#todays-ai-pathway",
+    "href": "aaic-shiny-research.html#todays-ai-pathway",
     "title": "Shiny Your Research",
     "section": "6.3 Today’s AI pathway",
     "text": "6.3 Today’s AI pathway\nNote: This is just one of many possible pathways to add AI to your Shiny app.\n\nBuild a basic chat assistant with {ellmer}\nPlace the assistant inside a Shiny app with {shinychat}\nMove from “chat about the app” to “query the data”\nUse {querychat} to translate questions into data filters and summaries"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#introducing-ellmer",
-    "href": "slides/aaic-shiny-research.html#introducing-ellmer",
+    "objectID": "aaic-shiny-research.html#introducing-ellmer",
+    "href": "aaic-shiny-research.html#introducing-ellmer",
     "title": "Shiny Your Research",
     "section": "6.4 Introducing {ellmer}",
     "text": "6.4 Introducing {ellmer}\nhttps://ellmer.tidyverse.org\n\nThe R package for working with LLM\nProvides a consistent interface to different model providers\nSupports many LLMs: OpenAI, Anthropic, Google, Meta, Ollama, AWS, Azure, Databricks, Snowflake, and more\nGet help from Ellmer Assistant: https://jcheng.shinyapps.io/ellmer-assistant/"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#from-chat-to-data-querying-using-querychat",
-    "href": "slides/aaic-shiny-research.html#from-chat-to-data-querying-using-querychat",
+    "objectID": "aaic-shiny-research.html#from-chat-to-data-querying-using-querychat",
+    "href": "aaic-shiny-research.html#from-chat-to-data-querying-using-querychat",
     "title": "Shiny Your Research",
     "section": "6.5 From Chat to Data Querying using {querychat}",
     "text": "6.5 From Chat to Data Querying using {querychat}\n{querychat} is a package that translates natural language questions into data queries, allowing users to interact with their data using plain English.\n\nShiny Parts"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#from-chat-to-data-querying-using-querychat-1",
-    "href": "slides/aaic-shiny-research.html#from-chat-to-data-querying-using-querychat-1",
+    "objectID": "aaic-shiny-research.html#from-chat-to-data-querying-using-querychat-1",
+    "href": "aaic-shiny-research.html#from-chat-to-data-querying-using-querychat-1",
     "title": "Shiny Your Research",
     "section": "6.5 From Chat to Data Querying using {querychat}",
     "text": "6.5 From Chat to Data Querying using {querychat}\n{querychat} is a package that translates natural language questions into data queries, allowing users to interact with their data using plain English.\n\nquerychat Parts"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#build-your-own-shiny-app",
-    "href": "slides/aaic-shiny-research.html#build-your-own-shiny-app",
+    "objectID": "aaic-shiny-research.html#build-your-own-shiny-app",
+    "href": "aaic-shiny-research.html#build-your-own-shiny-app",
     "title": "Shiny Your Research",
     "section": "7.1 Build Your Own Shiny App",
-    "text": "7.1 Build Your Own Shiny App\n\n\n\n\n\n\nUse the GBD Data provided data/alz_gbd_agegp_sf.rds or your own data\nCombine what we learned today\nBuild your own R Shiny app!\nAbout the data\n\nSimilar to the previous gbd_60plus dataset, contains the Global Burden of Disease (GBD) Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) with geometry data.\nWith additional age variable that categorizes the population into different age groups (60-64, 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95+)"
+    "text": "7.1 Build Your Own Shiny App\n\n\n\n\nIf you have any trouble, please raise your hand, one of the facilitators will come to assist you.\n\n\nUse the GBD Data provided data/alz_gbd_agegp_sf.rds or your own data\nCombine what we learned today\nBuild your own R Shiny app!\nAbout the data\n\nSimilar to the previous gbd_60plus dataset, contains the Global Burden of Disease (GBD) Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) with geometry data.\nWith additional age variable that categorizes the population into different age groups (60-64, 65-69, 70-74, 75-79, 80-84, 85-89, 90-94, 95+)"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#share-your-app",
-    "href": "slides/aaic-shiny-research.html#share-your-app",
+    "objectID": "aaic-shiny-research.html#share-your-app",
+    "href": "aaic-shiny-research.html#share-your-app",
     "title": "Shiny Your Research",
     "section": "8.1 Share Your App",
-    "text": "8.1 Share Your App\nYou’re invited to share with the group:\n\n📌 What dataset did you use?\n🎛️ What inputs did you add?\n📊 What does your visualization show?\n🌟 Any stretch goals you tackled?\n❓ Any challenges or questions?"
+    "text": "8.1 Share Your App\nYou’re invited to share with the group:\n\n📌 Which dataset did you use?\n🎛️ What inputs did you add?\n📊 What does your visualization show?\n🌟 Any stretch goals you tackled?\n❓ Any challenges or questions?"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#next-steps",
-    "href": "slides/aaic-shiny-research.html#next-steps",
+    "objectID": "aaic-shiny-research.html#next-steps",
+    "href": "aaic-shiny-research.html#next-steps",
     "title": "Shiny Your Research",
     "section": "8.2 Next Steps",
     "text": "8.2 Next Steps\n\n\n\nTopic\nResource\n\n\n\n\nShiny official docs\nhttps://shiny.posit.co/\n\n\nMastering Shiny (book)\nhttps://mastering-shiny.org/\n\n\nShiny cheat sheet\nhttps://shiny.posit.co/r/articles/start/cheatsheet/\n\n\nModules & engineering\nhttps://engineering-shiny.org/\n\n\nLLM integration (ellmer)\nhttps://ellmer.tidyverse.org/\n\n\nAwesome Shiny Extensions\nhttps://github.com/nanxstats/awesome-shiny-extensions"
   },
   {
-    "objectID": "slides/aaic-shiny-research.html#thank-you",
-    "href": "slides/aaic-shiny-research.html#thank-you",
+    "objectID": "aaic-shiny-research.html#thank-you",
+    "href": "aaic-shiny-research.html#thank-you",
     "title": "Shiny Your Research",
     "section": "8.3 Thank You!",
-    "text": "8.3 Thank You!\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nGraham Bearden, PhD\nAshleigh Vella, PhD\nJames Lian, PhD\n\n\n\n\n“The best way to learn Shiny is to build something you actually want to show people.”\n\n\n\nSlides & code: https://github.com/RoryChenXY/aaic2026-shiny-research"
-  },
-  {
-    "objectID": "examples/17-querychat/gbd_60plus_greeting.html",
-    "href": "examples/17-querychat/gbd_60plus_greeting.html",
-    "title": "",
-    "section": "",
-    "text": "Hello! 👋\nI’m here to help you explore the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023.\nI can filter and sort the dashboard, answer questions about the data, and help you discover insights.\nThis dataset includes information about disease incidence and prevalence across different countries.\nLet’s dive in!\n\nExplore the data\n\n\nShow me the top 10 countries by prevalence\n\n\nWhat continents are represented?\n\n\nHow many records are in the dataset?\n\n\n\n\nCompare groups\n\n\nShow me the difference between male and female incidence rates\n\n\nCompare high income OECD countries to low income countries\n\n\nWhat’s the average prevalence by income group?\n\n\n\n\nFilter the dashboard\n\n\nShow only high income countries\n\n\nFilter to prevalence measures\n\n\nShow records for Asia only\n\n\n\n\nAsk research-style questions\n\n\nWhich countries have the highest prevalence values?\n\n\nWhich countries have the highest incidence values?\n\n\nSummarise the main differences by income group"
-  },
-  {
-    "objectID": "examples/17-querychat/gbd_60plus_description.html",
-    "href": "examples/17-querychat/gbd_60plus_description.html",
-    "title": "",
-    "section": "",
-    "text": "This dataset contains the Global Burden of Disease Data on Incidence and Prevalence of Alzheimer’s Disease and other dementias (ADOD) among people aged 60 years and older worldwide in 2023."
-  },
-  {
-    "objectID": "examples/17-querychat/gbd_60plus_description.html#variables",
-    "href": "examples/17-querychat/gbd_60plus_description.html#variables",
-    "title": "",
-    "section": "Variables",
-    "text": "Variables\n\n\n\n\n\n\n\n\n\nVariable\nDescription\nExample values\nData type\n\n\n\n\niso3\nThree-letter ISO country code\nAUS, CHN, USA\nCharacter\n\n\ncountry\nCountry name\nAustralia, China, United States of America\nCharacter\n\n\nincome_grp\nCountry income group\n1. High income, 4. Lower middle income\nCategorical\n\n\ncontinent\nContinent or broad geographic region\nAsia, Africa, Europe\nCategorical\n\n\nmeasure\nType of epidemiological measure reported\nPrevalence, Incidence\nCategorical\n\n\nsex\nSex category for the estimate\nMale, Female, Both\nCategorical\n\n\nmetric\nUnit or scale of the estimate\nNumber, Percent\nCategorical\n\n\nval\nReported numeric estimate for the selected measure, sex, and metric\n1250000, 4.7\nNumeric"
-  },
-  {
-    "objectID": "examples/17-querychat/gbd_60plus_description.html#query-guidance",
-    "href": "examples/17-querychat/gbd_60plus_description.html#query-guidance",
-    "title": "",
-    "section": "Query guidance",
-    "text": "Query guidance\nWhen answering questions, use only the variables available in this dataset."
-  },
-  {
-    "objectID": "examples/17-querychat/gbd_60plus_description.html#limitations",
-    "href": "examples/17-querychat/gbd_60plus_description.html#limitations",
-    "title": "",
-    "section": "Limitations",
-    "text": "Limitations\nThis dataset is suitable for descriptive exploration and dashboard filtering.\nDo not:\n\nprovide medical advice\ninfer causality from these descriptive estimates\ninvent variables, statistics, uncertainty intervals, time trends, or study findings not present in the dataset\ndescribe results as statistically significant unless significance information is explicitly provided"
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html",
-    "href": "resources/workshop_info/workshop_agenda.html",
-    "title": "Workshop Agenda",
-    "section": "",
-    "text": "Format: Half-day immersive workshop\nTime: 1:00 p.m. – 5:00 p.m.\nAudience: Dementia researchers, clinicians, analysts, students, and research support staff with basic R experience."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#shiny-your-research-interactive-dashboards-in-r",
-    "href": "resources/workshop_info/workshop_agenda.html#shiny-your-research-interactive-dashboards-in-r",
-    "title": "Workshop Agenda",
-    "section": "",
-    "text": "Format: Half-day immersive workshop\nTime: 1:00 p.m. – 5:00 p.m.\nAudience: Dementia researchers, clinicians, analysts, students, and research support staff with basic R experience."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.",
-    "title": "Workshop Agenda",
-    "section": "1:00 – 1:30 p.m.",
-    "text": "1:00 – 1:30 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#introductions-and-scene-setting",
-    "href": "resources/workshop_info/workshop_agenda.html#introductions-and-scene-setting",
-    "title": "Workshop Agenda",
-    "section": "Introductions and Scene Setting",
-    "text": "Introductions and Scene Setting\n\nTopics\n\nWelcome and workshop overview\nFacilitator introductions\nParticipant introductions and expectations\nOverview of workshop goals and learning pathway\nSoftware and environment check\nRepository walkthrough\n\n\n\nActivities\n\nConfirm R and RStudio setup\nOpen workshop GitHub repository\nLoad datasets and starter templates\n\n\n\nKey Outcomes\nParticipants are ready to follow the live coding exercises and understand the overall workshop structure."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.-1",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.-1",
-    "title": "Workshop Agenda",
-    "section": "1:30 – 2:00 p.m.",
-    "text": "1:30 – 2:00 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#shiny-fundamentals-and-real-world-demonstrations",
-    "href": "resources/workshop_info/workshop_agenda.html#shiny-fundamentals-and-real-world-demonstrations",
-    "title": "Workshop Agenda",
-    "section": "Shiny Fundamentals and Real-World Demonstrations",
-    "text": "Shiny Fundamentals and Real-World Demonstrations\n\nTopics\n\nWhat is Shiny?\nWhy use Shiny in dementia research?\nCore app structure:\n\nui\nserver\nshinyApp()\n\nInputs, outputs, and reactivity\nDashboard design principles\nReproducibility and accessibility considerations\n\n\n\nLive Demonstrations\n\nMinimal reactive Shiny app\nDementias Platform Australia (DPAU) Metadata Explorer demonstration\nExamples of interactive research dashboards\n\n\n\nKey Outcomes\nParticipants understand the conceptual foundations of Shiny and how interactive dashboards support research communication and exploration."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.-2",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.-2",
-    "title": "Workshop Agenda",
-    "section": "2:00 – 3:00 p.m.",
-    "text": "2:00 – 3:00 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#guided-coding-build-your-first-shiny-dashboard",
-    "href": "resources/workshop_info/workshop_agenda.html#guided-coding-build-your-first-shiny-dashboard",
-    "title": "Workshop Agenda",
-    "section": "Guided Coding: Build Your First Shiny Dashboard",
-    "text": "Guided Coding: Build Your First Shiny Dashboard\n\nHands-On Exercise\nParticipants progressively build a Shiny dashboard using openly available Global Burden of Disease (GBD) Alzheimer’s disease and other dementias (ADOD) datasets.\n\n\nStep-by-Step Topics\n\nCreating a basic Shiny app\nAdding interactive inputs\nBuilding reactive plots and tables\nCreating multi-tab dashboards\nApplying basic styling and layout improvements\nIntroducing modular design concepts\nOptional: Adding LLM-powered features using {ellmer} and {querychat}\n\n\n\nTeaching Approach\n\nLive coding\nGuided replication\nShort checkpoint pauses\nTroubleshooting support\nPeer discussion\n\n\n\nKey Outcomes\nParticipants complete a functional interactive dashboard and gain confidence with core Shiny workflows."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.-3",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.-3",
-    "title": "Workshop Agenda",
-    "section": "3:00 – 3:30 p.m.",
-    "text": "3:00 – 3:30 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#break",
-    "href": "resources/workshop_info/workshop_agenda.html#break",
-    "title": "Workshop Agenda",
-    "section": "Break",
-    "text": "Break\n\nOptional Activities\n\nInformal Q&A\nNetworking\nIndividual troubleshooting support"
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.-4",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.-4",
-    "title": "Workshop Agenda",
-    "section": "3:30 – 4:30 p.m.",
-    "text": "3:30 – 4:30 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#independent-dashboard-development",
-    "href": "resources/workshop_info/workshop_agenda.html#independent-dashboard-development",
-    "title": "Workshop Agenda",
-    "section": "Independent Dashboard Development",
-    "text": "Independent Dashboard Development\n\nIndependent Exercise\nParticipants build or extend their own Shiny dashboard using: - supplied dementia datasets - or their own data (optional)\n\n\nSuggested Project Ideas\n\nIncidence and prevalence explorer\nMortality trends dashboard\nCohort metadata explorer\nBiomarker visualization tool\nInteractive filtering and comparison dashboard\n\n\n\nFacilitator Support\nWorkshop facilitators circulate to: - troubleshoot issues - review app structure - provide coding support - discuss deployment and reproducibility\n\n\nExtension Opportunities\nAdvanced participants may explore: - reactive filtering workflows - modular app structures - custom themes with {bslib} - AI-assisted querying workflows\n\n\nKey Outcomes\nParticipants independently apply workshop concepts to a realistic research communication problem."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#p.m.-5",
-    "href": "resources/workshop_info/workshop_agenda.html#p.m.-5",
-    "title": "Workshop Agenda",
-    "section": "4:30 – 5:00 p.m.",
-    "text": "4:30 – 5:00 p.m."
-  },
-  {
-    "objectID": "resources/workshop_info/workshop_agenda.html#group-sharing-and-wrap-up",
-    "href": "resources/workshop_info/workshop_agenda.html#group-sharing-and-wrap-up",
-    "title": "Workshop Agenda",
-    "section": "Group Sharing and Wrap-Up",
-    "text": "Group Sharing and Wrap-Up\n\nActivities\n\nSmall-group dashboard demonstrations\nParticipant reflections\nDiscussion of implementation challenges and opportunities\nRecommended next steps for continued learning\n\n\n\nWrap-Up Topics\n\nDeployment pathways\nReproducible workflow recommendations\nGitHub and sharing strategies\nAdditional Shiny learning resources\n\n\n\nFinal Deliverables\nParticipants leave with: - reusable Shiny templates - workshop code examples - completed exercises - GitHub repository access - practical next steps for independent development"
+    "text": "8.3 Thank You!\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nAshleigh Vella, PhD\nNikita Keshena Husein\nMai Ho\n\n\n\n\n“The best way to learn Shiny is to build something you actually want to show people.”\n\n\n\nSlides: https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html Repository: https://github.com/RoryChenXY/aaic2026-shiny-research"
   }
 ]

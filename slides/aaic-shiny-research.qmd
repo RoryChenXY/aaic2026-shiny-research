@@ -89,14 +89,14 @@ R Shiny allows researchers to turn analyses, figures, tables, and statistical re
 
 ## 1.5 Examples of R Shiny in Research
 
-Posit Shiny Gallery   <https://shiny.posit.co/r/gallery/#feature-demos>
-Epidemiologist R Handbook: Shiny dashboards - <https://epirhandbook.com/en/>
+-   Posit Shiny Gallery   <https://shiny.posit.co/r/gallery/#feature-demos>
+-   Epidemiologist R Handbook: Shiny dashboards - <https://epirhandbook.com/en/>
 
 
 
 ------------------------------------------------------------------------
 
-## 1.5.1 Examples of R Shiny in Research
+### 1.5.1 Examples of R Shiny in Research
 
 ![`Examples`](./img/s1.5.1-shinyexample.png)
 
