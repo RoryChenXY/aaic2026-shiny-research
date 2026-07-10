@@ -1,0 +1,7 @@
+project:
+  type: website
+  render:
+     - "aaic-shiny-research.qmd"
+  output-dir: docs
+editor: visual
+
