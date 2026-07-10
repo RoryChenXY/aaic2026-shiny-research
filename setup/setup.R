@@ -33,6 +33,8 @@ if(length(new.packages)) {
 
 usethis::edit_r_environ()
 
+# ANTHROPIC_API_KEY="<APIKEY>"
+
 # Refer to https://shiny.posit.co/r/articles/share/shinyapps/
 # for instructions on how to deploy your Shiny app to shinyapps.io. 
 # You will need to create an account and set up your account information in R 
