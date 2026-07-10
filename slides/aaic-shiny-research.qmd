@@ -174,7 +174,9 @@ if(length(new.packages)) install.packages(new.packages)
 ------------------------------------------------------------------------
 
 ###  1.6.4 Setup - API keys (**Optional**)
-
+-   Please open the Google Sheet, add your name and email address to the list, and copy your API key.
+-   Please only take one.
+-   If you have trouble, please raise your hand, one of the facilitators will come to assist you.
 -   Restart R Studio to make sure the API keys are loaded. 
 -   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 
 -   It should return your API key.
