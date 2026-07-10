@@ -2980,13 +2980,27 @@ If you have any trouble, please raise your hand, one of the facilitators will co
 
 ## 8.3 Thank You! {.smaller}
 
+
+::::: columns
+
+::: {.column width="50%"}
+
 -   **Rory Chen, MSc** 
 -   **Ana W. Capuano, PhD** 
 -   **Sarah Bauermeister, PhD** 
 -   **Ashleigh Vella, PhD** 
 -   **Nikita Keshena Husein**
 -   **Mai Ho**
+::: 
 
+::: {.column width="50%"}
+
+![`Survey Evaluation`](./img/evaluation_QR.png)
+
+::: 
+
+
+::::: 
 \
 
 > *"The best way to learn Shiny is to build something you actually want to show people."*
