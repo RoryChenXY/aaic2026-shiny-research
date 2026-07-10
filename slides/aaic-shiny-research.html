@@ -259,7 +259,7 @@ Rory Chen
 <h2>1.2 Today’s agenda</h2>
 <p>The workshop will run for 4 hours, 1-5 pm.</p>
 <ul>
-<li><p>1:00 - 1:30 p.m. - Introductions and Scene Setting</p></li>
+<li><p>1:00 - 1:30 p.m. - troductions: welcome remarks, goals, facilitator and participant introductions, background and rearrange in groups (Ana Capuano)</p></li>
 <li><p>1:30 - 2:00 p.m. - Theory and Real-World App Demo</p></li>
 <li><p>2:00 - 3:00 p.m. - Guided Practice: Build Your First Shiny App</p></li>
 <li><p>3:00 - 3:30 p.m. - Break</p></li>
@@ -267,30 +267,41 @@ Rory Chen
 <li><p>4:30 - 5:00 p.m. - Group Sharing and Wrap-Up</p></li>
 </ul>
 </section>
+<section id="workshop-goal" class="slide level2 smaller">
+<h2>1.3 Workshop Goal</h2>
+<p>This hands-on workshop will help dementia researchers design, build, and share interactive dashboards using R Shiny.</p>
+<p><strong>By the end of the workshop, participants will be able to:</strong></p>
+<ul>
+<li>Transform static research outputs into interactive, transparent, and reproducible data tools.</li>
+<li>Build a working Shiny dashboard using openly available GBD Alzheimer’s disease and other dementias data.</li>
+<li>Apply core Shiny concepts.</li>
+<li>Explore real-world dementia research examples, including the DPAU Metadata Explorer app.</li>
+</ul>
+</section>
 <section id="why-use-shiny-for-your-research" class="slide level2 smaller">
-<h2>1.3 Why use <code>shiny</code> for your research</h2>
+<h2>1.4 Why use <code>shiny</code> for your research</h2>
+<p>R Shiny allows researchers to turn analyses, figures, tables, and statistical results into interactive tools that collaborators and stakeholders can explore.</p>
+<p><strong>Advantages of R Shiny</strong></p>
 <ul>
-<li><p><code>Shiny</code> is an R package that makes it easy to build <code>interactive</code> web applications (apps) straight from R. .</p></li>
-<li><p><code>Integration with R</code>: R users can build web applications without HTML/CSS/JS knowledge and leverage the full power of R’s data manipulation and visualization capabilities.</p></li>
-<li><p><code>Accessibility</code>: Shiny apps can be easily shared via URLs, making research findings accessible to a wider audience.</p></li>
-<li><p><code>Engagement</code>: Interactive visualizations and user interfaces can enhance engagement, great for presentations, teaching, collaboration and more</p></li>
-<li><p><code>Customization</code>: Shiny offers extensive customization options, enabling researchers to tailor their applications to specific research questions and audiences.</p></li>
-</ul>
-<p>… and more!</p>
-</section>
-<section id="learning-objectives" class="slide level2 smaller">
-<h2>1.4 Learning Objectives</h2>
-<p>By the end of this workshop, you will be able to:</p>
-<ul>
-<li>Understand the fundamental concepts and features of <code>shiny</code> package.</li>
-<li>Create an interactive and dynamic <code>shiny</code> dashboard following a guided, step-by-step coding exercise.</li>
-<li>Design reproducible and scalable <code>shiny</code> modules using structured development practices.</li>
-<li>Independently apply <code>shiny</code> to present own scientific outputs in an engaging, accessible format.</li>
-<li>Test the integration of large language models (LLMs) into Shiny applications using the <code>ellmer</code> and <code>querychat</code> package.</li>
+<li>Creates interactive dashboards directly from R.</li>
+<li>Allows users to explore data without editing code.</li>
+<li>Combines figures, tables, maps, models, and text in one interface.</li>
+<li>Makes research outputs easier to share and interpret.</li>
+<li>Supports transparent and reproducible workflows.</li>
+<li>Helps collaborators interact with results instead of receiving static files.</li>
+<li>Can be used for teaching, communication, team science, and knowledge translation.</li>
 </ul>
 </section>
+<section id="examples-of-r-shiny-in-research" class="slide level2">
+<h2>1.5 Examples of R Shiny in Research</h2>
+<p>Posit Shiny Gallery <a href="https://shiny.posit.co/r/gallery/#feature-demos" class="uri">https://shiny.posit.co/r/gallery/#feature-demos</a> Epidemiologist R Handbook: Shiny dashboards - <a href="https://epirhandbook.com/en/" class="uri">https://epirhandbook.com/en/</a></p>
+</section>
+<section id="examples-of-r-shiny-in-research-1" class="slide level2">
+<h2>1.5.1 Examples of R Shiny in Research</h2>
+
+<img data-src="./img/s1.5.1-shinyexample.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Examples</code></p></section>
 <section id="setup" class="slide level2">
-<h2>1.5 Setup</h2>
+<h2>1.6 Setup</h2>
 <ul>
 <li>You are comfortable coding in R and R Studio</li>
 <li>No prior knowledge of Shiny apps required.</li>
@@ -302,7 +313,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 id="setup---projects">1.5.1 Setup - Projects</h3>
+<h3 id="setup---projects">1.6.1 Setup - Projects</h3>
 <ul>
 <li>In R Studio, go to “File” -&gt; “New Project” (left top corner)</li>
 <li>Choose “New Directory” -&gt; “New Project”</li>
@@ -310,10 +321,10 @@ Rory Chen
 <li>Put all the downloaded files in the new project directory</li>
 </ul>
 
-<img data-src="./img/s1.5.1-newproject.png" class="r-stretch quarto-figure-center"><p class="caption"><code>New Project</code></p></section>
+<img data-src="./img/s1.6.1-newproject.png" class="r-stretch quarto-figure-center"><p class="caption"><code>New Project</code></p></section>
 <section class="slide level2">
 
-<h3 id="setup---packages">1.5.2 Setup - Packages</h3>
+<h3 id="setup---packages">1.6.2 Setup - Packages</h3>
 <ul>
 <li>Open <code>setup.R</code> and run the code to install the required packages for the workshop.</li>
 </ul>
@@ -332,7 +343,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 id="setup---api-keys-optional">1.5.3 Setup - API keys (<strong>Optional</strong>)</h3>
+<h3 id="setup---api-keys-optional">1.6.3 Setup - API keys (<strong>Optional</strong>)</h3>
 <ul>
 <li>Restart R Studio to make sure the API keys are loaded.</li>
 <li>You can check if the key is loaded by running <code>Sys.getenv("ANTHROPIC_KEY")</code> in the console.</li>
@@ -1354,17 +1365,25 @@ Rory Chen
 <p>Paper: <a href="https://joss.theoj.org/papers/10.21105/joss.06693">The Journal of Open Source Software, 2024</a></p>
 <p>Github: <a href="https://github.com/RoryChenXY/DataRepExp_public">github.com/rorychenxy/DataRepExp</a></p>
 </section>
-<section id="gladse" class="slide level2">
-<h2>3.2 GLADSE</h2>
+<section class="slide level2">
+
+<h3 id="datarepexp---recording">3.1.1 DataRepExp - Recording</h3>
+<video width="1000" height="600" controls="">
+<source src="./img/datarepexp.mp4" type="video/mp4">
+</video>
+</section>
+<section id="gladse-dpau-explorer" class="slide level2">
+<h2>3.2 GLADSE (DPAU Explorer)</h2>
 <ul>
 <li><a href="https://portal.dementiasplatform.com.au/crs-metadata-explorer">rorychenxy.shinyapps.io/gladse</a></li>
 </ul>
 </section>
-<section id="gladse---querychat" class="slide level2">
-<h2>3.3 GLADSE - querychat</h2>
-</section>
 <section class="slide level2">
 
+<h3 id="gladse-recording-dpau-explorer">3.2.1 GLADSE Recording (DPAU Explorer)</h3>
+<video width="1000" height="600" controls="">
+<source src="./img/gladse.mp4" type="video/mp4">
+</video>
 </section></section>
 <section>
 <section id="guided-practice-build-your-first-shiny-app---basic" class="title-slide slide level1 smaller center">
@@ -2068,8 +2087,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-ec3295c509000cbd504a" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-ec3295c509000cbd504a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-50de73ebddfc68ae211e" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-50de73ebddfc68ae211e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>

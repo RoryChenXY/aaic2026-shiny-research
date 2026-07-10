@@ -40,7 +40,8 @@ format:
 
 The workshop will run for 4 hours, 1-5 pm.
 
--   1:00 - 1:30 p.m. - Introductions and Scene Setting
+-   1:00 - 1:30 p.m. - troductions: welcome remarks, goals, facilitator and participant introductions, background and rearrange in groups
+(Ana Capuano)
 
 -   1:30 - 2:00 p.m. - Theory and Real-World App Demo
 
@@ -54,35 +55,52 @@ The workshop will run for 4 hours, 1-5 pm.
 
 ------------------------------------------------------------------------
 
-## 1.3 Why use `shiny` for your research {.smaller}
+## 1.3 Workshop Goal {.smaller}
 
--   `Shiny` is an R package that makes it easy to build `interactive` web applications (apps) straight from R. .
+This hands-on workshop will help dementia researchers design, build, and share interactive dashboards using R Shiny.
 
--   `Integration with R`: R users can build web applications without HTML/CSS/JS knowledge and leverage the full power of R's data manipulation and visualization capabilities.
+**By the end of the workshop, participants will be able to:**
 
--   `Accessibility`: Shiny apps can be easily shared via URLs, making research findings accessible to a wider audience.
-
--   `Engagement`: Interactive visualizations and user interfaces can enhance engagement, great for presentations, teaching, collaboration and more
-
--   `Customization`: Shiny offers extensive customization options, enabling researchers to tailor their applications to specific research questions and audiences.
-
-... and more!
+-   Transform static research outputs into interactive, transparent, and reproducible data tools.
+-   Build a working Shiny dashboard using openly available GBD Alzheimer’s disease and other dementias data.
+-   Apply core Shiny concepts.
+-   Explore real-world dementia research examples, including the DPAU Metadata Explorer app.
 
 ------------------------------------------------------------------------
 
-## 1.4 Learning Objectives {.smaller}
 
-By the end of this workshop, you will be able to:
 
--   Understand the fundamental concepts and features of `shiny` package.
--   Create an interactive and dynamic `shiny` dashboard following a guided, step-by-step coding exercise.
--   Design reproducible and scalable `shiny` modules using structured development practices.
--   Independently apply `shiny` to present own scientific outputs in an engaging, accessible format.
--   Test the integration of large language models (LLMs) into Shiny applications using the `ellmer` and `querychat` package.
+## 1.4 Why use `shiny` for your research {.smaller}
+
+R Shiny allows researchers to turn analyses, figures, tables, and statistical results into interactive tools that collaborators and stakeholders can explore.
+
+**Advantages of R Shiny**
+
+-   Creates interactive dashboards directly from R.
+-   Allows users to explore data without editing code.
+-   Combines figures, tables, maps, models, and text in one interface.
+-   Makes research outputs easier to share and interpret.
+-   Supports transparent and reproducible workflows.
+-   Helps collaborators interact with results instead of receiving static files.
+-   Can be used for teaching, communication, team science, and knowledge translation.
+
 
 ------------------------------------------------------------------------
 
-## 1.5 Setup
+## 1.5 Examples of R Shiny in Research
+
+Posit Shiny Gallery   <https://shiny.posit.co/r/gallery/#feature-demos>
+Epidemiologist R Handbook: Shiny dashboards - <https://epirhandbook.com/en/>
+
+
+
+------------------------------------------------------------------------
+
+## 1.5.1 Examples of R Shiny in Research
+
+![`Examples`](./img/s1.5.1-shinyexample.png)
+
+## 1.6 Setup
 
 -   You are comfortable coding in R and R Studio
 -   No prior knowledge of Shiny apps required.
@@ -93,18 +111,18 @@ By the end of this workshop, you will be able to:
 
 ------------------------------------------------------------------------
 
-###  1.5.1 Setup - Projects
+###  1.6.1 Setup - Projects
 
 -   In R Studio, go to "File" -> "New Project" (left top corner)
 -   Choose "New Directory"  -> "New Project"
 -   Choose location and enter `Directory name` (e.g. "aaic2026-shiny-research")
 -   Put all the downloaded files in the new project directory
 
-![`New Project`](./img/s1.5.1-newproject.png)
+![`New Project`](./img/s1.6.1-newproject.png)
 
 ------------------------------------------------------------------------
 
-###  1.5.2 Setup - Packages
+###  1.6.2 Setup - Packages
 
 -    Open `setup.R` and run the code to install the required packages for the workshop.
 
@@ -127,7 +145,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 ------------------------------------------------------------------------
 
-###  1.5.3 Setup - API keys (**Optional**)
+###  1.6.3 Setup - API keys (**Optional**)
 
 -   Restart R Studio to make sure the API keys are loaded. 
 -   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 
@@ -1331,8 +1349,18 @@ Github: [github.com/rorychenxy/DataRepExp](https://github.com/RoryChenXY/DataRep
 
 ------------------------------------------------------------------------
 
+### 3.1.1 DataRepExp - Recording
 
-## 3.2 GLADSE
+<video width="1000" height="600" controls>
+  <source src="./img/datarepexp.mp4" type="video/mp4">
+</video>
+
+
+
+------------------------------------------
+
+
+## 3.2 GLADSE (DPAU Explorer)
 
 -   [rorychenxy.shinyapps.io/gladse](https://portal.dementiasplatform.com.au/crs-metadata-explorer)
 
@@ -1340,10 +1368,14 @@ Github: [github.com/rorychenxy/DataRepExp](https://github.com/RoryChenXY/DataRep
 ------------------------------------------------------------------------
 
 
-## 3.3 GLADSE - querychat
+### 3.2.1 GLADSE Recording (DPAU Explorer)
 
 
-------------------------------------------------------------------------
+<video width="1000" height="600" controls>
+  <source src="./img/gladse.mp4" type="video/mp4">
+</video>
+
+
 
 
 # 4. Guided Practice: Build Your First Shiny App - Basic {.smaller}
