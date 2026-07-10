@@ -32,14 +32,7 @@
     "href": "aaic-shiny-research.html#examples-of-r-shiny-in-research",
     "title": "Shiny Your Research",
     "section": "1.5 Examples of R Shiny in Research",
-    "text": "1.5 Examples of R Shiny in Research\nPosit Shiny Gallery https://shiny.posit.co/r/gallery/#feature-demos Epidemiologist R Handbook: Shiny dashboards - https://epirhandbook.com/en/"
-  },
-  {
-    "objectID": "aaic-shiny-research.html#examples-of-r-shiny-in-research-1",
-    "href": "aaic-shiny-research.html#examples-of-r-shiny-in-research-1",
-    "title": "Shiny Your Research",
-    "section": "1.5.1 Examples of R Shiny in Research",
-    "text": "1.5.1 Examples of R Shiny in Research\n\nExamples"
+    "text": "1.5 Examples of R Shiny in Research\n\nPosit Shiny Gallery https://shiny.posit.co/r/gallery/#feature-demos\nEpidemiologist R Handbook: Shiny dashboards - https://epirhandbook.com/en/"
   },
   {
     "objectID": "aaic-shiny-research.html#lets-learn-who-is-in-the-room",
@@ -214,6 +207,6 @@
     "href": "aaic-shiny-research.html#thank-you",
     "title": "Shiny Your Research",
     "section": "8.3 Thank You!",
-    "text": "8.3 Thank You!\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nAshleigh Vella, PhD\nNikita Keshena Husein\nMai Ho\n\n\n\n\n“The best way to learn Shiny is to build something you actually want to show people.”\n\n\n\nSlides: https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html Repository: https://github.com/RoryChenXY/aaic2026-shiny-research"
+    "text": "8.3 Thank You!\n\n\n\nRory Chen, MSc\nAna W. Capuano, PhD\nSarah Bauermeister, PhD\nAshleigh Vella, PhD\nNikita Keshena Husein\nMai Ho\n\n\n\n\n\nSurvey Evaluation\n\n\n\n\n\n\n“The best way to learn Shiny is to build something you actually want to show people.”\n\n\n\nSlides: https://rorychenxy.github.io/aaic2026-shiny-research/slides/aaic-shiny-research.html Repository: https://github.com/RoryChenXY/aaic2026-shiny-research"
   }
 ]
