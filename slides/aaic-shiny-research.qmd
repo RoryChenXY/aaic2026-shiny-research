@@ -184,19 +184,13 @@ if(length(new.packages)) install.packages(new.packages)
 
 ###  1.6.4 Setup - API keys (**Optional**)
 
+-   Run: `usethis::edit_r_environ()` in the console to open your `.Renviron` file.
+
+-   In the `.Renviron` file, add the following line, replacing `your_api_key_here` with your actual API key: `ANTHROPIC_API_KEY="your_api_key_here"`
+
 -   Restart R Studio to make sure the API keys are loaded. 
--   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 
+-   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_API_KEY")` in the console. 
 -   It should return your API key.
-
-```{r}
-#| echo: true
-#| eval: false
-# Use this to add your API keys to your .Renviron file at the workshop.
-# API key will be distributed at the workshop and disabled after. 
-# Do not share your API key with anyone else.
-usethis::edit_r_environ()
-```
-
 
 
 # 2. Theory and Basics {.smaller}
