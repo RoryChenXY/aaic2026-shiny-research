@@ -100,18 +100,46 @@ Epidemiologist R Handbook: Shiny dashboards - <https://epirhandbook.com/en/>
 
 ![`Examples`](./img/s1.5.1-shinyexample.png)
 
-## 1.6 Setup
+## 1.6 Let’s Learn Who Is in the Room
 
--   You are comfortable coding in R and R Studio
--   No prior knowledge of Shiny apps required.
--   Access Github: <https://github.com/RoryChenXY/aaic2026-shiny-research> 
--   Install the required package if you haven't already
--   Access your Anthropic key and save it to .Renviron
--   If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+Please briefly introduce yourself.
+
+**Please share**
+
+-   Your name
+-   Your affiliation or association
+-   The type of research you do
+-   The type of data you work with
+-   Your prior experience with R or R Shiny
+
+
+`Purpose`: This will help us understand the range of backgrounds in the room and organize groups for the hands-on portion.
+
+
 
 ------------------------------------------------------------------------
 
-###  1.6.1 Setup - Projects
+
+### 1.6.1 Setup
+
+-   Please make sure you have access to the workshop materials and have the required software installed.
+-   If you have any trouble, please raise your hand, one of the facilitators will come to assist you.
+-   **Access Github**: <https://github.com/RoryChenXY/aaic2026-shiny-research> 
+-   Open R Studio
+-   No prior knowledge of Shiny apps required.
+-   Install the required package if you haven't already
+
+**Small-group organization**
+
+
+-   Participants with prior R Shiny experience should sit near participants who are new to Shiny.
+-   The goal is peer support and shared learning.
+
+
+------------------------------------------------------------------------
+
+
+###  1.6.2 Setup - Projects
 
 -   In R Studio, go to "File" -> "New Project" (left top corner)
 -   Choose "New Directory"  -> "New Project"
@@ -122,7 +150,7 @@ Epidemiologist R Handbook: Shiny dashboards - <https://epirhandbook.com/en/>
 
 ------------------------------------------------------------------------
 
-###  1.6.2 Setup - Packages
+###  1.6.3 Setup - Packages
 
 -    Open `setup.R` and run the code to install the required packages for the workshop.
 
@@ -145,7 +173,7 @@ if(length(new.packages)) install.packages(new.packages)
 
 ------------------------------------------------------------------------
 
-###  1.6.3 Setup - API keys (**Optional**)
+###  1.6.4 Setup - API keys (**Optional**)
 
 -   Restart R Studio to make sure the API keys are loaded. 
 -   You can check if the key is loaded by running `Sys.getenv("ANTHROPIC_KEY")` in the console. 

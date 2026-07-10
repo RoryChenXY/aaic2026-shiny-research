@@ -300,20 +300,39 @@ Rory Chen
 <h2>1.5.1 Examples of R Shiny in Research</h2>
 
 <img data-src="./img/s1.5.1-shinyexample.png" class="r-stretch quarto-figure-center"><p class="caption"><code>Examples</code></p></section>
-<section id="setup" class="slide level2">
-<h2>1.6 Setup</h2>
+<section id="lets-learn-who-is-in-the-room" class="slide level2">
+<h2>1.6 Let’s Learn Who Is in the Room</h2>
+<p>Please briefly introduce yourself.</p>
+<p><strong>Please share</strong></p>
 <ul>
-<li>You are comfortable coding in R and R Studio</li>
-<li>No prior knowledge of Shiny apps required.</li>
-<li>Access Github: <a href="https://github.com/RoryChenXY/aaic2026-shiny-research" class="uri">https://github.com/RoryChenXY/aaic2026-shiny-research</a></li>
-<li>Install the required package if you haven’t already</li>
-<li>Access your Anthropic key and save it to .Renviron</li>
+<li>Your name</li>
+<li>Your affiliation or association</li>
+<li>The type of research you do</li>
+<li>The type of data you work with</li>
+<li>Your prior experience with R or R Shiny</li>
+</ul>
+<p><code>Purpose</code>: This will help us understand the range of backgrounds in the room and organize groups for the hands-on portion.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="setup">1.6.1 Setup</h3>
+<ul>
+<li>Please make sure you have access to the workshop materials and have the required software installed.</li>
 <li>If you have any trouble, please raise your hand, one of the facilitators will come to assist you.</li>
+<li><strong>Access Github</strong>: <a href="https://github.com/RoryChenXY/aaic2026-shiny-research" class="uri">https://github.com/RoryChenXY/aaic2026-shiny-research</a></li>
+<li>Open R Studio</li>
+<li>No prior knowledge of Shiny apps required.</li>
+<li>Install the required package if you haven’t already</li>
+</ul>
+<p><strong>Small-group organization</strong></p>
+<ul>
+<li>Participants with prior R Shiny experience should sit near participants who are new to Shiny.</li>
+<li>The goal is peer support and shared learning.</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="setup---projects">1.6.1 Setup - Projects</h3>
+<h3 id="setup---projects">1.6.2 Setup - Projects</h3>
 <ul>
 <li>In R Studio, go to “File” -&gt; “New Project” (left top corner)</li>
 <li>Choose “New Directory” -&gt; “New Project”</li>
@@ -324,7 +343,7 @@ Rory Chen
 <img data-src="./img/s1.6.1-newproject.png" class="r-stretch quarto-figure-center"><p class="caption"><code>New Project</code></p></section>
 <section class="slide level2">
 
-<h3 id="setup---packages">1.6.2 Setup - Packages</h3>
+<h3 id="setup---packages">1.6.3 Setup - Packages</h3>
 <ul>
 <li>Open <code>setup.R</code> and run the code to install the required packages for the workshop.</li>
 </ul>
@@ -343,7 +362,7 @@ Rory Chen
 </section>
 <section class="slide level2">
 
-<h3 id="setup---api-keys-optional">1.6.3 Setup - API keys (<strong>Optional</strong>)</h3>
+<h3 id="setup---api-keys-optional">1.6.4 Setup - API keys (<strong>Optional</strong>)</h3>
 <ul>
 <li>Restart R Studio to make sure the API keys are loaded.</li>
 <li>You can check if the key is loaded by running <code>Sys.getenv("ANTHROPIC_KEY")</code> in the console.</li>
@@ -2087,8 +2106,8 @@ Rory Chen
 <h3 id="basic-usage-1">5.3.1 Basic Usage</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-50de73ebddfc68ae211e" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-50de73ebddfc68ae211e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-b3c8d2555ea0f720119f" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-b3c8d2555ea0f720119f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[51.5083,0.0291,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AAIC 2026",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[51.5083,51.5083],"lng":[0.0291,0.0291]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
